@@ -1,35 +1,40 @@
 import React, { Component } from "react";
-import "../styles/Stock.css";
+import { Text, View } from "native-base";
+import axios from "axios";
+import { AsyncStorage } from "react-native";
 
 class Stock extends Component {
-  render() {
-    const {
-      companyName,
-      symbol,
-      latestPrice,
-      changePercent,
-      change,
-      closeTime
-    } = this.props.stockData.quote;
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      stockTicker: null
+    };
+  }
+
+  getStockTicker = async () => {
+    try {
+      const value = await AsyncStorage.getItem("STOCK_TICKER");
+      if (value !== null) {
+        this.setState({ stockTicker: value });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchAPI = () => {};
+
+  componentDidMount() {
+    this.getStockTicker();
+  }
+
+  render() {
     return (
-      <div className="stock-card">
-        <h1 className="companyName">
-          {companyName}
-          <span className="symbol">({symbol})</span>
-        </h1>
-        <div className="price">
-          <span className="latestPrice">{latestPrice}</span>
-          <span className="currency">USD</span>
-          <span className={changePercent < 0 ? "negative" : "positive"}>
-            <span className="change">{change}</span>
-            <span className="changePercent">
-              ({(changePercent * 100).toFixed(2)})
-            </span>
-          </span>
-        </div>
-        <span className="closeTime">{closeTime}</span>
-      </div>
+      <View>
+        <Text>Card</Text>
+        <Text>{this.state.stockTicker}</Text>
+      </View>
     );
   }
 }
