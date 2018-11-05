@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List, ListItem, Text } from 'native-base'
 
-import { getSymbols } from '../store/actions/getSymbols'
+import { getSymbols } from '../store/actions'
 
 class Symbols extends Component {
   componentDidMount = () => {

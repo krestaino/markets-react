@@ -3,11 +3,10 @@ import { Provider } from 'react-redux'
 import { Container, Footer, FooterTab, Button, Text } from 'native-base'
 import { Font, AppLoading } from 'expo'
 
+import store from './store'
 import Header from './components/Header'
 import Search from './components/Search'
 import Stock from './components/Stock'
-
-import store from './store'
 
 export default class App extends Component {
   constructor(props) {
