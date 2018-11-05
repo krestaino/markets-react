@@ -3,30 +3,31 @@ import { Dimensions } from "react-native";
 import { Content, Text, View } from "native-base";
 import { connect } from "react-redux";
 import { format } from "date-fns";
-import { VictoryChart, VictoryLabel, VictoryLine, VictoryTheme } from "victory-native";
+import { VictoryChart, VictoryLine, VictoryTheme } from "victory-native";
 
 class Stock extends Component {
   render() {
     const { stock } = this.props;
     const { width } = Dimensions.get("window");
+    const { chart, quote } = this.props.stock.data
 
     return (
       <Content style={styles}>
-        {stock.quote && (
+        {chart && quote && (
           <View>
-            <Text>{stock.quote.companyName}</Text>
+            <Text>{quote.companyName}</Text>
             <Text>
-              {stock.quote.primaryExchange}: {stock.quote.symbol}
+              {quote.primaryExchange}: {quote.symbol}
             </Text>
-            <Text>{stock.quote.latestPrice} USD</Text>
+            <Text>{quote.latestPrice} USD</Text>
             <Text>
               {format(
-                new Date(stock.quote.latestUpdate),
+                new Date(quote.latestUpdate),
                 "MMM D, h:mm A [EST]"
               )}
             </Text>
             <VictoryChart width={width} theme={VictoryTheme.material}>
-              <VictoryLine data={stock.chart} style={lineStyles} x="date" y="close" />
+              <VictoryLine data={chart} style={lineStyles} x="date" y="close" />
             </VictoryChart>
           </View>
         )}

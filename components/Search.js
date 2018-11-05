@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Icon, Item, Input, View } from "native-base";
 
-import { fetchStock, setSymbol } from "../reducer";
+import getStock from "../actions/getStock";
+import setSymbol from "../actions/setSymbol";
 import Symbols from "./Symbols";
 
 class Search extends Component {
-  componentDidUpdate = () => {
-    console.log(this.props.symbol)
-  }
-
   render() {
     return (
       <View>
@@ -19,7 +16,7 @@ class Search extends Component {
             autoCorrect={false}
             autoFocus={true}
             onChangeText={symbol => this.props.setSymbol(symbol)}
-            onEndEditing={() => this.props.fetchStock(this.props.symbol)}
+            onEndEditing={() => this.props.getStock(this.props.symbol)}
             placeholder="Search by stock symbol"
             spellCheck={false}
           />
@@ -38,7 +35,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  fetchStock,
+  getStock,
   setSymbol
 };
 

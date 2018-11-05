@@ -2,24 +2,24 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { List, ListItem, Text } from "native-base";
 
-import { fetchSymbols } from "../reducer";
+import getSymbols from "../actions/getSymbols";
 
 class Symbols extends Component {
   componentDidMount = () => {
-    this.props.fetchSymbols();
+    this.props.getSymbols();
   };
 
   render() {
     return (
       <List>
         <ListItem>
-          <Text>{this.props.symbols.length}</Text>
+          <Text>{this.props.symbols.data.length}</Text>
         </ListItem>
         <ListItem>
-          <Text>Nathaniel Clyne</Text>
+          <Text>{JSON.stringify(this.props.symbol)}</Text>
         </ListItem>
         <ListItem>
-          <Text>Dejan Lovren</Text>
+          <Text>{JSON.stringify(this.props.stock)}</Text>
         </ListItem>
       </List>
     );
@@ -34,7 +34,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  fetchSymbols
+  getSymbols
 };
 
 export default connect(

@@ -1,23 +1,13 @@
 import React, { Component } from "react";
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { Container, Footer, FooterTab, Button, Text } from "native-base";
 import { Font, AppLoading } from "expo";
-import axios from "axios";
-import axiosMiddleware from "redux-axios-middleware";
 
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Stock from "./components/Stock";
 
-import reducer from "./reducer";
-
-const client = axios.create({
-  baseURL: "https://api.iextrading.com/1.0",
-  responseType: "json"
-});
-
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+import store from './store'
 
 export default class App extends Component {
   constructor(props) {
