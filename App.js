@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { View } from "react-native";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { Container, Footer, FooterTab, Button, Text } from "native-base";
@@ -11,7 +10,6 @@ import Search from "./components/Search";
 import Stock from "./components/Stock";
 
 import reducer from "./reducer";
-import RepoList from "./components/RepoList";
 
 const client = axios.create({
   baseURL: "https://api.iextrading.com/1.0",
@@ -31,9 +29,6 @@ export default class App extends Component {
         <Container>
           <TheHeader />
           <Search />
-          <View>
-            <RepoList />
-          </View>
           <Stock />
           <Footer>
             <FooterTab>

@@ -1,42 +1,34 @@
 import React, { Component } from "react";
-import { Text, View } from "native-base";
-import axios from "axios";
-import { AsyncStorage } from "react-native";
+import { Content, Text, View } from "native-base";
+import { connect } from "react-redux";
 
 class Stock extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      stockTicker: null
-    };
-  }
-
-  getStockTicker = async () => {
-    try {
-      const value = await AsyncStorage.getItem("STOCK_TICKER");
-      if (value !== null) {
-        this.setState({ stockTicker: value });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  fetchAPI = () => {};
-
-  componentDidMount() {
-    this.getStockTicker();
-  }
-
   render() {
+    const { stock } = this.props;
+
     return (
-      <View>
-        <Text>Card</Text>
-        <Text>{this.state.stockTicker}</Text>
-      </View>
+      <Content style={this.styles}>
+        {stock.quote && <View>
+          <Text>{stock.quote.companyName}</Text>
+          <Text>{stock.quote.primaryExchange}</Text>
+        </View>}
+      </Content>
     );
   }
 }
 
-export default Stock;
+const styles = {
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column'
+}
+
+const mapStateToProps = state => {
+  return {
+    stock: state.stock
+  };
+};
+
+export default connect(
+  mapStateToProps
+)(Stock);
