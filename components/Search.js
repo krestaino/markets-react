@@ -20,7 +20,7 @@ class Search extends Component {
             spellCheck={false}
           />
         </Item>
-        <Symbols />
+        {/* <Symbols /> */}
       </View>
     )
   }
