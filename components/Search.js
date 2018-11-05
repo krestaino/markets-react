@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Icon, Item, Input, View } from "native-base";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Icon, Item, Input, View } from 'native-base'
 
-import { getStock, setSymbol } from "../store/actions/";
+import { getStock, setSymbol } from '../store/actions/'
 
-import Symbols from "./Symbols";
+import Symbols from './Symbols'
 
 class Search extends Component {
   render() {
@@ -23,7 +23,7 @@ class Search extends Component {
         </Item>
         <Symbols />
       </View>
-    );
+    )
   }
 }
 
@@ -31,15 +31,15 @@ const mapStateToProps = state => {
   return {
     stock: state.stock,
     symbol: state.symbol
-  };
-};
+  }
+}
 
 const mapDispatchToProps = {
   getStock,
   setSymbol
-};
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Search);
+)(Search)

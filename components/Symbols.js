@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { List, ListItem, Text } from "native-base";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { List, ListItem, Text } from 'native-base'
 
-import { getSymbols } from "../store/actions/getSymbols";
+import { getSymbols } from '../store/actions/getSymbols'
 
 class Symbols extends Component {
   componentDidMount = () => {
-    this.props.getSymbols();
-  };
+    this.props.getSymbols()
+  }
 
   render() {
     return (
@@ -22,7 +22,7 @@ class Symbols extends Component {
           <Text>{JSON.stringify(this.props.stock)}</Text>
         </ListItem>
       </List>
-    );
+    )
   }
 }
 
@@ -30,14 +30,14 @@ const mapStateToProps = state => {
   return {
     symbol: state.symbol,
     symbols: state.symbols
-  };
-};
+  }
+}
 
 const mapDispatchToProps = {
   getSymbols
-};
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Symbols);
+)(Symbols)

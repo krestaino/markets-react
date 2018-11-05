@@ -1,4 +1,4 @@
-import { GET_STOCK } from "../../constants";
+import { GET_STOCK } from '../../constants'
 
 export const getStock = symbol => {
   return {
@@ -8,5 +8,5 @@ export const getStock = symbol => {
         url: `/stock/${symbol}/batch?types=quote,news,chart&range=1m&last=1`
       }
     }
-  };
-};
+  }
+}

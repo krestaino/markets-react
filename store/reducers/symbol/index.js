@@ -1,12 +1,12 @@
-import { SET_SYMBOL } from "../../constants";
+import { SET_SYMBOL } from '../../constants'
 
-const initialState = "";
+const initialState = ''
 
 export const symbol = (state = initialState, action) => {
   switch (action.type) {
     case SET_SYMBOL:
-      return action.payload;
+      return action.payload
     default:
-      return state;
+      return state
   }
-};
+}

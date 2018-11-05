@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Header, Title, Button, Left, Right, Body, Icon } from "native-base";
+import React, { Component } from 'react'
+import { Header, Title, Button, Left, Right, Body, Icon } from 'native-base'
 
 export default class TheHeader extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
@@ -19,6 +19,6 @@ export default class TheHeader extends Component {
         </Body>
         <Right />
       </Header>
-    );
+    )
   }
 }
