@@ -10,9 +10,9 @@ export default class TheHeader extends Component {
     return (
       <Header>
         <Left>
-          <Button transparent>
+          {/* <Button transparent>
             <Icon name="menu" />
-          </Button>
+          </Button> */}
         </Left>
         <Body>
           <Title>Stock Check</Title>
