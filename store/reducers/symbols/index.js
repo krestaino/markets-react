@@ -2,7 +2,7 @@ import {
   GET_SYMBOLS,
   GET_SYMBOLS_SUCCESS,
   GET_SYMBOLS_FAIL
-} from "../constants";
+} from "../../constants";
 
 const initialState = {
   data: []
@@ -23,4 +23,4 @@ export const symbols = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

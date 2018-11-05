@@ -1,4 +1,4 @@
-import { GET_SYMBOLS } from "../constants";
+import { GET_SYMBOLS } from "../../constants";
 
 export const getSymbols = () => {
   return {
@@ -9,4 +9,4 @@ export const getSymbols = () => {
       }
     }
   };
-}
+};

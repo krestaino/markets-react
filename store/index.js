@@ -8,4 +8,7 @@ const client = axios.create({
   responseType: "json"
 });
 
-export default store = createStore(reducers, applyMiddleware(axiosMiddleware(client)));
+export default (store = createStore(
+  reducers,
+  applyMiddleware(axiosMiddleware(client))
+));

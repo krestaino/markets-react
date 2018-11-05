@@ -7,7 +7,6 @@ import { VictoryChart, VictoryLine, VictoryTheme } from "victory-native";
 
 class Stock extends Component {
   render() {
-    const { stock } = this.props;
     const { width } = Dimensions.get("window");
     const { chart, quote } = this.props.stock.data
 

@@ -1,4 +1,4 @@
-import { GET_STOCK, GET_STOCK_SUCCESS, GET_STOCK_FAIL } from "../constants";
+import { GET_STOCK, GET_STOCK_SUCCESS, GET_STOCK_FAIL } from "../../constants";
 
 const initialState = {
   data: {}
@@ -19,4 +19,4 @@ export const stock = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

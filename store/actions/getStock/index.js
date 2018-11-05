@@ -1,4 +1,4 @@
-import { GET_STOCK } from "../constants";
+import { GET_STOCK } from "../../constants";
 
 export const getStock = symbol => {
   return {
@@ -9,4 +9,4 @@ export const getStock = symbol => {
       }
     }
   };
-}
+};

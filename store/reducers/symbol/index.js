@@ -1,4 +1,4 @@
-import { SET_SYMBOL } from "../constants";
+import { SET_SYMBOL } from "../../constants";
 
 const initialState = "";
 
@@ -9,4 +9,4 @@ export const symbol = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
