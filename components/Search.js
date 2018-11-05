@@ -15,11 +15,12 @@ class Search extends Component {
             autoCapitalize={'characters'}
             autoCorrect={false}
             autoFocus={true}
+            clearButtonMode={'always'}
             onChangeText={symbol => this.props.setSymbol(symbol)}
             onEndEditing={() => this.props.getStock(this.props.symbol)}
             placeholder="Search by stock symbol"
+            returnKeyType="search"
             spellCheck={false}
-            value={this.props.symbol.toUpperCase()}
           />
         </Item>
         {/* <Symbols /> */}
