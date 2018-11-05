@@ -1,4 +1,4 @@
-import { GET_STOCK } from '../constants'
+import { GET_STOCK } from "../constants";
 
 export default function(symbol) {
   return {

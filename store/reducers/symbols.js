@@ -1,4 +1,8 @@
-import { GET_SYMBOLS, GET_SYMBOLS_SUCCESS, GET_SYMBOLS_FAIL } from '../constants'
+import {
+  GET_SYMBOLS,
+  GET_SYMBOLS_SUCCESS,
+  GET_SYMBOLS_FAIL
+} from "../constants";
 
 const initialState = {
   data: []
@@ -19,4 +23,4 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
-};
+}

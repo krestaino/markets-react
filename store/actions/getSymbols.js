@@ -1,4 +1,4 @@
-import { GET_SYMBOLS } from '../constants'
+import { GET_SYMBOLS } from "../constants";
 
 export default function() {
   return {
