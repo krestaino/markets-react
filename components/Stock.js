@@ -8,7 +8,7 @@ import { VictoryChart, VictoryLabel, VictoryLine, VictoryTheme } from "victory-n
 class Stock extends Component {
   render() {
     const { stock } = this.props;
-    const { height, width } = Dimensions.get("window");
+    const { width } = Dimensions.get("window");
 
     return (
       <Content style={styles}>
@@ -52,7 +52,8 @@ lineStyles = {
 
 const mapStateToProps = state => {
   return {
-    stock: state.stock
+    stock: state.stock,
+    symbols: state.symbols
   };
 };
 
