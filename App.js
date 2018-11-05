@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { Container, Footer, FooterTab, Button, Text } from 'native-base'
+import { Container } from 'native-base'
 import { Font, AppLoading } from 'expo'
 
 import store from './store'
@@ -37,13 +37,6 @@ export default class App extends Component {
           <Header />
           <Search />
           <Stock />
-          <Footer>
-            <FooterTab>
-              <Button full>
-                <Text>Footer</Text>
-              </Button>
-            </FooterTab>
-          </Footer>
         </Container>
       </Provider>
     )
