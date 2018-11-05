@@ -17,9 +17,9 @@ class Stock extends Component {
     const { width } = Dimensions.get('window')
 
     return (
-      <Content style={styles}>
+      <View style={styles.container}>
         {isSucess && (
-          <View>
+          <Content>
             <Text>{quote.companyName}</Text>
             <Text>
               {quote.primaryExchange}: {quote.symbol}
@@ -27,38 +27,46 @@ class Stock extends Component {
             <Text>{quote.latestPrice} USD</Text>
             <Text>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
             <VictoryChart width={width} theme={VictoryTheme.material}>
-              <VictoryLine data={chart} style={lineStyles} x="date" y="close" />
+              <VictoryLine data={chart} style={styles.chart.line} x="date" y="close" />
             </VictoryChart>
-          </View>
+          </Content>
         )}
         {isError && (
-          <View>
+          <View style={[styles.container, styles.center]}>
             <Text>{error}</Text>
           </View>
         )}
         {isLoading && (
-          <View>
+          <View style={[styles.container, styles.center]}>
             <Spinner color="#333" />
           </View>
         )}
-      </Content>
+      </View>
     )
   }
 }
 
 styles = {
-  display: 'flex',
-  flex: 1,
-  flexDirection: 'column'
-}
-
-lineStyles = {
-  data: {
-    stroke: '#c43a31',
-    strokeWidth: 2
+  container: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    padding: 10
   },
-  labels: {
-    fill: 'transparent'
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  chart: {
+    line: {
+      data: {
+        stroke: '#c43a31',
+        strokeWidth: 2
+      },
+      labels: {
+        fill: 'transparent'
+      }
+    }
   }
 }
 
