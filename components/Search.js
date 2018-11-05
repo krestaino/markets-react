@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Icon, Item, Input, View } from "native-base";
 
-import getStock from "../actions/getStock";
-import setSymbol from "../actions/setSymbol";
+import getStock from "../store/actions/getStock";
+import setSymbol from "../store/actions/setSymbol";
+
 import Symbols from "./Symbols";
 
 class Search extends Component {
