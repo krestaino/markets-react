@@ -12,12 +12,14 @@ class Search extends Component {
         <Item searchBar style={{ paddingLeft: 10 }}>
           <Icon name="ios-search" />
           <Input
+            autoCapitalize={'characters'}
             autoCorrect={false}
             autoFocus={true}
             onChangeText={symbol => this.props.setSymbol(symbol)}
             onEndEditing={() => this.props.getStock(this.props.symbol)}
             placeholder="Search by stock symbol"
             spellCheck={false}
+            value={this.props.symbol.toUpperCase()}
           />
         </Item>
         {/* <Symbols /> */}
