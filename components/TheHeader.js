@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Header, Title, Button, Left, Right, Body, Icon } from "native-base";
+import {
+  Header,
+  Title,
+  Button,
+  Left,
+  Right,
+  Body,
+  Icon,
+  View
+} from "native-base";
 
 export default class TheHeader extends Component {
   constructor(props) {
@@ -8,17 +17,19 @@ export default class TheHeader extends Component {
 
   render() {
     return (
-      <Header>
-        <Left>
-          <Button transparent>
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>Stock Check</Title>
-        </Body>
-        <Right />
-      </Header>
+      <View>
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name="menu" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Stock Check</Title>
+          </Body>
+          <Right />
+        </Header>
+      </View>
     );
   }
 }
