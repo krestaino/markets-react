@@ -1,6 +1,6 @@
 import { GET_STOCK } from "../constants";
 
-export default function(symbol) {
+export const getStock = symbol => {
   return {
     type: GET_STOCK,
     payload: {

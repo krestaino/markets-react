@@ -8,7 +8,7 @@ const initialState = {
   data: []
 };
 
-export default function(state = initialState, action) {
+export const symbols = (state = initialState, action) => {
   switch (action.type) {
     case GET_SYMBOLS:
       return { ...state, loading: true };

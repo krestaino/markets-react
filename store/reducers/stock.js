@@ -4,7 +4,7 @@ const initialState = {
   data: {}
 };
 
-export default function(state = initialState, action) {
+export const stock = (state = initialState, action) => {
   switch (action.type) {
     case GET_STOCK:
       return { ...state, loading: true };

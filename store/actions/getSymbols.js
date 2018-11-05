@@ -1,6 +1,6 @@
 import { GET_SYMBOLS } from "../constants";
 
-export default function() {
+export const getSymbols = () => {
   return {
     type: GET_SYMBOLS,
     payload: {

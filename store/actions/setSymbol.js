@@ -1,6 +1,6 @@
 import { SET_SYMBOL } from "../constants";
 
-export default function(symbol) {
+export const setSymbol = symbol => {
   return {
     type: SET_SYMBOL,
     payload: symbol

@@ -1,13 +1,11 @@
 import { combineReducers } from "redux";
 
-import stock from "./stock";
-import symbol from "./symbol";
-import symbols from "./symbols";
+import { stock } from "./stock";
+import { symbol } from "./symbol";
+import { symbols } from "./symbols";
 
-const AppReducer = combineReducers({
+export default combineReducers({
   stock,
   symbol,
   symbols
 });
-
-export default AppReducer;
