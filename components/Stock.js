@@ -12,7 +12,10 @@ class Stock extends Component {
 
   formatPercentage = x => (x * 100).toFixed(2)
 
-  positiveOrNegative = x => (x > 0) ? styles.positive : styles.negative
+  positiveOrNegative = x => (x > 0 ? styles.positive.text : styles.negative.text)
+
+  positiveOrNegativeOverTime = (x, y) =>
+    x > y ? { ...styles.chart.line, ...styles.negative.chart } : { ...styles.chart.line, ...styles.positive.chart }
 
   render() {
     const { chart, quote } = this.props.stock.data
@@ -36,9 +39,8 @@ class Stock extends Component {
               <Text style={styles.latestPrice}>{quote.latestPrice}</Text>
               <Text> USD</Text>
               <Text>
-                <Text style={this.positiveOrNegative(quote.change)}> {quote.change}</Text>
+                <Text style={this.positiveOrNegative(quote.change)}> {quote.change} </Text>
                 <Text style={this.positiveOrNegative(quote.change)}>
-                  {' '}
                   ({this.formatPercentage(quote.changePercent)}
                   %) {this.upOrDownSymbol(quote.changePercent)}
                 </Text>
@@ -52,7 +54,7 @@ class Stock extends Component {
                   onLoad: { duration: 500 }
                 }}
                 data={chart}
-                style={styles.chart.line}
+                style={this.positiveOrNegativeOverTime(chart[0].close, chart[chart.length - 1].close)}
                 y="close"
               />
               <VictoryAxis
@@ -103,10 +105,24 @@ styles = {
     fontSize: 24
   },
   positive: {
-    color: '#0f9d58'
+    text: {
+      color: '#0f9d58'
+    },
+    chart: {
+      data: {
+        stroke: '#0f9d58'
+      }
+    }
   },
   negative: {
-    color: '#d23f31'
+    text: {
+      color: '#d23f31'
+    },
+    chart: {
+      data: {
+        stroke: '#d23f31'
+      }
+    }
   },
   latestUpdate: {
     color: '#666',
@@ -114,10 +130,6 @@ styles = {
   },
   chart: {
     line: {
-      data: {
-        stroke: '#c43a31',
-        strokeWidth: 2
-      },
       labels: {
         fill: 'transparent'
       }
