@@ -12,7 +12,22 @@
     },
     "android": {
       "package": "com.kmr.stockcheck",
-      "versionCode": 3
+      "versionCode": 4,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon-transparent.png",
+        "backgroundColor": "#334393"
+      },
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.kmr.stockcheck",
+      "splash": {
+        "backgroundColor": "334393",
+        "resizeMode": "contain",
+        "ldpi": "./assets/splash.png",
+        "mdpi": "./assets/splash.png",
+        "hdpi": "./assets/splash.png",
+        "xhdpi": "./assets/splash.png",
+        "xxhdpi": "./assets/splash.png",
+        "xxxhdpi": "./assets/splash.png"
+      }
     },
     "androidStatusBar": {
       "barStyle": "light-content",
