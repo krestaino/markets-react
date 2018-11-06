@@ -6,6 +6,8 @@ import { format, subDays } from 'date-fns'
 import { VictoryGroup, VictoryAxis, VictoryLine, VictoryTheme } from 'victory-native'
 
 class Stock extends Component {
+  convert = x => -x + 30
+
   render() {
     const { chart, quote } = this.props.stock.data
     const { error, loading } = this.props.stock
@@ -36,7 +38,11 @@ class Stock extends Component {
                 style={styles.chart.line}
                 y="close"
               />
-              <VictoryAxis crossAxis fixLabelOverlap={true} tickFormat={(t) => format(subDays(new Date(), t), 'MMM D')} />
+              <VictoryAxis
+                crossAxis
+                fixLabelOverlap={true}
+                tickFormat={t => format(subDays(new Date(), this.convert(t)), 'MMM D')}
+              />
               <VictoryAxis dependentAxis fixLabelOverlap={true} />
             </VictoryGroup>
           </Content>
