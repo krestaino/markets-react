@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import Info from './Info'
-import Chart from './Chart'
+import Info from './Stock/Info'
+import Chart from './Stock/Chart'
 
 class Stock extends Component {
   render() {
