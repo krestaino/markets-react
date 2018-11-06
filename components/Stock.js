@@ -2,20 +2,16 @@ import React, { Component } from 'react'
 import { Dimensions } from 'react-native'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
-import { format, subDays } from 'date-fns'
-import { VictoryGroup, VictoryAxis, VictoryLine, VictoryTheme } from 'victory-native'
+import { format } from 'date-fns'
+
+import Chart from './Chart'
 
 class Stock extends Component {
-  convertXaxis = x => -x + 30
-
   upOrDownSymbol = x => (x > 0 ? '▲' : '▼')
 
   formatPercentage = x => (x * 100).toFixed(2)
 
-  positiveOrNegative = x => (x > 0 ? styles.positive.text : styles.negative.text)
-
-  positiveOrNegativeOverTime = (x, y) =>
-    x > y ? { ...styles.chart.line, ...styles.negative.chart } : { ...styles.chart.line, ...styles.positive.chart }
+  positiveOrNegative = x => (x > 0 ? styles.positive : styles.negative)
 
   render() {
     const { chart, quote } = this.props.stock.data
@@ -24,8 +20,6 @@ class Stock extends Component {
     const isLoading = !error && loading
     const isSucess = !error && !loading && chart && quote
     const isError = error && !loading
-
-    const { width } = Dimensions.get('window')
 
     return (
       <View style={styles.container}>
@@ -47,23 +41,7 @@ class Stock extends Component {
               </Text>
             </Text>
             <Text style={styles.latestUpdate}>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
-            <VictoryGroup height={250} width={width} theme={VictoryTheme.material}>
-              <VictoryLine
-                animate={{
-                  duration: 1000,
-                  onLoad: { duration: 500 }
-                }}
-                data={chart}
-                style={this.positiveOrNegativeOverTime(chart[0].close, chart[chart.length - 1].close)}
-                y="close"
-              />
-              <VictoryAxis
-                crossAxis
-                fixLabelOverlap={true}
-                tickFormat={t => format(subDays(new Date(), this.convertXaxis(t)), 'MMM D')}
-              />
-              <VictoryAxis dependentAxis fixLabelOverlap={true} />
-            </VictoryGroup>
+            <Chart />
           </Content>
         )}
         {isError && (
@@ -81,7 +59,7 @@ class Stock extends Component {
   }
 }
 
-styles = {
+const styles = {
   container: {
     display: 'flex',
     flex: 1,
@@ -105,35 +83,14 @@ styles = {
     fontSize: 24
   },
   positive: {
-    text: {
-      color: '#0f9d58'
-    },
-    chart: {
-      data: {
-        stroke: '#0f9d58'
-      }
-    }
+    color: '#0f9d58'
   },
   negative: {
-    text: {
-      color: '#d23f31'
-    },
-    chart: {
-      data: {
-        stroke: '#d23f31'
-      }
-    }
+    color: '#d23f31'
   },
   latestUpdate: {
     color: '#666',
     fontSize: 12
-  },
-  chart: {
-    line: {
-      labels: {
-        fill: 'transparent'
-      }
-    }
   }
 }
 
