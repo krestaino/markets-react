@@ -1,12 +1,30 @@
 import React, { Component } from 'react'
 import { Content, Text, Spinner, View } from 'native-base'
+import { RefreshControl } from 'react-native'
 import { connect } from 'react-redux'
+
+import { getStock } from '../store/actions/'
 
 import Info from './Stock/Info'
 import Chart from './Stock/Chart'
 import Details from './Stock/Details'
 
 class Stock extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      refreshing: false
+    }
+  }
+
+  onRefresh = () => {
+    this.setState({ refreshing: true })
+    this.props.getStock(this.props.symbol).then(() => {
+      this.setState({ refreshing: false })
+    })
+  }
+
   render() {
     const { chart, quote } = this.props.stock.data
     const { error, loading } = this.props.stock
@@ -18,7 +36,7 @@ class Stock extends Component {
     return (
       <View style={styles.container}>
         {isSucess && (
-          <Content>
+          <Content refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} />}>
             <Info />
             <Chart />
             <Details />
@@ -54,8 +72,16 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    stock: state.stock
+    stock: state.stock,
+    symbol: state.symbol
   }
 }
 
-export default connect(mapStateToProps)(Stock)
+const mapDispatchToProps = {
+  getStock
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Stock)
