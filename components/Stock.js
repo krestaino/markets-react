@@ -6,7 +6,13 @@ import { format, subDays } from 'date-fns'
 import { VictoryGroup, VictoryAxis, VictoryLine, VictoryTheme } from 'victory-native'
 
 class Stock extends Component {
-  convert = x => -x + 30
+  convertXaxis = x => -x + 30
+
+  upOrDownSymbol = x => (x > 0 ? '▲' : '▼')
+
+  formatPercentage = x => (x * 100).toFixed(2)
+
+  positiveOrNegative = x => (x > 0) ? styles.positive : styles.negative
 
   render() {
     const { chart, quote } = this.props.stock.data
@@ -27,10 +33,19 @@ class Stock extends Component {
               {quote.primaryExchange}: {quote.symbol}
             </Text>
             <Text>
-              <Text style={styles.latestPrice}>{quote.latestPrice}</Text><Text> USD</Text>
+              <Text style={styles.latestPrice}>{quote.latestPrice}</Text>
+              <Text> USD</Text>
+              <Text>
+                <Text style={this.positiveOrNegative(quote.change)}> {quote.change}</Text>
+                <Text style={this.positiveOrNegative(quote.change)}>
+                  {' '}
+                  ({this.formatPercentage(quote.changePercent)}
+                  %) {this.upOrDownSymbol(quote.changePercent)}
+                </Text>
+              </Text>
             </Text>
             <Text style={styles.latestUpdate}>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
-            <VictoryGroup width={width} theme={VictoryTheme.material}>
+            <VictoryGroup height={250} width={width} theme={VictoryTheme.material}>
               <VictoryLine
                 animate={{
                   duration: 1000,
@@ -43,7 +58,7 @@ class Stock extends Component {
               <VictoryAxis
                 crossAxis
                 fixLabelOverlap={true}
-                tickFormat={t => format(subDays(new Date(), this.convert(t)), 'MMM D')}
+                tickFormat={t => format(subDays(new Date(), this.convertXaxis(t)), 'MMM D')}
               />
               <VictoryAxis dependentAxis fixLabelOverlap={true} />
             </VictoryGroup>
@@ -86,6 +101,12 @@ styles = {
   latestPrice: {
     fontWeight: 'bold',
     fontSize: 24
+  },
+  positive: {
+    color: '#0f9d58'
+  },
+  negative: {
+    color: '#d23f31'
   },
   latestUpdate: {
     color: '#666',
