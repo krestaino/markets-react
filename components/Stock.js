@@ -22,12 +22,14 @@ class Stock extends Component {
       <View style={styles.container}>
         {isSucess && (
           <Content>
-            <Text>{quote.companyName}</Text>
-            <Text>
+            <Text style={styles.companyName}>{quote.companyName}</Text>
+            <Text style={styles.primaryExchange}>
               {quote.primaryExchange}: {quote.symbol}
             </Text>
-            <Text>{quote.latestPrice} USD</Text>
-            <Text>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
+            <Text>
+              <Text style={styles.latestPrice}>{quote.latestPrice}</Text><Text> USD</Text>
+            </Text>
+            <Text style={styles.latestUpdate}>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
             <VictoryGroup width={width} theme={VictoryTheme.material}>
               <VictoryLine
                 animate={{
@@ -72,6 +74,22 @@ styles = {
   center: {
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  companyName: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  primaryExchange: {
+    color: '#666',
+    marginBottom: 6
+  },
+  latestPrice: {
+    fontWeight: 'bold',
+    fontSize: 24
+  },
+  latestUpdate: {
+    color: '#666',
+    fontSize: 12
   },
   chart: {
     line: {
