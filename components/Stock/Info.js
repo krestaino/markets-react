@@ -14,24 +14,24 @@ class Info extends Component {
     const { quote } = this.props.stock.data
 
     return (
-          <View>
-            <Text style={styles.companyName}>{quote.companyName}</Text>
-            <Text style={styles.primaryExchange}>
-              {quote.primaryExchange}: {quote.symbol}
+      <View>
+        <Text style={styles.companyName}>{quote.companyName}</Text>
+        <Text style={styles.primaryExchange}>
+          {quote.primaryExchange}: {quote.symbol}
+        </Text>
+        <Text>
+          <Text style={styles.latestPrice}>{quote.latestPrice}</Text>
+          <Text> USD</Text>
+          <Text>
+            <Text style={this.positiveOrNegative(quote.change)}> {quote.change} </Text>
+            <Text style={this.positiveOrNegative(quote.change)}>
+              ({this.formatPercentage(quote.changePercent)}
+              %) {this.upOrDownSymbol(quote.changePercent)}
             </Text>
-            <Text>
-              <Text style={styles.latestPrice}>{quote.latestPrice}</Text>
-              <Text> USD</Text>
-              <Text>
-                <Text style={this.positiveOrNegative(quote.change)}> {quote.change} </Text>
-                <Text style={this.positiveOrNegative(quote.change)}>
-                  ({this.formatPercentage(quote.changePercent)}
-                  %) {this.upOrDownSymbol(quote.changePercent)}
-                </Text>
-              </Text>
-            </Text>
-            <Text style={styles.latestUpdate}>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
-          </View>
+          </Text>
+        </Text>
+        <Text style={styles.latestUpdate}>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
+      </View>
     )
   }
 }
