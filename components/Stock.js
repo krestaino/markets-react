@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Dimensions } from 'react-native'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
-import { format } from 'date-fns'
-import { VictoryChart, VictoryLine, VictoryTheme } from 'victory-native'
+import { format, subDays } from 'date-fns'
+import { VictoryGroup, VictoryAxis, VictoryLine, VictoryTheme } from 'victory-native'
 
 class Stock extends Component {
   render() {
@@ -26,9 +26,19 @@ class Stock extends Component {
             </Text>
             <Text>{quote.latestPrice} USD</Text>
             <Text>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
-            <VictoryChart width={width} theme={VictoryTheme.material}>
-              <VictoryLine data={chart} style={styles.chart.line} x="date" y="close" />
-            </VictoryChart>
+            <VictoryGroup width={width} theme={VictoryTheme.material}>
+              <VictoryLine
+                animate={{
+                  duration: 1000,
+                  onLoad: { duration: 500 }
+                }}
+                data={chart}
+                style={styles.chart.line}
+                y="close"
+              />
+              <VictoryAxis crossAxis fixLabelOverlap={true} tickFormat={(t) => format(subDays(new Date(), t), 'MMM D')} />
+              <VictoryAxis dependentAxis fixLabelOverlap={true} />
+            </VictoryGroup>
           </Content>
         )}
         {isError && (
