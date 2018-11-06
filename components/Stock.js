@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import Info from './Stock/Info'
 import Chart from './Stock/Chart'
+import Details from './Stock/Details'
 
 class Stock extends Component {
   render() {
@@ -20,6 +21,7 @@ class Stock extends Component {
           <Content>
             <Info />
             <Chart />
+            <Details />
           </Content>
         )}
         {isError && (
@@ -42,7 +44,7 @@ const styles = {
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    padding: 10
+    padding: 16
   },
   center: {
     alignItems: 'center',
