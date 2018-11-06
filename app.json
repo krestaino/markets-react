@@ -1,12 +1,19 @@
 {
   "expo": {
     "name": "Stock Check",
+    "description": "Ever want to check the stock market, but you just couldn't figure out how? Well look no further, this app has got you covered!",
+    "slug": "stock-check",
     "sdkVersion": "27.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#334393",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "imnage": "./assets/splash.png"
+    },
     "android": {
       "package": "com.kmr.stockcheck",
-      "versionCode": 2
+      "versionCode": 3
     },
-    "androidStatusBarColor": "#334393",
     "androidStatusBar": {
       "barStyle": "light-content",
       "backgroundColor": "#334393"
