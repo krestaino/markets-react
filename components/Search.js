@@ -11,6 +11,12 @@ class Search extends Component {
     }
   }
 
+  onEndEditing = () => {
+    if (this.props.symbol) {
+      this.props.getStock(this.props.symbol)
+    }
+  }
+
   render() {
     return (
       <View>
@@ -22,7 +28,7 @@ class Search extends Component {
             autoFocus={true}
             clearButtonMode={'always'}
             onChangeText={symbol => this.props.setSymbol(symbol)}
-            onEndEditing={() => this.props.getStock(this.props.symbol)}
+            onEndEditing={this.onEndEditing}
             placeholder="Search by stock symbol"
             ref={ref => (this.input = ref)}
             returnKeyType="search"

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions } from 'react-native'
+import { Dimensions, View } from 'react-native'
 import { connect } from 'react-redux'
 import { format, subDays } from 'date-fns'
 import { LineSegment, VictoryGroup, VictoryAxis, VictoryLabel, VictoryLine, VictoryTheme } from 'victory-native'
@@ -18,29 +18,23 @@ class Chart extends Component {
     const lineSegment = <LineSegment style={styles.chart.grid} type={'grid'} />
 
     return (
-      <VictoryGroup height={250} width={width} style={styles.chart} theme={VictoryTheme.material}>
-        <VictoryLine
-          animate={{
-            duration: 1000,
-            onLoad: { duration: 500 }
-          }}
-          data={chart}
-          style={this.positiveOrNegativeOverTime(chart[0].close, chart[chart.length - 1].close)}
-          y="close"
-        />
-        <VictoryAxis
-          crossAxis
-          gridComponent={lineSegment}
-          tickCount={Math.round(chart.length / 3)}
-          tickLabelComponent={<VictoryLabel angle={90} dx={13} dy={-6} style={styles.chart.label} />}
-          tickFormat={t => format(subDays(new Date(), this.convertXaxis(t, chart.length)), 'MMM D')}
-        />
-        <VictoryAxis
-          dependentAxis
-          gridComponent={lineSegment}
-          tickLabelComponent={label}
-        />
-      </VictoryGroup>
+      <View pointerEvents="none">
+        <VictoryGroup height={250} width={width} style={styles.chart} theme={VictoryTheme.material}>
+          <VictoryLine
+            data={chart}
+            style={this.positiveOrNegativeOverTime(chart[0].close, chart[chart.length - 1].close)}
+            y="close"
+          />
+          <VictoryAxis
+            crossAxis
+            gridComponent={lineSegment}
+            tickCount={Math.round(chart.length / 3)}
+            tickLabelComponent={<VictoryLabel angle={90} dx={13} dy={-6} style={styles.chart.label} />}
+            tickFormat={t => format(subDays(new Date(), this.convertXaxis(t, chart.length)), 'MMM D')}
+          />
+          <VictoryAxis dependentAxis gridComponent={lineSegment} tickLabelComponent={label} />
+        </VictoryGroup>
+      </View>
     )
   }
 }

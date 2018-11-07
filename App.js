@@ -7,9 +7,7 @@ import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform'
 
 import store from './store'
-import Header from './components/Header'
-import Search from './components/Search'
-import Stock from './components/Stock'
+import Tabs from './components/Tabs'
 
 export default class App extends Component {
   constructor(props) {
@@ -38,9 +36,7 @@ export default class App extends Component {
       <Provider store={store}>
         <StyleProvider style={getTheme(platform)}>
           <Container style={styles.container}>
-            <Header />
-            <Search />
-            <Stock />
+            <Tabs />
           </Container>
         </StyleProvider>
       </Provider>

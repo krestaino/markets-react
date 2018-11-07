@@ -7,3 +7,5 @@ export const GET_SYMBOLS_SUCCESS = 'stock-check/stock/GET_SYMBOLS_SUCCESS'
 export const GET_SYMBOLS_FAIL = 'stock-check/stock/GET_SYMBOLS_FAIL'
 
 export const SET_SYMBOL = 'stock-check/stock/SET_SYMBOL'
+
+export const SET_TAB = 'stock-check/stock/SET_TAB'

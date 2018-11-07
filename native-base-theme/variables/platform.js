@@ -195,10 +195,10 @@ export default {
 
   // List
   listBg: "transparent",
-  listBorderColor: "#c9c9c9",
-  listDividerBg: "#bcc6d9",
+  listBorderColor: "#465168",
+  listDividerBg: "#465168",
   listBtnUnderlayColor: "#DDD",
-  listItemPadding: platform === "ios" ? 10 : 12,
+  listItemPadding: platform === "ios" ? 14 : 16,
   listNoteColor: "#808080",
   listNoteSize: 13,
 
