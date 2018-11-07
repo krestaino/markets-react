@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Content, Text } from 'native-base'
 
-import { getStock, setTab } from '../store/actions/'
+import { getStock, setSymbol, setTab } from '../store/actions/'
 
 class Favorites extends Component {
   state = {
@@ -23,6 +23,7 @@ class Favorites extends Component {
 
   onPress = symbol => {
     this.props.getStock(symbol)
+    this.props.setSymbol(symbol)
     this.props.setTab(0)
   }
 
@@ -63,6 +64,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getStock,
+  setSymbol,
   setTab
 }
 

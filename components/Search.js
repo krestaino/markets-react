@@ -33,6 +33,7 @@ class Search extends Component {
             ref={ref => (this.input = ref)}
             returnKeyType="search"
             spellCheck={false}
+            value={this.props.symbol}
           />
         </Item>
       </View>
