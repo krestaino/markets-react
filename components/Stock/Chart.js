@@ -80,8 +80,7 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-    stock: state.stock,
-    symbols: state.symbols
+    stock: state.stock
   }
 }
 
