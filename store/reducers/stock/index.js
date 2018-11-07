@@ -16,7 +16,7 @@ export const stock = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: 'Error while fetching symbol.'
+        error: 'No results found.'
       }
     default:
       return state
