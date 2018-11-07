@@ -77,7 +77,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 12
+    marginTop: 8
   },
   value: {
     color: '#6d788c'
