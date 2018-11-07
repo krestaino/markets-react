@@ -3,12 +3,26 @@
     "name": "Stock Check",
     "description": "Ever want to check the stock market, but you just couldn't figure out how? Well look no further, this app has got you covered!",
     "slug": "stock-check",
-    "sdkVersion": "27.0.0",
+    "privacy": "public",
+    "sdkVersion": "31.0.0",
+    "platforms": ["ios", "android"],
+    "version": "0.5.0",
     "orientation": "portrait",
     "primaryColor": "#182129",
     "icon": "./assets/icon.png",
     "splash": {
-      "imnage": "./assets/icon-transparent.png"
+      "image": "./assets/icon-transparent.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#182129"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
     },
     "android": {
       "package": "com.kmr.stockcheck",

@@ -1,34 +1,29 @@
 {
   "name": "stock-check-app",
-  "version": "0.4.0",
+  "version": "0.5.0",
+  "main": "node_modules/expo/AppEntry.js",
   "private": true,
-  "devDependencies": {
-    "jest-expo": "~27.0.0",
-    "react-native-scripts": "1.14.0",
-    "react-test-renderer": "16.3.1"
-  },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "jest"
-  },
-  "jest": {
-    "preset": "jest-expo"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "date-fns": "^1.29.0",
-    "expo": "^27.0.1",
+    "expo": "^31.0.2",
     "fuse.js": "^3.3.0",
     "native-base": "^2.8.0",
-    "react": "16.3.1",
-    "react-native": "~0.55.2",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-vector-icons": "^5.0.0",
     "react-redux": "^5.1.0",
+    "redux": "^4.0.1",
     "redux-axios-middleware": "^4.0.0",
     "victory-native": "^30.6.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0"
   }
 }

@@ -11,7 +11,7 @@ export default class TheHeader extends Component {
       <Header>
         <Left>
           <Button transparent>
-            <Icon name="menu" />
+            <Icon ios='ios-menu' android="md-menu" />
           </Button>
         </Left>
         <Body>
