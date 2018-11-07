@@ -50,6 +50,6 @@ export default class App extends Component {
 
 const styles = {
   container: {
-    backgroundColor: '#0a0e14'
+    backgroundColor: '#182129'
   }
 }

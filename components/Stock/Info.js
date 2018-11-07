@@ -42,7 +42,7 @@ const styles = {
     fontWeight: 'bold'
   },
   primaryExchange: {
-    color: '#666',
+    color: '#6d788c',
     marginBottom: 6
   },
   latestPrice: {
@@ -56,7 +56,7 @@ const styles = {
     color: '#d23f31'
   },
   latestUpdate: {
-    color: '#666',
+    color: '#6d788c',
     fontSize: 12
   }
 }

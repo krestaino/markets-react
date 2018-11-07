@@ -15,7 +15,7 @@ class Chart extends Component {
     const { width } = Dimensions.get('window')
 
     return (
-      <VictoryGroup height={250} width={width} theme={VictoryTheme.material}>
+      <VictoryGroup height={250} width={width + 36} style={styles.chart} theme={VictoryTheme.material}>
         <VictoryLine
           animate={{
             duration: 1000,
@@ -28,9 +28,10 @@ class Chart extends Component {
         <VictoryAxis
           crossAxis
           fixLabelOverlap={true}
+          style={styles.chart}
           tickFormat={t => format(subDays(new Date(), this.convertXaxis(t)), 'MMM D')}
         />
-        <VictoryAxis dependentAxis fixLabelOverlap={true} />
+        <VictoryAxis dependentAxis fixLabelOverlap={true} style={styles.chart.grid} />
       </VictoryGroup>
     )
   }
@@ -48,10 +49,16 @@ const styles = {
     }
   },
   chart: {
+    grid: {
+      stroke: '#14171d'
+    },
     line: {
       labels: {
         fill: 'transparent'
       }
+    },
+    parent: {
+      marginLeft: -22
     }
   }
 }

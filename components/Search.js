@@ -32,8 +32,8 @@ class Search extends Component {
 
 const styles = {
   input: {
-    backgroundColor: '#14171d',
-    paddingLeft: 15,
+    backgroundColor: '#232f3a',
+    paddingLeft: 20,
     marginLeft: 0
   },
   icon: {

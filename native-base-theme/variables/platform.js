@@ -146,11 +146,11 @@ export default {
   tabActiveBgColor: platform === "ios" ? "#cde1f9" : "#131c2a",
 
   // Header
-  toolbarBtnColor: platform === "ios" ? "#007aff" : "#bcc6d9",
-  toolbarDefaultBg: platform === "ios" ? "#1d2126" : "#1d2126",
+  toolbarBtnColor: platform === "ios" ? "#6d788c" : "#6d788c",
+  toolbarDefaultBg: platform === "ios" ? "#182129" : "#182129",
   toolbarHeight: platform === "ios" ? 64 : 56,
   toolbarSearchIconSize: platform === "ios" ? 20 : 23,
-  toolbarInputColor: platform === "ios" ? "#CECDD2" : "#bcc6d9",
+  toolbarInputColor: platform === "ios" ? "#6d788c" : "#bcc6d9",
   searchBarHeight: platform === "ios" ? 30 : 40,
   searchBarInputHeight: platform === "ios" ? 30 : 50,
   toolbarBtnTextColor: platform === "ios" ? "#007aff" : "#bcc6d9",
@@ -174,7 +174,7 @@ export default {
 
   // InputGroup
   inputFontSize: 17,
-  inputBorderColor: "#14171d",
+  inputBorderColor: "#232f3a",
   inputSuccessBorderColor: "#2b8339",
   inputErrorBorderColor: "#ed2f2f",
   inputHeightBase: 50,
@@ -182,7 +182,7 @@ export default {
     return this.textColor;
   },
   get inputColorPlaceholder() {
-    return "#575757";
+    return "#6d788c";
   },
 
   // Line Height

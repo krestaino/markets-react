@@ -79,7 +79,7 @@ const styles = {
     marginTop: 12
   },
   value: {
-    color: '#666'
+    color: '#6d788c'
   }
 }
 

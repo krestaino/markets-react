@@ -49,7 +49,7 @@ class Stock extends Component {
         )}
         {isLoading && (
           <View style={[styles.container, styles.center]}>
-            <Spinner color="#102647" />
+            <Spinner color="#6d788c" />
           </View>
         )}
       </View>
