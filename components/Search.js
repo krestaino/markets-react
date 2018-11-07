@@ -9,8 +9,8 @@ class Search extends Component {
   render() {
     return (
       <View>
-        <Item searchBar style={{ paddingLeft: 10 }}>
-          <Icon name="ios-search" />
+        <Item searchBar style={styles.input}>
+          <Icon name="ios-search" style={styles.icon} />
           <Input
             autoCapitalize={'characters'}
             autoCorrect={false}
@@ -21,11 +21,23 @@ class Search extends Component {
             placeholder="Search by stock symbol"
             returnKeyType="search"
             spellCheck={false}
+            
           />
         </Item>
         {/* <Symbols /> */}
       </View>
     )
+  }
+}
+
+const styles = {
+  input: {
+    backgroundColor: '#14171d',
+    paddingLeft: 15,
+    marginLeft: 0
+  },
+  icon: {
+    color: '#bcc6d9'
   }
 }
 

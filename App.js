@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { Container } from 'native-base'
+import { Container, StyleProvider } from 'native-base'
 import { Font, AppLoading } from 'expo'
+
+import getTheme from './native-base-theme/components'
+import platform from './native-base-theme/variables/platform'
 
 import store from './store'
 import Header from './components/Header'
@@ -33,12 +36,20 @@ export default class App extends Component {
     }
     return (
       <Provider store={store}>
-        <Container>
-          <Header />
-          <Search />
-          <Stock />
-        </Container>
+        <StyleProvider style={getTheme(platform)}>
+          <Container style={styles.container}>
+            <Header />
+            <Search />
+            <Stock />
+          </Container>
+        </StyleProvider>
       </Provider>
     )
+  }
+}
+
+const styles = {
+  container: {
+    backgroundColor: '#0a0e14'
   }
 }
