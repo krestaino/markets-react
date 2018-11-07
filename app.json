@@ -5,7 +5,7 @@
     "slug": "stock-check",
     "sdkVersion": "27.0.0",
     "orientation": "portrait",
-    "primaryColor": "#334393",
+    "primaryColor": "#0a0e14",
     "icon": "./assets/icon.png",
     "splash": {
       "imnage": "./assets/splash.png"
@@ -15,11 +15,11 @@
       "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-transparent.png",
-        "backgroundColor": "#334393"
+        "backgroundColor": "#0a0e14"
       },
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.kmr.stockcheck",
       "splash": {
-        "backgroundColor": "#334393",
+        "backgroundColor": "#0a0e14",
         "resizeMode": "contain",
         "ldpi": "./assets/splash.png",
         "mdpi": "./assets/splash.png",
@@ -31,7 +31,7 @@
     },
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#334393"
+      "backgroundColor": "#0a0e14"
     }
   }
 }
