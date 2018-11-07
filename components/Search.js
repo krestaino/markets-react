@@ -5,6 +5,12 @@ import { Icon, Item, Input, View } from 'native-base'
 import { getStock, setSymbol } from '../store/actions/'
 
 class Search extends Component {
+  componentDidUpdate = () => {
+    if (this.props.stock.error) {
+      this.input._root.focus()
+    }
+  }
+
   render() {
     return (
       <View>
@@ -18,6 +24,7 @@ class Search extends Component {
             onChangeText={symbol => this.props.setSymbol(symbol)}
             onEndEditing={() => this.props.getStock(this.props.symbol)}
             placeholder="Search by stock symbol"
+            ref={ref => (this.input = ref)}
             returnKeyType="search"
             spellCheck={false}
           />

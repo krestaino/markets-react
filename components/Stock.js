@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Content, Text, Spinner, View } from 'native-base'
-import { RefreshControl } from 'react-native'
+import { KeyboardAvoidingView, Platform, RefreshControl } from 'react-native'
 import { connect } from 'react-redux'
 
 import { getStock } from '../store/actions/'
@@ -43,9 +43,12 @@ class Stock extends Component {
           </Content>
         )}
         {isError && (
-          <View style={[styles.container, styles.center]}>
+          <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'position' : null}
+            style={[styles.container, styles.center]}
+          >
             <Text>{error}</Text>
-          </View>
+          </KeyboardAvoidingView>
         )}
         {isLoading && (
           <View style={[styles.container, styles.center]}>
