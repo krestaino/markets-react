@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Dimensions } from 'react-native'
 import { connect } from 'react-redux'
 import { format, subDays } from 'date-fns'
-import { VictoryGroup, VictoryAxis, VictoryLine, VictoryTheme } from 'victory-native'
+import { LineSegment, VictoryGroup, VictoryAxis, VictoryLabel, VictoryLine, VictoryTheme } from 'victory-native'
 
 class Chart extends Component {
-  convertXaxis = x => -x + 30
+  convertXaxis = (x, chartLength) => -x + chartLength
 
   positiveOrNegativeOverTime = (x, y) =>
     x > y ? { ...styles.chart.line, ...styles.negative } : { ...styles.chart.line, ...styles.positive }
@@ -14,8 +14,11 @@ class Chart extends Component {
     const { chart } = this.props.stock.data
     const { width } = Dimensions.get('window')
 
+    const label = <VictoryLabel style={styles.chart.label} />
+    const lineSegment = <LineSegment style={styles.chart.grid} type={'grid'} />
+
     return (
-      <VictoryGroup height={250} width={width + 36} style={styles.chart} theme={VictoryTheme.material}>
+      <VictoryGroup height={250} width={width} style={styles.chart} theme={VictoryTheme.material}>
         <VictoryLine
           animate={{
             duration: 1000,
@@ -27,11 +30,16 @@ class Chart extends Component {
         />
         <VictoryAxis
           crossAxis
-          fixLabelOverlap={true}
-          style={styles.chart}
-          tickFormat={t => format(subDays(new Date(), this.convertXaxis(t)), 'MMM D')}
+          gridComponent={lineSegment}
+          tickCount={Math.round(chart.length / 3)}
+          tickLabelComponent={<VictoryLabel angle={90} dx={13} dy={-6} style={styles.chart.label} />}
+          tickFormat={t => format(subDays(new Date(), this.convertXaxis(t, chart.length)), 'MMM D')}
         />
-        <VictoryAxis dependentAxis fixLabelOverlap={true} style={styles.chart.grid} />
+        <VictoryAxis
+          dependentAxis
+          gridComponent={lineSegment}
+          tickLabelComponent={label}
+        />
       </VictoryGroup>
     )
   }
@@ -50,7 +58,12 @@ const styles = {
   },
   chart: {
     grid: {
-      stroke: '#14171d'
+      stroke: '#222a38'
+    },
+    label: {
+      fill: '#6d788c',
+      fontSize: '11',
+      stroke: 'transparent'
     },
     line: {
       labels: {
@@ -58,7 +71,9 @@ const styles = {
       }
     },
     parent: {
-      marginLeft: -22
+      paddingLeft: 10,
+      marginBottom: -10,
+      marginTop: -36
     }
   }
 }

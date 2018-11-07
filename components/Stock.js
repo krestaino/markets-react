@@ -61,8 +61,7 @@ const styles = {
   container: {
     display: 'flex',
     flex: 1,
-    flexDirection: 'column',
-    padding: 16
+    flexDirection: 'column'
   },
   center: {
     alignItems: 'center',

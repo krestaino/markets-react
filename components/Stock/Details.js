@@ -61,7 +61,8 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    padding: 16
   },
   column: {
     width: '50%'

@@ -14,7 +14,7 @@ class Info extends Component {
     const { quote } = this.props.stock.data
 
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.companyName}>{quote.companyName}</Text>
         <Text style={styles.primaryExchange}>
           {quote.primaryExchange}: {quote.symbol}
@@ -37,6 +37,9 @@ class Info extends Component {
 }
 
 const styles = {
+  container: {
+    padding: 16
+  },
   companyName: {
     fontSize: 20,
     fontWeight: 'bold'
