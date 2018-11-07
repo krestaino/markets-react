@@ -12,7 +12,7 @@
     },
     "android": {
       "package": "com.kmr.stockcheck",
-      "versionCode": 6,
+      "versionCode": 7,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-transparent.png",
         "backgroundColor": "#182129"
