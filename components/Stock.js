@@ -10,13 +10,7 @@ import Chart from './Stock/Chart'
 import Details from './Stock/Details'
 
 class Stock extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      refreshing: false
-    }
-  }
+  state = { refreshing: false }
 
   onRefresh = () => {
     this.setState({ refreshing: true })

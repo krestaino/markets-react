@@ -10,11 +10,7 @@ import store from './store'
 import Tabs from './components/Tabs'
 
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { loading: true }
-  }
+  state = { loading: true }
 
   async componentWillMount() {
     await Font.loadAsync({

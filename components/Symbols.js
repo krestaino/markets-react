@@ -6,13 +6,8 @@ import Fuse from 'fuse.js'
 import { getSymbols } from '../store/actions'
 
 class Symbols extends Component {
-  constructor(props) {
-    super(props)
+  state = { filteredSearch: [] }
 
-    this.state = {
-      filteredSearch: []
-    }
-  }
   componentDidMount = () => {
     this.props.getSymbols()
   }
