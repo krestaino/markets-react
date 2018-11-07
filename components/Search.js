@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Icon, Item, Input, View } from 'native-base'
 
 import { getStock, setSymbol } from '../store/actions/'
-import Symbols from './Symbols'
 
 class Search extends Component {
   render() {
@@ -21,10 +20,8 @@ class Search extends Component {
             placeholder="Search by stock symbol"
             returnKeyType="search"
             spellCheck={false}
-            
           />
         </Item>
-        {/* <Symbols /> */}
       </View>
     )
   }
