@@ -11,27 +11,28 @@ import Search from './Search'
 import Stock from './Stock'
 import Favorites from './Favorites'
 
-const SearchRoute = () => (
-  <View style={styles.container}>
-    <Search />
-    <Stock />
-  </View>
-)
-const FavoritesRoute = () => (
-  <View style={styles.container}>
-    <Favorites />
-  </View>
-)
-
 class Tabs extends Component {
+  searchRoute = () => (
+    <View style={styles.container}>
+      <Search />
+      <Stock />
+    </View>
+  )
+
+  favoritesRoute = () => (
+    <View style={styles.container}>
+      <Favorites />
+    </View>
+  )
+
   render() {
     return (
       <View style={[styles.container, { paddingTop: Constants.statusBarHeight - 14 }]}>
         <TabView
           navigationState={this.props.tab}
           renderScene={SceneMap({
-            search: SearchRoute,
-            favorites: FavoritesRoute
+            search: this.searchRoute,
+            favorites: this.favoritesRoute
           })}
           onIndexChange={index => this.props.setTab(index)}
           initialLayout={{ height: 0, width: Dimensions.get('window').width }}
