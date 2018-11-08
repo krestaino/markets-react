@@ -14,6 +14,7 @@
     "date-fns": "^1.29.0",
     "expo": "^31.0.2",
     "fuse.js": "^3.3.0",
+    "lodash": "^4.17.11",
     "native-base": "^2.8.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",

@@ -10,5 +10,4 @@ export const SET_SYMBOL = 'stock-check/stock/SET_SYMBOL'
 
 export const SET_TAB = 'stock-check/stock/SET_TAB'
 
-export const SAVE_FAVORITE = 'stock-check/stock/SAVE_FAVORITE'
-export const DELETE_FAVORITE = 'stock-check/stock/DELETE_FAVORITE'
+export const TOGGLE_FAVORITE = 'stock-check/stock/TOGGLE_FAVORITE'

@@ -2,24 +2,29 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Icon, Fab, View } from 'native-base'
 
-import { saveFavorite } from '../../store/actions/'
+import { toggleFavorite } from '../../store/actions/'
 
 class Save extends Component {
   render() {
     const { quote } = this.props.stock.data
+
     return (
       <View>
         <Fab
-          style={styles}
+          style={
+            this.props.favorites.filter(stock => stock.symbol === quote.symbol).length
+              ? styles.favorite
+              : styles.notFavorite
+          }
           position="bottomRight"
           onPress={() =>
-            this.props.saveFavorite({
+            this.props.toggleFavorite({
               companyName: quote.companyName,
               symbol: quote.symbol
             })
           }
         >
-          <Icon ios="ios-heart" android="md-heart" />
+          <Icon ios="ios-heart" android="md-heart" style={styles.icon} />
         </Fab>
       </View>
     )
@@ -27,18 +32,27 @@ class Save extends Component {
 }
 
 const styles = {
-  backgroundColor: '#5067FF',
-  position: 'absolute'
+  favorite: {
+    backgroundColor: '#a163ae'
+  },
+  notFavorite: {
+    backgroundColor: '#2f4356'
+  },
+  icon: {
+    color: '#fff'
+  }
 }
 
 const mapStateToProps = state => {
   return {
-    stock: state.stock
+    favorites: state.favorites,
+    stock: state.stock,
+    symbol: state.symbol
   }
 }
 
 const mapDispatchToProps = {
-  saveFavorite
+  toggleFavorite
 }
 
 export default connect(
