@@ -49,7 +49,7 @@ const styles = {
   },
   toast: {
     self: {
-      backgroundColor: '#11161a',
+      backgroundColor: '#15191d',
       borderRadius: 6,
       marginTop: 16,
       marginRight: 16,
