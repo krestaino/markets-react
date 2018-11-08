@@ -25,6 +25,8 @@ class Tabs extends Component {
     </View>
   )
 
+  componentDidMount = () => this.props.setTab(0)
+
   render() {
     return (
       <View style={[styles.container, { paddingTop: Constants.statusBarHeight - 14 }]}>
