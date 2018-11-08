@@ -9,3 +9,6 @@ export const GET_SYMBOLS_FAIL = 'stock-check/stock/GET_SYMBOLS_FAIL'
 export const SET_SYMBOL = 'stock-check/stock/SET_SYMBOL'
 
 export const SET_TAB = 'stock-check/stock/SET_TAB'
+
+export const SAVE_FAVORITE = 'stock-check/stock/SAVE_FAVORITE'
+export const DELETE_FAVORITE = 'stock-check/stock/DELETE_FAVORITE'

@@ -2,11 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Icon, Fab, View } from 'native-base'
 
+import { saveFavorite } from '../../store/actions/'
+
 class Save extends Component {
   render() {
+    const { quote } = this.props.stock.data
     return (
       <View>
-        <Fab style={styles} position="bottomRight" onPress={() => console.log(this.props.stock.data.quote.symbol)}>
+        <Fab
+          style={styles}
+          position="bottomRight"
+          onPress={() =>
+            this.props.saveFavorite({
+              companyName: quote.companyName,
+              symbol: quote.symbol
+            })
+          }
+        >
           <Icon ios="ios-heart" android="md-heart" />
         </Fab>
       </View>
@@ -25,4 +37,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Save)
+const mapDispatchToProps = {
+  saveFavorite
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Save)
