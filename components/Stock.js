@@ -8,6 +8,7 @@ import { getStock } from '../store/actions/'
 import Info from './Stock/Info'
 import Chart from './Stock/Chart'
 import Details from './Stock/Details'
+import News from './Stock/News'
 import Save from './Stock/Save'
 
 class Stock extends Component {
@@ -36,6 +37,7 @@ class Stock extends Component {
               <Info />
               <Chart />
               <Details />
+              <News />
             </Content>
             <Save />
           </View>
