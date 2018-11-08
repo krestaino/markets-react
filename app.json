@@ -6,15 +6,10 @@
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
-    "version": "0.6.0",
+    "version": "0.7.0",
     "orientation": "portrait",
     "primaryColor": "#182129",
     "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/icon-transparent.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#182129"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -26,21 +21,14 @@
     },
     "android": {
       "package": "com.kmr.stockcheck",
-      "versionCode": 9,
+      "versionCode": 10,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-transparent.png",
         "backgroundColor": "#182129"
       },
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.kmr.stockcheck",
       "splash": {
-        "backgroundColor": "#182129",
-        "resizeMode": "contain",
-        "ldpi": "./assets/icon-transparent.png",
-        "mdpi": "./assets/icon-transparent.png",
-        "hdpi": "./assets/icon-transparent.png",
-        "xhdpi": "./assets/icon-transparent.png",
-        "xxhdpi": "./assets/icon-transparent.png",
-        "xxxhdpi": "./assets/icon-transparent.png"
+        "backgroundColor": "#182129"
       }
     },
     "androidStatusBar": {
