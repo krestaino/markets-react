@@ -6,7 +6,7 @@ const initialState = []
 export const favorites = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_FAVORITE:
-      const index = findIndex(state, { symbol: action.payload.symbol })
+      const index = findIndex(state, action.payload.symbol)
 
       if (index !== -1) {
         return [...state.slice(0, index), ...state.slice(index + 1)]

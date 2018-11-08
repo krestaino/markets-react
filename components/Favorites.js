@@ -17,9 +17,7 @@ class Favorites extends Component {
         {this.props.favorites.map((stock, index) => {
           return (
             <Button key={index} full style={styles.button} onPress={() => this.onPress(stock.symbol)}>
-              <Text>
-                {stock.symbol} – {stock.companyName}
-              </Text>
+              <Text>{stock}</Text>
             </Button>
           )
         })}
