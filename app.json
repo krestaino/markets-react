@@ -17,6 +17,7 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.kmr.stockoff",
       "supportsTablet": true
     },
     "android": {
