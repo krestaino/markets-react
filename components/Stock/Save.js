@@ -1,28 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Icon, Fab, View } from 'native-base'
+import { Icon, Fab, Toast, View } from 'native-base'
 
 import { toggleFavorite } from '../../store/actions/'
 
 class Save extends Component {
+  isFavorite = quote => this.props.favorites.filter(stock => stock.symbol === quote.symbol).length
+
+  onPress = quote => {
+    this.props.toggleFavorite({
+      companyName: quote.companyName,
+      symbol: quote.symbol
+    })
+
+    const text = this.isFavorite(quote) ? 'removed from' : 'added to'
+
+    Toast.show({
+      text: `${quote.symbol} ${text} favorites.`,
+      textStyle: { textAlign: 'center' },
+      position: 'top'
+    })
+  }
+
   render() {
     const { quote } = this.props.stock.data
 
     return (
       <View>
         <Fab
-          style={
-            this.props.favorites.filter(stock => stock.symbol === quote.symbol).length
-              ? styles.favorite
-              : styles.notFavorite
-          }
+          style={this.isFavorite(quote) ? styles.favorite : styles.notFavorite}
           position="bottomRight"
-          onPress={() =>
-            this.props.toggleFavorite({
-              companyName: quote.companyName,
-              symbol: quote.symbol
-            })
-          }
+          onPress={() => this.onPress(quote)}
         >
           <Icon ios="ios-heart" android="md-heart" style={styles.icon} />
         </Fab>

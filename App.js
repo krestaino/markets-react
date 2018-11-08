@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import { Container, StyleProvider } from 'native-base'
+import { Container, Root, StyleProvider } from 'native-base'
 import { Font, AppLoading } from 'expo'
 
 import getTheme from './native-base-theme/components'
@@ -33,9 +33,11 @@ export default class App extends Component {
       <Provider store={store.store}>
         <PersistGate loading={null} persistor={store.persistor}>
           <StyleProvider style={getTheme(platform)}>
-            <Container style={styles.container}>
-              <Tabs />
-            </Container>
+            <Root>
+              <Container style={styles.container}>
+                <Tabs />
+              </Container>
+            </Root>
           </StyleProvider>
         </PersistGate>
       </Provider>
