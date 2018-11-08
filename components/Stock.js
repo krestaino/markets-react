@@ -8,6 +8,7 @@ import { getStock } from '../store/actions/'
 import Info from './Stock/Info'
 import Chart from './Stock/Chart'
 import Details from './Stock/Details'
+import Save from './Stock/Save'
 
 class Stock extends Component {
   state = { refreshing: false }
@@ -30,11 +31,14 @@ class Stock extends Component {
     return (
       <View style={styles.container}>
         {isSucess && (
-          <Content refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} />}>
-            <Info />
-            <Chart />
-            <Details />
-          </Content>
+          <View style={styles.container}>
+            <Content refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} />}>
+              <Info />
+              <Chart />
+              <Details />
+            </Content>
+            <Save />
+          </View>
         )}
         {isError && (
           <KeyboardAvoidingView
