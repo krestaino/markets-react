@@ -69,7 +69,8 @@ const styles = {
     },
     pressColor: '#232f3a',
     self: {
-      backgroundColor: '#182129'
+      backgroundColor: '#182129',
+      elevation: 0
     }
   }
 }
