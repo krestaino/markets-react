@@ -5,7 +5,7 @@ export const getStock = symbol => {
     type: GET_STOCK,
     payload: {
       request: {
-        url: `/stock/${symbol}/batch?types=quote,news,chart&range=1m&last=1`
+        url: `/stock/${symbol}/batch?types=quote,news,chart&range=1m`
       }
     }
   }
