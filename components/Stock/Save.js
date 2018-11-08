@@ -33,7 +33,7 @@ class Save extends Component {
 
 const styles = {
   favorite: {
-    backgroundColor: '#a163ae'
+    backgroundColor: '#b257c5'
   },
   notFavorite: {
     backgroundColor: '#2f4356'

@@ -67,7 +67,7 @@ const styles = {
     labelStyle: {
       color: '#bcc6d9'
     },
-    pressColor: '#232f3a',
+    pressColor: '#11161B',
     self: {
       backgroundColor: '#182129',
       elevation: 0
