@@ -5,20 +5,18 @@ import { Icon, Fab, Toast, View } from 'native-base'
 import { toggleFavorite } from '../../store/actions/'
 
 class Save extends Component {
-  isFavorite = quote => this.props.favorites.filter(stock => stock.symbol === quote.symbol).length
+  isFavorite = symbol => this.props.favorites.filter(favorite => favorite === symbol).length
 
   onPress = quote => {
-    this.props.toggleFavorite({
-      companyName: quote.companyName,
-      symbol: quote.symbol
-    })
+    this.props.toggleFavorite(quote.symbol)
 
-    const text = this.isFavorite(quote) ? 'removed from' : 'added to'
+    const text = this.isFavorite(quote.symbol) ? 'removed from' : 'added to'
 
     Toast.show({
       text: `${quote.symbol} ${text} favorites.`,
-      textStyle: { textAlign: 'center' },
-      position: 'top'
+      textStyle: styles.toast.text,
+      position: 'top',
+      style: styles.toast.self
     })
   }
 
@@ -28,7 +26,7 @@ class Save extends Component {
     return (
       <View>
         <Fab
-          style={this.isFavorite(quote) ? styles.favorite : styles.notFavorite}
+          style={this.isFavorite(quote.symbol) ? styles.favorite : styles.notFavorite}
           position="bottomRight"
           onPress={() => this.onPress(quote)}
         >
@@ -48,6 +46,23 @@ const styles = {
   },
   icon: {
     color: '#fff'
+  },
+  toast: {
+    self: {
+      backgroundColor: '#11161a',
+      borderRadius: 6,
+      marginTop: 16,
+      marginRight: 16,
+      marginLeft: 16,
+      minHeight: 0,
+      paddingTop: 16,
+      paddingBottom: 16
+    },
+    text: {
+      color: '#bcc6d9',
+      fontSize: 13,
+      textAlign: 'center'
+    }
   }
 }
 
