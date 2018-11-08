@@ -14,10 +14,10 @@ class Favorites extends Component {
   render() {
     return (
       <Content style={styles.list}>
-        {this.props.favorites.map((stock, index) => {
+        {this.props.favorites.map((symbol, index) => {
           return (
-            <Button key={index} full style={styles.button} onPress={() => this.onPress(stock.symbol)}>
-              <Text>{stock}</Text>
+            <Button key={index} full style={styles.button} onPress={() => this.onPress(symbol)}>
+              <Text>{symbol}</Text>
             </Button>
           )
         })}
