@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Container, Root, StyleProvider } from 'native-base'
+import { StatusBar } from 'react-native'
 import { Font, AppLoading } from 'expo'
 
 import getTheme from './native-base-theme/components'
@@ -35,6 +36,7 @@ export default class App extends Component {
           <StyleProvider style={getTheme(platform)}>
             <Root>
               <Container style={styles.container}>
+                <StatusBar barStyle="light-content" />
                 <Tabs />
               </Container>
             </Root>
