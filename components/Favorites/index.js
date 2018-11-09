@@ -38,7 +38,7 @@ class Favorites extends Component {
                   <Text>{stock.quote.latestPrice} USD</Text>
                 </View>
                 <View style={styles.container}>
-                  <Text style={styles.companyName}>{stock.quote.companyName}</Text>
+                  <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>{stock.quote.companyName}</Text>
                   <Text>
                     <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}> {stock.quote.change} </Text>
                     <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
@@ -74,6 +74,7 @@ const styles = {
   },
   companyName: {
     color: '#6d788c',
+    flex: 1,
     fontSize: 13
   },
   stockChange: {
