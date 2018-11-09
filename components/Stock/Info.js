@@ -3,13 +3,9 @@ import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { format } from 'date-fns'
 
+import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
+
 class Info extends Component {
-  upOrDownSymbol = x => (x > 0 ? '▲' : '▼')
-
-  formatPercentage = x => (x * 100).toFixed(2)
-
-  positiveOrNegative = x => (x > 0 ? styles.positive : styles.negative)
-
   render() {
     const { quote } = this.props.stock.data
 
@@ -23,10 +19,10 @@ class Info extends Component {
           <Text style={styles.latestPrice}>{quote.latestPrice}</Text>
           <Text> USD</Text>
           <Text>
-            <Text style={this.positiveOrNegative(quote.change)}> {quote.change} </Text>
-            <Text style={this.positiveOrNegative(quote.change)}>
-              ({this.formatPercentage(quote.changePercent)}
-              %) {this.upOrDownSymbol(quote.changePercent)}
+            <Text style={positiveOrNegative(quote.change)}> {quote.change} </Text>
+            <Text style={positiveOrNegative(quote.change)}>
+              ({formatPercentage(quote.changePercent)}
+              %) {upOrDownSymbol(quote.changePercent)}
             </Text>
           </Text>
         </Text>
@@ -51,12 +47,6 @@ const styles = {
   latestPrice: {
     fontWeight: 'bold',
     fontSize: 24
-  },
-  positive: {
-    color: '#0f9d58'
-  },
-  negative: {
-    color: '#d23f31'
   },
   latestUpdate: {
     color: '#6d788c',

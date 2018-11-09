@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Content, Text } from 'native-base'
 
-import { getStock, setSymbol, setTab } from '../store/actions/'
+import { getFavorites, getStock, setSymbol, setTab } from '../store/actions/'
+import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../helpers/priceFormat'
 
 class Favorites extends Component {
   onPress = symbol => {
@@ -11,16 +12,36 @@ class Favorites extends Component {
     this.props.setTab(0)
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.favorites.symbols !== this.props.favorites.symbols) {
+      this.props.getFavorites(this.props.favorites.symbols)
+    }
+  }
+
   render() {
+    const { data } = this.props.favorites
+
     return (
       <Content style={styles.list}>
-        {this.props.favorites.map((symbol, index) => {
-          return (
-            <Button key={index} full style={styles.button} onPress={() => this.onPress(symbol)}>
-              <Text>{symbol}</Text>
-            </Button>
-          )
-        })}
+        {data &&
+          data.map((stock, index) => {
+            return (
+              <Button key={index} full style={styles.button} onPress={() => this.onPress(stock.quote.symbol)}>
+                <Text>{stock.quote.symbol}</Text>
+                <Text>
+                  <Text style={styles.latestPrice}>{stock.quote.latestPrice}</Text>
+                  <Text> USD</Text>
+                  <Text>
+                    <Text style={positiveOrNegative(stock.quote.change)}> {stock.quote.change} </Text>
+                    <Text style={positiveOrNegative(stock.quote.change)}>
+                      ({formatPercentage(stock.quote.changePercent)}
+                      %) {upOrDownSymbol(stock.quote.changePercent)}
+                    </Text>
+                  </Text>
+                </Text>
+              </Button>
+            )
+          })}
       </Content>
     )
   }
@@ -30,7 +51,7 @@ const styles = {
   button: {
     backgroundColor: 'transparent',
     elevation: 0,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     height: 48
   },
   list: {
@@ -46,6 +67,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
+  getFavorites,
   getStock,
   setSymbol,
   setTab

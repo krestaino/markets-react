@@ -5,7 +5,7 @@ import { Icon, Fab, Toast, View } from 'native-base'
 import { toggleFavorite } from '../../store/actions/'
 
 class Save extends Component {
-  isFavorite = symbol => this.props.favorites.filter(favorite => favorite === symbol).length
+  isFavorite = symbol => this.props.favorites.symbols.filter(favorite => favorite === symbol).length
 
   onPress = quote => {
     this.props.toggleFavorite(quote.symbol)

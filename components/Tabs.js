@@ -5,7 +5,7 @@ import { View } from 'native-base'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 import { Constants } from 'expo'
 
-import { setTab } from '../store/actions/'
+import { getFavorites, setTab } from '../store/actions/'
 
 import Search from './Search'
 import Stock from './Stock'
@@ -25,7 +25,10 @@ class Tabs extends Component {
     </View>
   )
 
-  componentDidMount = () => this.props.setTab(0)
+  componentDidMount = () => {
+    this.props.setTab(0)
+    this.props.getFavorites(this.props.favorites.symbols)
+  }
 
   render() {
     return (
@@ -77,11 +80,13 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
+    favorites: state.favorites,
     tab: state.tab
   }
 }
 
 const mapDispatchToProps = {
+  getFavorites,
   setTab
 }
 
