@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import { getStock, setSymbol } from '../../store/actions/'
 
+import Symbols from './Symbols'
+
 class Search extends Component {
   componentDidUpdate = () => {
     if (this.props.stock.error) {
@@ -11,7 +13,7 @@ class Search extends Component {
     }
   }
 
-  onEndEditing = () => {
+  onSubmitEditing = () => {
     if (this.props.symbol) {
       this.props.getStock(this.props.symbol)
     }
@@ -19,7 +21,7 @@ class Search extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Item searchBar style={styles.input}>
           <Icon name="ios-search" style={styles.icon} />
           <Input
@@ -28,7 +30,7 @@ class Search extends Component {
             autoFocus={true}
             clearButtonMode={'always'}
             onChangeText={symbol => this.props.setSymbol(symbol)}
-            onEndEditing={this.onEndEditing}
+            onSubmitEditing={this.onSubmitEditing}
             placeholder="Search by stock symbol"
             ref={ref => (this.input = ref)}
             returnKeyType="search"
@@ -36,12 +38,16 @@ class Search extends Component {
             value={this.props.symbol}
           />
         </Item>
+        <Symbols />
       </View>
     )
   }
 }
 
 const styles = {
+  container: {
+    zIndex: 1
+  },
   input: {
     backgroundColor: '#232f3a',
     paddingLeft: 20,
