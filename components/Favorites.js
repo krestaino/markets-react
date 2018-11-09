@@ -7,20 +7,13 @@ import { getFavorites, getStock, setSymbol, setTab } from '../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../helpers/priceFormat'
 
 class Favorites extends Component {
-  state = { refreshing: false }
-
   onPress = symbol => {
     this.props.getStock(symbol)
     this.props.setSymbol(symbol)
     this.props.setTab(0)
   }
-  
-  onRefresh = () => {
-    this.setState({ refreshing: true })
-    this.props.getFavorites(this.props.favorites.symbols).then(() => {
-      this.setState({ refreshing: false })
-    })
-  }
+
+  onRefresh = () => this.props.getFavorites(this.props.favorites.symbols)
 
   componentDidUpdate(prevProps) {
     if (prevProps.favorites.symbols !== this.props.favorites.symbols) {
@@ -33,7 +26,7 @@ class Favorites extends Component {
 
     return (
       <Content
-        refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} />}
+        refreshControl={<RefreshControl refreshing={this.props.favorites.loading} onRefresh={this.onRefresh} />}
         style={styles.list}
       >
         {data &&

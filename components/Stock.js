@@ -12,14 +12,7 @@ import News from './Stock/News'
 import Save from './Stock/Save'
 
 class Stock extends Component {
-  state = { refreshing: false }
-
-  onRefresh = () => {
-    this.setState({ refreshing: true })
-    this.props.getStock(this.props.symbol).then(() => {
-      this.setState({ refreshing: false })
-    })
-  }
+  onRefresh = () => this.props.getStock(this.props.symbol)
 
   render() {
     const { chart, quote } = this.props.stock.data
@@ -33,7 +26,9 @@ class Stock extends Component {
       <View style={styles.container}>
         {isSucess && (
           <View style={styles.container}>
-            <Content refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} />}>
+            <Content
+              refreshControl={<RefreshControl refreshing={this.props.stock.loading} onRefresh={this.onRefresh} />}
+            >
               <Info />
               <Chart />
               <Details />
