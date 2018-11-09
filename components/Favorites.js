@@ -1,15 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Content, Text } from 'native-base'
+import { RefreshControl } from 'react-native'
 
 import { getFavorites, getStock, setSymbol, setTab } from '../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../helpers/priceFormat'
 
 class Favorites extends Component {
+  state = { refreshing: false }
+
   onPress = symbol => {
     this.props.getStock(symbol)
     this.props.setSymbol(symbol)
     this.props.setTab(0)
+  }
+  
+  onRefresh = () => {
+    this.setState({ refreshing: true })
+    this.props.getFavorites(this.props.favorites.symbols).then(() => {
+      this.setState({ refreshing: false })
+    })
   }
 
   componentDidUpdate(prevProps) {
@@ -22,7 +32,10 @@ class Favorites extends Component {
     const { data } = this.props.favorites
 
     return (
-      <Content style={styles.list}>
+      <Content
+        refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} />}
+        style={styles.list}
+      >
         {data &&
           data.map((stock, index) => {
             return (
