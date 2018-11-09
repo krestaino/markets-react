@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { getStock, setSymbol } from '../../store/actions/'
 
-import Symbols from './Symbols'
+import AutoSuggest from './AutoSuggest'
 
 class Search extends Component {
   componentDidUpdate = () => {
@@ -39,7 +39,7 @@ class Search extends Component {
             value={this.props.symbol}
           />
         </Item>
-        <Symbols />
+        <AutoSuggest />
       </View>
     )
   }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import { getStock, getSymbols } from '../../../store/actions'
 
-class Symbols extends Component {
+class AutoSuggest extends Component {
   state = { filteredSearch: [] }
 
   componentDidMount = () => this.props.getSymbols()
@@ -78,4 +78,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Symbols)
+)(AutoSuggest)
