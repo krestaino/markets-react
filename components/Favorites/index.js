@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { RefreshControl } from 'react-native'
-import { Button, Content, Text, View } from 'native-base'
+import { RefreshControl, TouchableOpacity } from 'react-native'
+import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
 import { getFavorites, getStock, setSymbol, setTab } from '../../store/actions/'
@@ -32,7 +32,7 @@ class Favorites extends Component {
         {data &&
           data.map((stock, index) => {
             return (
-              <Button key={index} full style={styles.button} onPress={() => this.onPress(stock.quote.symbol)}>
+              <TouchableOpacity key={index} full style={styles.button} onPress={() => this.onPress(stock.quote.symbol)}>
                 <View style={styles.container}>
                   <Text>{stock.quote.symbol}</Text>
                   <Text>{stock.quote.latestPrice} USD</Text>
@@ -47,7 +47,7 @@ class Favorites extends Component {
                     </Text>
                   </Text>
                 </View>
-              </Button>
+              </TouchableOpacity>
             )
           })}
       </Content>
