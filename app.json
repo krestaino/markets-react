@@ -6,7 +6,7 @@
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
-    "version": "0.7.0",
+    "version": "0.8.0",
     "orientation": "portrait",
     "primaryColor": "#182129",
     "icon": "./assets/icon.png",
@@ -22,7 +22,7 @@
     },
     "android": {
       "package": "com.kmr.stockcheck",
-      "versionCode": 10,
+      "versionCode": 11,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-transparent.png",
         "backgroundColor": "#182129"
