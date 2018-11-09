@@ -3,7 +3,7 @@ import { FlatList, Keyboard, TouchableOpacity } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { getStock, getSymbols } from '../../../store/actions'
+import { getStock, getSymbols, showAutoSuggest } from '../../../store/actions'
 
 class AutoSuggest extends Component {
   state = { filteredSearch: [] }
@@ -19,14 +19,19 @@ class AutoSuggest extends Component {
     }
   }
 
+  componentDidUpdate() {
+    console.log(this.props.autoSuggest)
+  }
+
   onPress = symbol => {
     this.props.getStock(symbol)
+    this.props.showAutoSuggest(false)
     this.setState({ filteredSearch: [] })
     Keyboard.dismiss()
   }
 
   render() {
-    if (!this.state.filteredSearch.length) {
+    if (!this.props.autoSuggest) {
       return <View />
     }
     return (
@@ -65,6 +70,7 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
+    autoSuggest: state.autoSuggest,
     symbol: state.symbol,
     symbols: state.symbols
   }
@@ -72,7 +78,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getStock,
-  getSymbols
+  getSymbols,
+  showAutoSuggest
 }
 
 export default connect(

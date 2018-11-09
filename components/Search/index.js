@@ -2,20 +2,28 @@ import React, { Component } from 'react'
 import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { getStock, setSymbol } from '../../store/actions/'
+import { getStock, setSymbol, showAutoSuggest } from '../../store/actions/'
 
 import AutoSuggest from './AutoSuggest'
 
 class Search extends Component {
-  componentDidUpdate = () => {
+  state = { hideAutoSuggest: false }
+
+  componentDidUpdate = () => { 
     if (this.props.stock.error) {
       this.input._root.focus()
     }
   }
 
+  onChangeText = symbol => {
+    this.props.setSymbol(symbol)
+    this.props.showAutoSuggest(true)
+  }
+
   onSubmitEditing = () => {
     if (this.props.symbol) {
       this.props.getStock(this.props.symbol)
+      this.props.showAutoSuggest(false)
     }
   }
 
@@ -30,7 +38,7 @@ class Search extends Component {
             autoFocus={true}
             clearButtonMode="always"
             keyboardAppearance="dark"
-            onChangeText={symbol => this.props.setSymbol(symbol)}
+            onChangeText={symbol => this.onChangeText(symbol)}
             onSubmitEditing={this.onSubmitEditing}
             placeholder="Search by stock symbol"
             ref={ref => (this.input = ref)}
@@ -68,7 +76,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getStock,
-  setSymbol
+  setSymbol,
+  showAutoSuggest
 }
 
 export default connect(

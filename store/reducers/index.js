@@ -5,11 +5,13 @@ import { symbol } from './symbol'
 import { symbols } from './symbols'
 import { tab } from './tab'
 import { favorites } from './favorites'
+import { autoSuggest } from './autoSuggest'
 
 export default combineReducers({
   stock,
   symbol,
   symbols,
   tab,
-  favorites
+  favorites,
+  autoSuggest
 })

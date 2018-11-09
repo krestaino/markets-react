@@ -26,13 +26,15 @@ class Save extends Component {
 
     return (
       <View>
-        <Fab
-          style={this.isFavorite(quote.symbol) ? styles.favorite : styles.notFavorite}
-          position="bottomRight"
-          onPress={() => this.onPress(quote)}
-        >
-          <Icon ios="ios-heart" android="md-heart" style={styles.icon} />
-        </Fab>
+        {!this.props.autoSuggest && (
+          <Fab
+            style={this.isFavorite(quote.symbol) ? styles.favorite : styles.notFavorite}
+            position="bottomRight"
+            onPress={() => this.onPress(quote)}
+          >
+            <Icon ios="ios-heart" android="md-heart" style={styles.icon} />
+          </Fab>
+        )}
       </View>
     )
   }
@@ -69,6 +71,7 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
+    autoSuggest: state.autoSuggest,
     favorites: state.favorites,
     stock: state.stock,
     symbol: state.symbol
