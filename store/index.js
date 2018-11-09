@@ -8,7 +8,8 @@ import reducers from './reducers'
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  whitelist: ['favorites']
 }
 
 const client = axios.create({
