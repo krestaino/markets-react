@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { RefreshControl } from 'react-native'
-import { Button, Content, Text } from 'native-base'
+import { Button, Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
 import { getFavorites, getStock, setSymbol, setTab } from '../../store/actions/'
@@ -33,14 +33,20 @@ class Favorites extends Component {
           data.map((stock, index) => {
             return (
               <Button key={index} full style={styles.button} onPress={() => this.onPress(stock.quote.symbol)}>
-                <Text>{stock.quote.symbol}</Text>
-                <Text>
-                  <Text style={positiveOrNegative(stock.quote.change)}> {stock.quote.change} </Text>
-                  <Text style={positiveOrNegative(stock.quote.change)}>
-                    ({formatPercentage(stock.quote.changePercent)}
-                    %) {upOrDownSymbol(stock.quote.changePercent)}
+                <View style={styles.container}>
+                  <Text>{stock.quote.symbol}</Text>
+                  <Text>{stock.quote.latestPrice} USD</Text>
+                </View>
+                <View style={styles.container}>
+                  <Text style={styles.companyName}>{stock.quote.companyName}</Text>
+                  <Text>
+                    <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}> {stock.quote.change} </Text>
+                    <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
+                      ({formatPercentage(stock.quote.changePercent)}
+                      %) {upOrDownSymbol(stock.quote.changePercent)}
+                    </Text>
                   </Text>
-                </Text>
+                </View>
               </Button>
             )
           })}
@@ -53,11 +59,25 @@ const styles = {
   button: {
     backgroundColor: 'transparent',
     elevation: 0,
+    flexDirection: 'column',
+    height: 48,
+    paddingHorizontal: 16,
+    paddingVertical: 8
+  },
+  container: {
     justifyContent: 'space-between',
-    height: 48
+    flexDirection: 'row',
+    width: '100%'
   },
   list: {
     marginTop: 8
+  },
+  companyName: {
+    color: '#6d788c',
+    fontSize: 13
+  },
+  stockChange: {
+    fontSize: 13
   }
 }
 
