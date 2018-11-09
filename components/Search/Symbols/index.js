@@ -1,40 +1,28 @@
 import React, { Component } from 'react'
-import { FlatList, TouchableOpacity } from 'react-native'
+import { FlatList, Keyboard, TouchableOpacity } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
-import Fuse from 'fuse.js'
 
 import { getStock, getSymbols } from '../../../store/actions'
 
 class Symbols extends Component {
   state = { filteredSearch: [] }
 
-  componentDidMount = () => {
-    this.props.getSymbols()
-  }
+  componentDidMount = () => this.props.getSymbols()
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.symbol.length > 1) {
-      this.setState({
-        filteredSearch: this.fuse()
-          .search(this.props.symbol)
-          .slice(1, 40)
-      })
+    if (nextProps.symbol.length > 0) {
+      const matches = this.props.symbols.data.filter(stock => stock.symbol.startsWith(nextProps.symbol))
+      this.setState({ filteredSearch: matches })
     } else {
       this.setState({ filteredSearch: [] })
     }
   }
 
-  fuse = () => {
-    return new Fuse(this.props.symbols.data, {
-      keys: ['symbol'],
-      threshold: 0
-    })
-  }
-
   onPress = symbol => {
     this.props.getStock(symbol)
     this.setState({ filteredSearch: [] })
+    Keyboard.dismiss()
   }
 
   render() {
@@ -42,10 +30,13 @@ class Symbols extends Component {
       <View style={styles.container}>
         <FlatList
           data={this.state.filteredSearch}
+          keyboardShouldPersistTaps="always"
           keyExtractor={item => item.symbol}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => this.onPress(item.symbol)} style={styles.item}>
-              <Text ellipsizeMode="tail" numberOfLines={1}>{item.symbol} – {item.name}</Text>
+              <Text ellipsizeMode="tail" numberOfLines={1}>
+                {item.symbol} – {item.name}
+              </Text>
             </TouchableOpacity>
           )}
         />
@@ -59,15 +50,16 @@ const styles = {
     backgroundColor: '#232f3a',
     borderTopColor: '#182129',
     borderTopWidth: 1,
-    maxHeight: 200,
-    position: 'absolute',
-    top: 50,
+    maxHeight: 215,
+    // position: 'absolute',
+    // top: 50,
     width: '100%',
-    zIndex: 10
+    zIndex: 1
   },
   item: {
     paddingHorizontal: 16,
-    paddingVertical: 8
+    paddingVertical: 12,
+    zIndex: 1
   }
 }
 
