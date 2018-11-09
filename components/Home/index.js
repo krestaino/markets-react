@@ -11,7 +11,7 @@ import Search from '../Search'
 import Stock from '../Stock'
 import Favorites from '../Favorites'
 
-class Tabs extends Component {
+class Home extends Component {
   searchRoute = () => (
     <View style={styles.container}>
       <Search />
@@ -92,4 +92,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Tabs)
+)(Home)

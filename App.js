@@ -9,7 +9,7 @@ import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform'
 
 import store from './store'
-import Tabs from './components/Tabs'
+import Home from './components/Home'
 
 export default class App extends Component {
   state = { loading: true }
@@ -33,7 +33,7 @@ export default class App extends Component {
             <SafeAreaView style={[styles.container, styles.padding]}>
               <Root>
                 <StatusBar barStyle="light-content" />
-                <Tabs />
+                <Home />
               </Root>
             </SafeAreaView>
           </StyleProvider>
