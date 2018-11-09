@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Icon, Fab, Toast, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { toggleFavorite } from '../../store/actions/'
+import { toggleFavorite } from '../../../store/actions/'
 
 class Save extends Component {
   isFavorite = symbol => this.props.favorites.symbols.filter(favorite => favorite === symbol).length

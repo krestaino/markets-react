@@ -3,13 +3,13 @@ import { KeyboardAvoidingView, Platform, RefreshControl } from 'react-native'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { getStock } from '../store/actions/'
+import { getStock } from '../../store/actions/'
 
-import Info from './Stock/Info'
-import Chart from './Stock/Chart'
-import Details from './Stock/Details'
-import News from './Stock/News'
-import Save from './Stock/Save'
+import Info from './Info'
+import Chart from './Chart'
+import Details from './Details'
+import News from './News'
+import Save from './Save'
 
 class Stock extends Component {
   onRefresh = () => this.props.getStock(this.props.symbol)

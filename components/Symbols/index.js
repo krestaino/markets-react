@@ -3,7 +3,7 @@ import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
 import Fuse from 'fuse.js'
 
-import { getSymbols } from '../store/actions'
+import { getSymbols } from '../../store/actions'
 
 class Symbols extends Component {
   state = { filteredSearch: [] }

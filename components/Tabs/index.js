@@ -5,11 +5,11 @@ import { Constants } from 'expo'
 import { connect } from 'react-redux'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 
-import { getFavorites, setTab } from '../store/actions/'
+import { getFavorites, setTab } from '../../store/actions/'
 
-import Search from './Search'
-import Stock from './Stock'
-import Favorites from './Favorites'
+import Search from '../Search'
+import Stock from '../Stock'
+import Favorites from '../Favorites'
 
 class Tabs extends Component {
   searchRoute = () => (

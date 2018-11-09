@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { getStock, setSymbol } from '../store/actions/'
+import { getStock, setSymbol } from '../../store/actions/'
 
 class Search extends Component {
   componentDidUpdate = () => {

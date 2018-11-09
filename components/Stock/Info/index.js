@@ -3,7 +3,7 @@ import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { format } from 'date-fns'
 
-import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
+import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../../helpers/priceFormat'
 
 class Info extends Component {
   render() {

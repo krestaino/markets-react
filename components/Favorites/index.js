@@ -3,8 +3,8 @@ import { RefreshControl } from 'react-native'
 import { Button, Content, Text } from 'native-base'
 import { connect } from 'react-redux'
 
-import { getFavorites, getStock, setSymbol, setTab } from '../store/actions/'
-import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../helpers/priceFormat'
+import { getFavorites, getStock, setSymbol, setTab } from '../../store/actions/'
+import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 
 class Favorites extends Component {
   onPress = symbol => {
