@@ -18,7 +18,13 @@
     ],
     "ios": {
       "bundleIdentifier": "com.kmr.stockoff",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "splash": {
+        "backgroundColor": "#182129",
+        "resizeMode": "contain",
+        "image": "./assets/icon-transparent.png",
+        "tabletImage": "./assets/icon-transparent.png"
+      }
     },
     "android": {
       "package": "com.kmr.stockcheck",
@@ -29,7 +35,14 @@
       },
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.kmr.stockcheck",
       "splash": {
-        "backgroundColor": "#182129"
+        "backgroundColor": "#182129",
+        "resizeMode": "contain",
+        "ldpi": "./assets/icon-transparent.png",
+        "mdpi": "./assets/icon-transparent.png",
+        "hdpi": "./assets/icon-transparent.png",
+        "xhdpi": "./assets/icon-transparent.png",
+        "xxhdpi": "./assets/icon-transparent.png",
+        "xxxhdpi": "./assets/icon-transparent.png"
       }
     },
     "androidStatusBar": {
