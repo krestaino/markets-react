@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Icon, Fab, Toast, View } from 'native-base'
+import { connect } from 'react-redux'
 
 import { toggleFavorite } from '../../store/actions/'
 

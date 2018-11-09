@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Content, Text, Spinner, View } from 'native-base'
 import { KeyboardAvoidingView, Platform, RefreshControl } from 'react-native'
+import { Content, Text, Spinner, View } from 'native-base'
+import { connect } from 'react-redux'
 
 import { getStock } from '../store/actions/'
 

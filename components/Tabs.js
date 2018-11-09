@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Dimensions } from 'react-native'
 import { View } from 'native-base'
-import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 import { Constants } from 'expo'
+import { connect } from 'react-redux'
+import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 
 import { getFavorites, setTab } from '../store/actions/'
 

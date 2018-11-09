@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import { StatusBar } from 'react-native'
+import { Container, Root, StyleProvider } from 'native-base'
+import { Font } from 'expo'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import { Container, Root, StyleProvider } from 'native-base'
-import { StatusBar } from 'react-native'
-import { Font } from 'expo'
 
 import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform'

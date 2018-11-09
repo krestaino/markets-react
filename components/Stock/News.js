@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Text, View } from 'native-base'
 import { Linking, TouchableOpacity } from 'react-native'
+import { Text, View } from 'native-base'
+import { connect } from 'react-redux'
 import { format } from 'date-fns'
 
 class News extends Component {
