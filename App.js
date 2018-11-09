@@ -30,12 +30,12 @@ export default class App extends Component {
       <Provider store={store.store}>
         <PersistGate loading={null} persistor={store.persistor}>
           <StyleProvider style={getTheme(platform)}>
-            <Root>
-              <SafeAreaView style={[styles.container, styles.padding]}>
+            <SafeAreaView style={[styles.container, styles.padding]}>
+              <Root>
                 <StatusBar barStyle="light-content" />
                 <Tabs />
-              </SafeAreaView>
-            </Root>
+              </Root>
+            </SafeAreaView>
           </StyleProvider>
         </PersistGate>
       </Provider>
