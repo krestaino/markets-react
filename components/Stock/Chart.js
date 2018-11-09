@@ -28,7 +28,7 @@ class Chart extends Component {
           <VictoryAxis
             crossAxis
             gridComponent={lineSegment}
-            tickCount={Math.round(chart.length / 3)}
+            tickCount={10}
             tickLabelComponent={<VictoryLabel angle={90} dx={13} dy={-6} style={styles.chart.label} />}
             tickFormat={t => format(subDays(new Date(), this.convertXaxis(t, chart.length)), 'MMM D')}
           />
