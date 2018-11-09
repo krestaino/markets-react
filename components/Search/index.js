@@ -25,10 +25,11 @@ class Search extends Component {
         <Item searchBar style={styles.input}>
           <Icon name="ios-search" style={styles.icon} />
           <Input
-            autoCapitalize={'characters'}
+            autoCapitalize="characters"
             autoCorrect={false}
             autoFocus={true}
-            clearButtonMode={'always'}
+            clearButtonMode="always"
+            keyboardAppearance="dark"
             onChangeText={symbol => this.props.setSymbol(symbol)}
             onSubmitEditing={this.onSubmitEditing}
             placeholder="Search by stock symbol"
