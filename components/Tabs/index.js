@@ -32,7 +32,7 @@ class Tabs extends Component {
 
   render() {
     return (
-      <View style={[styles.container, { paddingTop: Constants.statusBarHeight - 14 }]}>
+      <View style={[styles.container]}>
         <TabView
           navigationState={this.props.tab}
           renderScene={SceneMap({

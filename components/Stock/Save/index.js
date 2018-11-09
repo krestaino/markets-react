@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { StatusBar } from 'react-native'
 import { Icon, Fab, Toast, View } from 'native-base'
 import { connect } from 'react-redux'
 
@@ -51,7 +52,7 @@ const styles = {
     self: {
       backgroundColor: '#15191d',
       borderRadius: 6,
-      marginTop: 16,
+      marginTop: 16 + StatusBar.currentHeight || 0,
       marginRight: 16,
       marginLeft: 16,
       minHeight: 0,

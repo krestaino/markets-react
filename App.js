@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StatusBar } from 'react-native'
+import { SafeAreaView, StatusBar } from 'react-native'
 import { Container, Root, StyleProvider } from 'native-base'
 import { Font } from 'expo'
 import { Provider } from 'react-redux'
@@ -31,10 +31,10 @@ export default class App extends Component {
         <PersistGate loading={null} persistor={store.persistor}>
           <StyleProvider style={getTheme(platform)}>
             <Root>
-              <Container style={styles.container}>
+              <SafeAreaView style={[styles.container, styles.padding]}>
                 <StatusBar barStyle="light-content" />
                 <Tabs />
-              </Container>
+              </SafeAreaView>
             </Root>
           </StyleProvider>
         </PersistGate>
@@ -45,6 +45,8 @@ export default class App extends Component {
 
 const styles = {
   container: {
-    backgroundColor: '#182129'
+    backgroundColor: '#182129',
+    flex: 1,
+    paddingTop: StatusBar.currentHeight
   }
 }

@@ -44,10 +44,6 @@
         "xxhdpi": "./assets/icon-transparent.png",
         "xxxhdpi": "./assets/icon-transparent.png"
       }
-    },
-    "androidStatusBar": {
-      "barStyle": "light-content",
-      "backgroundColor": "#182129"
     }
   }
 }
