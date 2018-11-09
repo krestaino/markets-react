@@ -12,7 +12,7 @@ class Symbols extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.symbol.length > 0) {
-      const matches = this.props.symbols.data.filter(stock => stock.symbol.startsWith(nextProps.symbol))
+      const matches = this.props.symbols.data.filter(stock => stock.symbol.startsWith(nextProps.symbol)).slice(0, 20)
       this.setState({ filteredSearch: matches })
     } else {
       this.setState({ filteredSearch: [] })
@@ -26,6 +26,9 @@ class Symbols extends Component {
   }
 
   render() {
+    if (!this.state.filteredSearch.length) {
+      return <View />
+    }
     return (
       <View style={styles.container}>
         <FlatList
@@ -50,16 +53,13 @@ const styles = {
     backgroundColor: '#232f3a',
     borderTopColor: '#182129',
     borderTopWidth: 1,
-    maxHeight: 215,
-    // position: 'absolute',
-    // top: 50,
+    height: '100%',
     width: '100%',
-    zIndex: 1
+    paddingBottom: 16
   },
   item: {
     paddingHorizontal: 16,
-    paddingVertical: 12,
-    zIndex: 1
+    paddingVertical: 12
   }
 }
 
