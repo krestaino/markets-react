@@ -35,14 +35,10 @@ class Favorites extends Component {
               <Button key={index} full style={styles.button} onPress={() => this.onPress(stock.quote.symbol)}>
                 <Text>{stock.quote.symbol}</Text>
                 <Text>
-                  <Text style={styles.latestPrice}>{stock.quote.latestPrice}</Text>
-                  <Text> USD</Text>
-                  <Text>
-                    <Text style={positiveOrNegative(stock.quote.change)}> {stock.quote.change} </Text>
-                    <Text style={positiveOrNegative(stock.quote.change)}>
-                      ({formatPercentage(stock.quote.changePercent)}
-                      %) {upOrDownSymbol(stock.quote.changePercent)}
-                    </Text>
+                  <Text style={positiveOrNegative(stock.quote.change)}> {stock.quote.change} </Text>
+                  <Text style={positiveOrNegative(stock.quote.change)}>
+                    ({formatPercentage(stock.quote.changePercent)}
+                    %) {upOrDownSymbol(stock.quote.changePercent)}
                   </Text>
                 </Text>
               </Button>
