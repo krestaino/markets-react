@@ -14,8 +14,12 @@ class News extends Component {
         {news.map((article, index) => (
           <TouchableOpacity key={index} onPress={() => Linking.openURL(article.url)}>
             <View style={styles.item}>
-              <Text style={styles.preHeadline}>{article.source} – {format(article.datetime, 'MMM D')}</Text>
-              <Text style={styles.headline}>{article.headline}</Text>
+              <Text style={styles.preHeadline}>
+                {article.source} – {format(article.datetime, 'MMM D, h:mm a')}
+              </Text>
+              <View>
+                <Text style={styles.headline}>{article.headline}</Text>
+              </View>
             </View>
           </TouchableOpacity>
         ))}
@@ -35,7 +39,7 @@ const styles = {
     fontSize: 20
   },
   item: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     flex: 1,
     flexWrap: 'wrap',
     marginTop: 16
