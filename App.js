@@ -9,7 +9,6 @@ import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform'
 
 import { BLUE1 } from './constants'
-
 import store from './store'
 import Home from './components/Home'
 
