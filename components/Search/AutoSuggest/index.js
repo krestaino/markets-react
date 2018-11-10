@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BackHandler, FlatList, Keyboard } from 'react-native'
-import { Text, View } from 'native-base'
+import { Spinner, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import Touchable from 'react-native-platform-touchable'
 
@@ -16,21 +16,6 @@ class AutoSuggest extends Component {
     }
 
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
-  }
-
-  componentDidMount = () => this.props.getSymbols()
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.symbol.length > 0) {
-      const matches = this.props.symbols.data.filter(stock => stock.symbol.startsWith(nextProps.symbol)).slice(0, 20)
-      this.setState({ filteredSearch: matches })
-    } else {
-      this.setState({ filteredSearch: [] })
-    }
-  }
-
-  componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
   }
 
   handleBackPress = () => {
@@ -50,6 +35,31 @@ class AutoSuggest extends Component {
     Keyboard.dismiss()
   }
 
+  search = symbol => {
+    const matches = this.props.symbols.data.filter(stock => stock.symbol.startsWith(symbol)).slice(0, 20)
+    this.setState({ filteredSearch: matches })
+  }
+
+  componentDidMount() {
+    this.props.getSymbols()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.symbols.loading !== this.props.symbols.loading) {
+      this.search(this.props.symbol)
+    }
+  }
+
+  componentWillUpdate(nextProps) {
+    if (nextProps.symbol !== this.props.symbol) {
+      this.search(nextProps.symbol)
+    }
+  }
+  
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
+  }
+
   render() {
     const { filteredSearch } = this.state
 
@@ -59,27 +69,33 @@ class AutoSuggest extends Component {
 
     return (
       <View>
-        {filteredSearch.length ? (
-          <FlatList
-            data={filteredSearch}
-            keyboardShouldPersistTaps="always"
-            keyExtractor={item => item.symbol}
-            style={styles.container}
-            renderItem={({ item }) => (
-              <Touchable
-                background={Touchable.Ripple(BLUE3)}
-                onPress={() => this.onPress(item.symbol)}
-                style={styles.item}
-              >
-                <Text ellipsizeMode="tail" numberOfLines={1}>
-                  {item.symbol} <Text style={styles.name}>{item.name}</Text>
-                </Text>
-              </Touchable>
-            )}
-          />
+        {this.props.symbols.loading ? (
+          <Spinner color={TEXT_DARK} />
         ) : (
-          <View style={styles.container}>
-            <Text style={styles.item}>No results found. Try searching anyways, who knows!?</Text>
+          <View>
+            {filteredSearch.length ? (
+              <FlatList
+                data={filteredSearch}
+                keyboardShouldPersistTaps="always"
+                keyExtractor={item => item.symbol}
+                style={styles.container}
+                renderItem={({ item }) => (
+                  <Touchable
+                    background={Touchable.Ripple(BLUE3)}
+                    onPress={() => this.onPress(item.symbol)}
+                    style={styles.item}
+                  >
+                    <Text ellipsizeMode="tail" numberOfLines={1}>
+                      {item.symbol} <Text style={styles.name}>{item.name}</Text>
+                    </Text>
+                  </Touchable>
+                )}
+              />
+            ) : (
+              <View style={styles.container}>
+                <Text style={styles.item}>No results found. Try searching anyways, who knows!?</Text>
+              </View>
+            )}
           </View>
         )}
       </View>

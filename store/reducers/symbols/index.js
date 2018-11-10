@@ -1,7 +1,9 @@
 import { GET_SYMBOLS, GET_SYMBOLS_SUCCESS, GET_SYMBOLS_FAIL } from '../../../constants'
 
 const initialState = {
-  data: []
+  data: [],
+  loading: null,
+  error: false
 }
 
 export const symbols = (state = initialState, action) => {
