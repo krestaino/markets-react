@@ -6,6 +6,8 @@ An app to check stock prices. Built with React Native, Expo and NativeBase uisng
 
 ## Getting Started
 
+First, head over to the [Expo installation guide](https://docs.expo.io/versions/latest/introduction/installation.html) to get your development enviorment set up.
+
 ``` bash
 # clone repo
 git clone git@github.com:krestaino/stock-check.git
