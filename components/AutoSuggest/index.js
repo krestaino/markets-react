@@ -18,14 +18,7 @@ class AutoSuggest extends Component {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
   }
 
-  handleBackPress = () => {
-    if (this.props.autoSuggest) {
-      this.props.showAutoSuggest(false)
-      return true
-    } else {
-      return false
-    }
-  }
+  handleBackPress = () => (this.props.autoSuggest ? this.props.showAutoSuggest(false) : false)
 
   onPress = symbol => {
     this.props.getStock(symbol)
