@@ -28,6 +28,7 @@
     },
     "android": {
       "package": "com.kmr.stockcheck",
+      "permissions": [],
       "versionCode": 14,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-transparent.png",
