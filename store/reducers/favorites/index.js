@@ -1,4 +1,10 @@
-import { TOGGLE_FAVORITE, GET_FAVORITES, GET_FAVORITES_SUCCESS, GET_FAVORITES_FAIL } from '../../../constants'
+import {
+  CLEAR_FAVORITES,
+  TOGGLE_FAVORITE,
+  GET_FAVORITES,
+  GET_FAVORITES_SUCCESS,
+  GET_FAVORITES_FAIL
+} from '../../../constants'
 
 const initialState = {
   data: [],
@@ -26,6 +32,8 @@ export const favorites = (state = initialState, action) => {
         loading: false,
         error: 'No results found.'
       }
+    case CLEAR_FAVORITES:
+      return { ...state, data: [] }
     default:
       return state
   }

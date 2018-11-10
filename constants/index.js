@@ -10,6 +10,7 @@ export const TOGGLE_FAVORITE = 'stock-check/stock/TOGGLE_FAVORITE'
 export const GET_FAVORITES = 'stock-check/stock/GET_FAVORITES'
 export const GET_FAVORITES_SUCCESS = 'stock-check/stock/GET_FAVORITES_SUCCESS'
 export const GET_FAVORITES_FAIL = 'stock-check/stock/GET_FAVORITES_FAIL'
+export const CLEAR_FAVORITES = 'stock-check/stock/CLEAR_FAVORITES'
 export const SHOW_AUTOSUGGEST = 'stock-check/stock/SHOW_AUTOSUGGEST'
 
 export const BLUE0 = '#15191d'

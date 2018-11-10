@@ -4,7 +4,7 @@ import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
 import { TEXT_DARK } from '../../constants'
-import { getFavorites, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
+import { clearFavorites, getFavorites, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 
 class Favorites extends Component {
@@ -19,43 +19,43 @@ class Favorites extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.favorites.symbols !== this.props.favorites.symbols) {
-      this.props.getFavorites(this.props.favorites.symbols)
+      this.props.favorites.symbols.length
+        ? this.props.getFavorites(this.props.favorites.symbols)
+        : this.props.clearFavorites()
     }
   }
 
   render() {
-    const { data } = this.props.favorites
+    const { data, loading } = this.props.favorites
 
     return (
       <Content
-        refreshControl={<RefreshControl refreshing={this.props.favorites.loading} onRefresh={this.onRefresh} />}
+        refreshControl={<RefreshControl refreshing={loading} onRefresh={this.onRefresh} />}
         style={styles.list}
       >
-        {data &&
-          data.map((stock, index) => {
-            return (
-              <TouchableOpacity key={index} full style={styles.button} onPress={() => this.onPress(stock.quote.symbol)}>
-                <View style={styles.container}>
-                  <Text>{stock.quote.symbol}</Text>
-                  <Text>{stock.quote.latestPrice} USD</Text>
-                </View>
-                <View style={styles.container}>
-                  <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>
-                    {stock.quote.companyName}
+        {data.map((stock, index) => {
+          return (
+            <TouchableOpacity key={index} full style={styles.button} onPress={() => this.onPress(stock.quote.symbol)}>
+              <View style={styles.container}>
+                <Text>{stock.quote.symbol}</Text>
+                <Text>{stock.quote.latestPrice} USD</Text>
+              </View>
+              <View style={styles.container}>
+                <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>
+                  {stock.quote.companyName}
+                </Text>
+                <Text>
+                  <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>{stock.quote.change}</Text>
+                  <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
+                    {' '}
+                    ({formatPercentage(stock.quote.changePercent)}
+                    %) {upOrDownSymbol(stock.quote.changePercent)}
                   </Text>
-                  <Text>
-                    <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
-                      {stock.quote.change}
-                    </Text>
-                    <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
-                      ({formatPercentage(stock.quote.changePercent)}
-                      %) {upOrDownSymbol(stock.quote.changePercent)}
-                    </Text>
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            )
-          })}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          )
+        })}
       </Content>
     )
   }
@@ -96,6 +96,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
+  clearFavorites,
   getFavorites,
   getStock,
   setSymbol,
