@@ -4,13 +4,14 @@ import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
 import { TEXT_DARK } from '../../constants'
-import { getFavorites, getStock, setSymbol, setTab } from '../../store/actions/'
+import { getFavorites, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 
 class Favorites extends Component {
   onPress = symbol => {
     this.props.getStock(symbol)
     this.props.setSymbol(symbol)
+    this.props.showAutoSuggest(false)
     this.props.setTab(0)
   }
 
@@ -39,9 +40,13 @@ class Favorites extends Component {
                   <Text>{stock.quote.latestPrice} USD</Text>
                 </View>
                 <View style={styles.container}>
-                  <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>{stock.quote.companyName}</Text>
+                  <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>
+                    {stock.quote.companyName}
+                  </Text>
                   <Text>
-                    <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}> {stock.quote.change} </Text>
+                    <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
+                      {stock.quote.change}
+                    </Text>
                     <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
                       ({formatPercentage(stock.quote.changePercent)}
                       %) {upOrDownSymbol(stock.quote.changePercent)}
@@ -94,7 +99,8 @@ const mapDispatchToProps = {
   getFavorites,
   getStock,
   setSymbol,
-  setTab
+  setTab,
+  showAutoSuggest
 }
 
 export default connect(
