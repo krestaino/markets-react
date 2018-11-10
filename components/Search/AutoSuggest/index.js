@@ -3,7 +3,7 @@ import { FlatList, Keyboard, TouchableOpacity } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { BLUE1, BLUE2 } from '../../../constants'
+import { BLUE1, BLUE2, TEXT_DARK } from '../../../constants'
 import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../../store/actions'
 
 class AutoSuggest extends Component {
@@ -46,7 +46,7 @@ class AutoSuggest extends Component {
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => this.onPress(item.symbol)} style={styles.item}>
                 <Text ellipsizeMode="tail" numberOfLines={1}>
-                  {item.symbol} – {item.name}
+                  {item.symbol} <Text style={styles.name}>{item.name}</Text>
                 </Text>
               </TouchableOpacity>
             )}
@@ -73,6 +73,9 @@ const styles = {
   item: {
     paddingHorizontal: 16,
     paddingVertical: 12
+  },
+  name: {
+    color: TEXT_DARK
   }
 }
 
