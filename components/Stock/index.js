@@ -13,7 +13,7 @@ import News from './News'
 import Save from './Save'
 
 class Stock extends Component {
-  onRefresh = () => this.props.getStock(this.props.symbol)
+  onRefresh = () => this.props.getStock(this.props.stock.data.quote.symbol)
 
   render() {
     const { chart, quote } = this.props.stock.data
