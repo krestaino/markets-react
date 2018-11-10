@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import { BLUE2, TEXT_NORMAL } from '../../constants'
 import { getStock, setSymbol, showAutoSuggest } from '../../store/actions/'
 
-import AutoSuggest from './AutoSuggest'
-
 class Search extends Component {
   state = { hideAutoSuggest: false }
 
@@ -51,7 +49,6 @@ class Search extends Component {
             value={this.props.symbol}
           />
         </Item>
-        {this.props.symbol !== '' && <AutoSuggest />}
       </View>
     )
   }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { BackHandler, FlatList, Keyboard } from 'react-native'
+import { BackHandler, Dimensions, FlatList, Keyboard } from 'react-native'
 import { Spinner, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import Touchable from 'react-native-platform-touchable'
 
-import { BLUE1, BLUE2, BLUE3, TEXT_DARK } from '../../../constants'
-import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../../store/actions'
+import { BLUE1, BLUE2, BLUE3, TEXT_DARK } from '../../constants'
+import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../store/actions'
 
 class AutoSuggest extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class AutoSuggest extends Component {
       this.search(nextProps.symbol)
     }
   }
-  
+
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
   }
@@ -68,35 +68,28 @@ class AutoSuggest extends Component {
     }
 
     return (
-      <View>
+      <View style={styles.container}>
         {this.props.symbols.loading ? (
           <Spinner color={TEXT_DARK} />
-        ) : (
-          <View>
-            {filteredSearch.length ? (
-              <FlatList
-                data={filteredSearch}
-                keyboardShouldPersistTaps="always"
-                keyExtractor={item => item.symbol}
-                style={styles.container}
-                renderItem={({ item }) => (
-                  <Touchable
-                    background={Touchable.Ripple(BLUE3)}
-                    onPress={() => this.onPress(item.symbol)}
-                    style={styles.item}
-                  >
-                    <Text ellipsizeMode="tail" numberOfLines={1}>
-                      {item.symbol} <Text style={styles.name}>{item.name}</Text>
-                    </Text>
-                  </Touchable>
-                )}
-              />
-            ) : (
-              <View style={styles.container}>
-                <Text style={styles.item}>No results found. Try searching anyways, who knows!?</Text>
-              </View>
+        ) : filteredSearch.length ? (
+          <FlatList
+            data={filteredSearch}
+            keyboardShouldPersistTaps="always"
+            keyExtractor={item => item.symbol}
+            renderItem={({ item }) => (
+              <Touchable
+                background={Touchable.Ripple(BLUE3)}
+                onPress={() => this.onPress(item.symbol)}
+                style={styles.item}
+              >
+                <Text ellipsizeMode="tail" numberOfLines={1}>
+                  {item.symbol} <Text style={styles.name}>{item.name}</Text>
+                </Text>
+              </Touchable>
             )}
-          </View>
+          />
+        ) : (
+          <Text style={styles.item}>No results found. Try searching anyways.</Text>
         )}
       </View>
     )
@@ -108,9 +101,7 @@ const styles = {
     backgroundColor: BLUE2,
     borderTopColor: BLUE1,
     borderTopWidth: 1,
-    height: '100%',
-    width: '100%',
-    paddingBottom: 16
+    height: Dimensions.get('window').height - 120
   },
   item: {
     paddingHorizontal: 16,

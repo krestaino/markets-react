@@ -8,6 +8,7 @@ import { BLUE1, BLUE2, TEXT_DARK, TEXT_NORMAL } from '../../constants'
 import { getFavorites, setTab } from '../../store/actions/'
 
 import Search from '../Search'
+import AutoSuggest from '../AutoSuggest'
 import Stock from '../Stock'
 import Favorites from '../Favorites'
 
@@ -15,6 +16,7 @@ class Home extends Component {
   searchRoute = () => (
     <View style={styles.container}>
       <Search />
+      <AutoSuggest />
       <Stock />
     </View>
   )
