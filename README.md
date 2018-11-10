@@ -24,6 +24,10 @@ expo build:android
 expo build:ios
 ```
 
+## Store Links
+* [Google Play](https://play.google.com/store/apps/details?id=com.kmr.stockcheck)
+* App Store (coming soon!)
+
 ## Built With
 * [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
 * [Expo](https://docs.expo.io/versions/latest/)
