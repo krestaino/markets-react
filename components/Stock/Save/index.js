@@ -3,7 +3,7 @@ import { StatusBar } from 'react-native'
 import { Icon, Fab, Toast, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { BLUE0, BLUE3, TEXT_NORMAL } from '../../../constants'
+import { BLUE0, BLUE3, PINK, TEXT_NORMAL } from '../../../constants'
 import { toggleFavorite } from '../../../store/actions/'
 
 class Save extends Component {
@@ -43,7 +43,7 @@ class Save extends Component {
 
 const styles = {
   favorite: {
-    backgroundColor: '#b257c5'
+    backgroundColor: PINK
   },
   notFavorite: {
     backgroundColor: BLUE3

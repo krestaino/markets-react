@@ -3,6 +3,7 @@ import { KeyboardAvoidingView, Platform, RefreshControl } from 'react-native'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
 
+import { TEXT_DARK } from  '../../constants'
 import { getStock } from '../../store/actions/'
 
 import Info from './Info'
@@ -47,7 +48,7 @@ class Stock extends Component {
         )}
         {isLoading && (
           <View style={[styles.container, styles.center]}>
-            <Spinner color="#6d788c" />
+            <Spinner color={TEXT_DARK} />
           </View>
         )}
       </View>
