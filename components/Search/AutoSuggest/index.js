@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { FlatList, Keyboard, TouchableOpacity } from 'react-native'
+import { FlatList, Keyboard } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
+import Touchable from 'react-native-platform-touchable'
 
-import { BLUE1, BLUE2, TEXT_DARK } from '../../../constants'
+import { BLUE1, BLUE2, BLUE3, TEXT_DARK } from '../../../constants'
 import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../../store/actions'
 
 class AutoSuggest extends Component {
@@ -44,11 +45,15 @@ class AutoSuggest extends Component {
             keyExtractor={item => item.symbol}
             style={styles.container}
             renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => this.onPress(item.symbol)} style={styles.item}>
+              <Touchable
+                background={Touchable.Ripple(BLUE3)}
+                onPress={() => this.onPress(item.symbol)}
+                style={styles.item}
+              >
                 <Text ellipsizeMode="tail" numberOfLines={1}>
                   {item.symbol} <Text style={styles.name}>{item.name}</Text>
                 </Text>
-              </TouchableOpacity>
+              </Touchable>
             )}
           />
         ) : (
@@ -75,7 +80,8 @@ const styles = {
     paddingVertical: 12
   },
   name: {
-    color: TEXT_DARK
+    color: TEXT_DARK,
+    fontSize: 13
   }
 }
 

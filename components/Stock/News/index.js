@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Linking, TouchableOpacity } from 'react-native'
+import { Linking } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { format } from 'date-fns'
+import Touchable from 'react-native-platform-touchable'
 
-import { TEXT_DARK } from '../../../constants'
+import { BLUE2, TEXT_DARK } from '../../../constants'
 
 class News extends Component {
   render() {
@@ -14,7 +15,7 @@ class News extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>News</Text>
         {news.map((article, index) => (
-          <TouchableOpacity key={index} onPress={() => Linking.openURL(article.url)}>
+          <Touchable background={Touchable.Ripple(BLUE2)} key={index} onPress={() => Linking.openURL(article.url)}>
             <View style={styles.item}>
               <Text style={styles.preHeadline}>
                 {article.source} – {format(article.datetime, 'MMM D, h:mm a')}
@@ -23,7 +24,7 @@ class News extends Component {
                 <Text style={styles.headline}>{article.headline}</Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </Touchable>
         ))}
       </View>
     )
@@ -33,18 +34,19 @@ class News extends Component {
 const styles = {
   container: {
     flexDirection: 'column',
-    padding: 16,
     marginBottom: 64
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 20
+    fontSize: 20,
+    paddingHorizontal: 16
   },
   item: {
     flexDirection: 'column',
     flex: 1,
     flexWrap: 'wrap',
-    marginTop: 16
+    paddingHorizontal: 16,
+    paddingVertical: 12
   },
   preHeadline: {
     color: TEXT_DARK,

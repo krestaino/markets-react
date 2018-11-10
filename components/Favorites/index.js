@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { RefreshControl, TouchableOpacity } from 'react-native'
+import { RefreshControl } from 'react-native'
 import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
+import Touchable from 'react-native-platform-touchable'
 
-import { TEXT_DARK } from '../../constants'
+import { BLUE2, TEXT_DARK } from '../../constants'
 import { clearFavorites, getFavorites, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 
@@ -29,31 +30,37 @@ class Favorites extends Component {
     const { data, loading } = this.props.favorites
 
     return (
-      <Content
-        refreshControl={<RefreshControl refreshing={loading} onRefresh={this.onRefresh} />}
-        style={styles.list}
-      >
+      <Content refreshControl={<RefreshControl refreshing={loading} onRefresh={this.onRefresh} />} style={styles.list}>
         {data.map((stock, index) => {
           return (
-            <TouchableOpacity key={index} full style={styles.button} onPress={() => this.onPress(stock.quote.symbol)}>
-              <View style={styles.container}>
-                <Text>{stock.quote.symbol}</Text>
-                <Text>{stock.quote.latestPrice} USD</Text>
-              </View>
-              <View style={styles.container}>
-                <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>
-                  {stock.quote.companyName}
-                </Text>
-                <Text>
-                  <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>{stock.quote.change}</Text>
-                  <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
-                    {' '}
-                    ({formatPercentage(stock.quote.changePercent)}
-                    %) {upOrDownSymbol(stock.quote.changePercent)}
+            <Touchable
+              background={Touchable.Ripple(BLUE2)}
+              key={index}
+              style={styles.button}
+              onPress={() => this.onPress(stock.quote.symbol)}
+            >
+              <View>
+                <View style={styles.container}>
+                  <Text>{stock.quote.symbol}</Text>
+                  <Text>{stock.quote.latestPrice} USD</Text>
+                </View>
+                <View style={styles.container}>
+                  <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>
+                    {stock.quote.companyName}
                   </Text>
-                </Text>
+                  <Text>
+                    <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
+                      {stock.quote.change}
+                    </Text>
+                    <Text style={[styles.stockChange, positiveOrNegative(stock.quote.change)]}>
+                      {' '}
+                      ({formatPercentage(stock.quote.changePercent)}
+                      %) {upOrDownSymbol(stock.quote.changePercent)}
+                    </Text>
+                  </Text>
+                </View>
               </View>
-            </TouchableOpacity>
+            </Touchable>
           )
         })}
       </Content>
@@ -66,9 +73,8 @@ const styles = {
     backgroundColor: 'transparent',
     elevation: 0,
     flexDirection: 'column',
-    height: 48,
     paddingHorizontal: 16,
-    paddingVertical: 8
+    paddingVertical: 12
   },
   container: {
     justifyContent: 'space-between',
