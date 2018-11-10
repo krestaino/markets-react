@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, Keyboard } from 'react-native'
+import { BackHandler, FlatList, Keyboard } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import Touchable from 'react-native-platform-touchable'
@@ -8,7 +8,15 @@ import { BLUE1, BLUE2, BLUE3, TEXT_DARK } from '../../../constants'
 import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../../store/actions'
 
 class AutoSuggest extends Component {
-  state = { filteredSearch: [] }
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      filteredSearch: []
+    }
+
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
+  }
 
   componentDidMount = () => this.props.getSymbols()
 
@@ -18,6 +26,19 @@ class AutoSuggest extends Component {
       this.setState({ filteredSearch: matches })
     } else {
       this.setState({ filteredSearch: [] })
+    }
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
+  }
+
+  handleBackPress = () => {
+    if (this.props.autoSuggest) {
+      this.props.showAutoSuggest(false)
+      return true
+    } else {
+      return false
     }
   }
 
