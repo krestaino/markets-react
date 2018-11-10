@@ -3,6 +3,7 @@ import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { format } from 'date-fns'
 
+import { TEXT_DARK } from '../../../constants'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../../helpers/priceFormat'
 
 class Info extends Component {
@@ -41,7 +42,7 @@ const styles = {
     fontWeight: 'bold'
   },
   primaryExchange: {
-    color: '#6d788c',
+    color: TEXT_DARK,
     marginBottom: 6
   },
   latestPrice: {
@@ -49,7 +50,7 @@ const styles = {
     fontSize: 24
   },
   latestUpdate: {
-    color: '#6d788c',
+    color: TEXT_DARK,
     fontSize: 12
   }
 }

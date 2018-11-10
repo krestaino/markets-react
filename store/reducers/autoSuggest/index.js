@@ -1,4 +1,4 @@
-import { SHOW_AUTOSUGGEST } from '../../constants'
+import { SHOW_AUTOSUGGEST } from '../../../constants'
 
 const initialState = false
 

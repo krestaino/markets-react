@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Dimensions } from 'react-native'
 import { View } from 'native-base'
-import { Constants } from 'expo'
 import { connect } from 'react-redux'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 
+import { BLUE1, TEXT_DARK, TEXT_NORMAL } from '../../constants'
 import { getFavorites, setTab } from '../../store/actions/'
 
 import Search from '../Search'
@@ -64,14 +64,14 @@ const styles = {
   },
   tabBar: {
     indicatorStyle: {
-      backgroundColor: '#6d788c'
+      backgroundColor: TEXT_DARK
     },
     labelStyle: {
-      color: '#bcc6d9'
+      color: TEXT_NORMAL
     },
     pressColor: '#11161B',
     self: {
-      backgroundColor: '#182129',
+      backgroundColor: BLUE1,
       elevation: 0
     }
   }

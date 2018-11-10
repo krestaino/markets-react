@@ -1,4 +1,4 @@
-import { SET_TAB } from '../../constants'
+import { SET_TAB } from '../../../constants'
 
 export const setTab = index => {
   return {

@@ -3,6 +3,7 @@ import { FlatList, Keyboard, TouchableOpacity } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
+import { BLUE1, BLUE2 } from '../../../constants'
 import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../../store/actions'
 
 class AutoSuggest extends Component {
@@ -52,8 +53,8 @@ class AutoSuggest extends Component {
 
 const styles = {
   container: {
-    backgroundColor: '#232f3a',
-    borderTopColor: '#182129',
+    backgroundColor: BLUE2,
+    borderTopColor: BLUE1,
     borderTopWidth: 1,
     height: '100%',
     width: '100%',

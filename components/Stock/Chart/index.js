@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { format, subDays } from 'date-fns'
 import { LineSegment, VictoryGroup, VictoryAxis, VictoryLabel, VictoryLine, VictoryTheme } from 'victory-native'
 
+import { GREEN, RED, TEXT_DARK } from '../../../constants'
+
 class Chart extends Component {
   convertXaxis = (x, chartLength) => -x + chartLength
 
@@ -42,12 +44,12 @@ class Chart extends Component {
 const styles = {
   positive: {
     data: {
-      stroke: '#0f9d58'
+      stroke: GREEN
     }
   },
   negative: {
     data: {
-      stroke: '#d23f31'
+      stroke: RED
     }
   },
   chart: {
@@ -55,7 +57,7 @@ const styles = {
       stroke: '#222a38'
     },
     label: {
-      fill: '#6d788c',
+      fill: TEXT_DARK,
       fontSize: '11',
       stroke: 'transparent'
     },

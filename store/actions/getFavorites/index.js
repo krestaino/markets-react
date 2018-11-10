@@ -1,4 +1,4 @@
-import { GET_FAVORITES } from '../../constants'
+import { GET_FAVORITES } from '../../../constants'
 
 export const getFavorites = symbols => {
   return {

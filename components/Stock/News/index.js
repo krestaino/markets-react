@@ -4,6 +4,8 @@ import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { format } from 'date-fns'
 
+import { TEXT_DARK } from '../../../constants'
+
 class News extends Component {
   render() {
     const { news } = this.props.stock.data
@@ -45,7 +47,7 @@ const styles = {
     marginTop: 16
   },
   preHeadline: {
-    color: '#6d788c',
+    color: TEXT_DARK,
     fontSize: 13
   },
   headline: {

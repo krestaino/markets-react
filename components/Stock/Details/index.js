@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
+import { TEXT_DARK } from '../../../constants'
+
 class Details extends Component {
   formatMarketCap = x => {
     if (x < 1000000000) {
@@ -81,7 +83,7 @@ const styles = {
     fontSize: 14
   },
   value: {
-    color: '#6d788c',
+    color: TEXT_DARK,
     fontSize: 14
   }
 }

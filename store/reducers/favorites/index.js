@@ -1,4 +1,4 @@
-import { TOGGLE_FAVORITE, GET_FAVORITES, GET_FAVORITES_SUCCESS, GET_FAVORITES_FAIL } from '../../constants'
+import { TOGGLE_FAVORITE, GET_FAVORITES, GET_FAVORITES_SUCCESS, GET_FAVORITES_FAIL } from '../../../constants'
 
 const initialState = {
   data: [],

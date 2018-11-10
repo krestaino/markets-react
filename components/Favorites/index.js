@@ -3,6 +3,7 @@ import { RefreshControl, TouchableOpacity } from 'react-native'
 import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
+import { TEXT_DARK } from '../../constants'
 import { getFavorites, getStock, setSymbol, setTab } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 
@@ -73,7 +74,7 @@ const styles = {
     marginTop: 8
   },
   companyName: {
-    color: '#6d788c',
+    color: TEXT_DARK,
     flex: 1,
     fontSize: 13
   },

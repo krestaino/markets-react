@@ -1,4 +1,4 @@
-import { SHOW_AUTOSUGGEST } from '../../constants'
+import { SHOW_AUTOSUGGEST } from '../../../constants'
 
 export const showAutoSuggest = symbol => {
   return {

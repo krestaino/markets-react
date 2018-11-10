@@ -1,4 +1,4 @@
-import { SET_TAB } from '../../constants'
+import { SET_TAB } from '../../../constants'
 
 const initialState = {
   index: 0,

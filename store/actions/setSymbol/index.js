@@ -1,4 +1,4 @@
-import { SET_SYMBOL } from '../../constants'
+import { SET_SYMBOL } from '../../../constants'
 
 export const setSymbol = symbol => {
   return {

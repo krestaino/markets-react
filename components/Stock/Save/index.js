@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native'
 import { Icon, Fab, Toast, View } from 'native-base'
 import { connect } from 'react-redux'
 
+import { BLUE0, BLUE3, TEXT_NORMAL } from '../../../constants'
 import { toggleFavorite } from '../../../store/actions/'
 
 class Save extends Component {
@@ -45,14 +46,14 @@ const styles = {
     backgroundColor: '#b257c5'
   },
   notFavorite: {
-    backgroundColor: '#2f4356'
+    backgroundColor: BLUE3
   },
   icon: {
     color: '#fff'
   },
   toast: {
     self: {
-      backgroundColor: '#15191d',
+      backgroundColor: BLUE0,
       borderRadius: 6,
       marginTop: 16 + StatusBar.currentHeight || 0,
       marginRight: 16,
@@ -62,7 +63,7 @@ const styles = {
       paddingBottom: 16
     },
     text: {
-      color: '#bcc6d9',
+      color: TEXT_NORMAL,
       fontSize: 13,
       textAlign: 'center'
     }

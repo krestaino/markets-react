@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
+import { BLUE2, TEXT_NORMAL } from '../../constants'
 import { getStock, setSymbol, showAutoSuggest } from '../../store/actions/'
 
 import AutoSuggest from './AutoSuggest'
@@ -58,12 +59,12 @@ const styles = {
     zIndex: 1
   },
   input: {
-    backgroundColor: '#232f3a',
+    backgroundColor: BLUE2,
     paddingLeft: 20,
     marginLeft: 0
   },
   icon: {
-    color: '#bcc6d9'
+    color: TEXT_NORMAL
   }
 }
 
