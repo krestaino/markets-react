@@ -8,6 +8,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform'
 
+import { BLUE1 } from './constants'
+
 import store from './store'
 import Home from './components/Home'
 
@@ -45,7 +47,7 @@ export default class App extends Component {
 
 const styles = {
   container: {
-    backgroundColor: '#182129',
+    backgroundColor: BLUE1,
     flex: 1,
     paddingTop: StatusBar.currentHeight
   }
