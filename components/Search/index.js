@@ -14,6 +14,9 @@ class Search extends Component {
     if (this.props.stock.error) {
       this.input._root.focus()
     }
+    if (!this.props.symbol) {
+      this.props.showAutoSuggest(false)
+    }
   }
 
   onChangeText = symbol => {
@@ -48,7 +51,7 @@ class Search extends Component {
             value={this.props.symbol}
           />
         </Item>
-        <AutoSuggest />
+        {this.props.symbol !== '' && <AutoSuggest />}
       </View>
     )
   }

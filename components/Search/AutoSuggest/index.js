@@ -29,23 +29,33 @@ class AutoSuggest extends Component {
   }
 
   render() {
+    const { filteredSearch } = this.state
+
     if (!this.props.autoSuggest) {
       return <View />
     }
+
     return (
-      <View style={styles.container}>
-        <FlatList
-          data={this.state.filteredSearch}
-          keyboardShouldPersistTaps="always"
-          keyExtractor={item => item.symbol}
-          renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => this.onPress(item.symbol)} style={styles.item}>
-              <Text ellipsizeMode="tail" numberOfLines={1}>
-                {item.symbol} – {item.name}
-              </Text>
-            </TouchableOpacity>
-          )}
-        />
+      <View>
+        {filteredSearch.length ? (
+          <FlatList
+            data={filteredSearch}
+            keyboardShouldPersistTaps="always"
+            keyExtractor={item => item.symbol}
+            style={styles.container}
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => this.onPress(item.symbol)} style={styles.item}>
+                <Text ellipsizeMode="tail" numberOfLines={1}>
+                  {item.symbol} – {item.name}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
+        ) : (
+          <View style={styles.container}>
+            <Text style={styles.item}>No results found. Try searching anyways, who knows!?</Text>
+          </View>
+        )}
       </View>
     )
   }
