@@ -6,12 +6,7 @@ import {
   GET_FAVORITES_FAIL
 } from '../../../constants'
 
-const initialState = {
-  data: [],
-  loading: null,
-  error: false,
-  symbols: []
-}
+const initialState = { data: [], loading: null, error: false, symbols: [] }
 
 export const favorites = (state = initialState, action) => {
   switch (action.type) {
@@ -27,11 +22,7 @@ export const favorites = (state = initialState, action) => {
       data.sort((a, b) => a.quote.symbol.localeCompare(b.quote.symbol))
       return { ...state, loading: false, data: data }
     case GET_FAVORITES_FAIL:
-      return {
-        ...state,
-        loading: false,
-        error: 'No results found.'
-      }
+      return { ...state, loading: false, error: 'No results found.' }
     case CLEAR_FAVORITES:
       return { ...state, data: [] }
     default:
