@@ -27,39 +27,43 @@ class Home extends Component {
     </View>
   )
 
+  tabBar = props => (
+    <TabBar
+      {...props}
+      indicatorStyle={styles.tabBar.indicatorStyle}
+      labelStyle={styles.tabBar.labelStyle}
+      pressColor={BLUE2}
+      style={styles.tabBar.self}
+      useNativeDriver={true}
+    />
+  )
+
   componentDidMount = () => this.props.getFavorites(this.props.favorites.symbols)
 
-  render() {
-    return (
-      <View style={[styles.container]}>
-        <TabView
-          navigationState={this.props.tab}
-          onIndexChange={index => this.props.setTab(index)}
-          initialLayout={{ height: 0, width: Dimensions.get('window').width }}
-          renderScene={SceneMap({
-            search: this.stockTab,
-            favorites: this.favoritesTab
-          })}
-          renderTabBar={props => (
-            <TabBar
-              {...props}
-              indicatorStyle={styles.tabBar.indicatorStyle}
-              labelStyle={styles.tabBar.labelStyle}
-              pressColor={BLUE2}
-              style={styles.tabBar.self}
-              useNativeDriver={true}
-            />
-          )}
-        />
-      </View>
-    )
-  }
+  render = () => (
+    <View style={[styles.container]}>
+      <TabView
+        navigationState={this.props.tab}
+        onIndexChange={index => this.props.setTab(index)}
+        initialLayout={styles.initialLayout}
+        renderScene={SceneMap({
+          search: this.stockTab,
+          favorites: this.favoritesTab
+        })}
+        renderTabBar={props => this.tabBar(props)}
+      />
+    </View>
+  )
 }
 
 const styles = {
   container: {
     flex: 1,
     flexDirection: 'column'
+  },
+  initialLayout: {
+    height: 0,
+    width: Dimensions.get('window').width
   },
   tabBar: {
     indicatorStyle: {

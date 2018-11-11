@@ -20,7 +20,7 @@ class Search extends Component {
     }
   }
 
-  componentDidUpdate = () => { 
+  componentDidUpdate = () => {
     if (this.props.stock.error) {
       this.input._root.focus()
     }
@@ -29,29 +29,27 @@ class Search extends Component {
     }
   }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Item searchBar style={styles.input}>
-          <Icon name="ios-search" style={styles.icon} />
-          <Input
-            autoCapitalize="characters"
-            autoCorrect={false}
-            autoFocus={true}
-            clearButtonMode="always"
-            keyboardAppearance="dark"
-            onChangeText={symbol => this.onChangeText(symbol)}
-            onSubmitEditing={this.onSubmitEditing}
-            placeholder="Search by stock symbol"
-            ref={ref => (this.input = ref)}
-            returnKeyType="search"
-            spellCheck={false}
-            value={this.props.symbol}
-          />
-        </Item>
-      </View>
-    )
-  }
+  render = () => (
+    <View style={styles.container}>
+      <Item searchBar style={styles.input}>
+        <Icon name="ios-search" style={styles.icon} />
+        <Input
+          autoCapitalize="characters"
+          autoCorrect={false}
+          autoFocus={true}
+          clearButtonMode="always"
+          keyboardAppearance="dark"
+          onChangeText={symbol => this.onChangeText(symbol)}
+          onSubmitEditing={this.onSubmitEditing}
+          placeholder="Search by stock symbol"
+          ref={ref => (this.input = ref)}
+          returnKeyType="search"
+          spellCheck={false}
+          value={this.props.symbol}
+        />
+      </Item>
+    </View>
+  )
 }
 
 const styles = {
