@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Dimensions, Platform } from 'react-native'
+import { Platform, StatusBar } from 'react-native'
 import { Icon, Fab, Toast, View } from 'native-base'
 import { connect } from 'react-redux'
+import { getStatusBarHeight } from 'react-native-status-bar-height'
 
 import { BLUE0, BLUE3, BLUE4, TEXT_NORMAL } from '../../../constants'
 import { toggleFavorite } from '../../../store/actions/'
@@ -59,13 +60,11 @@ const styles = {
       backgroundColor: BLUE0,
       borderRadius: 6,
       fontSize: 13,
-      marginRight: 16,
       marginLeft: 16,
+      marginRight: 16,
+      marginTop: Platform.OS === 'ios' ? getStatusBarHeight() - 26 : StatusBar.currentHeight + 5,
       minHeight: 0,
-      paddingHorizontal: 6,
-      position: 'absolute',
-      bottom: Platform.OS === 'ios' ? -10 : -44,
-      width: Dimensions.get('window').width - 32
+      paddingHorizontal: 6
     },
     text: {
       color: TEXT_NORMAL,

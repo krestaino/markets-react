@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { SafeAreaView, StatusBar } from 'react-native'
-import { Container, Root, StyleProvider } from 'native-base'
+import { StatusBar } from 'react-native'
+import { Container, Root, StyleProvider, View } from 'native-base'
 import { Font } from 'expo'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -32,12 +32,12 @@ export default class App extends Component {
       <Provider store={store.store}>
         <PersistGate loading={null} persistor={store.persistor}>
           <StyleProvider style={getTheme(platform)}>
-            <SafeAreaView style={[styles.container, styles.padding]}>
+            <View style={styles.container}>
               <Root>
                 <StatusBar barStyle="light-content" />
                 <Home />
               </Root>
-            </SafeAreaView>
+            </View>
           </StyleProvider>
         </PersistGate>
       </Provider>
@@ -48,7 +48,6 @@ export default class App extends Component {
 const styles = {
   container: {
     backgroundColor: BLUE1,
-    flex: 1,
-    paddingTop: StatusBar.currentHeight
+    flex: 1
   }
 }
