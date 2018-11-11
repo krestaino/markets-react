@@ -13,7 +13,7 @@ import Stock from '../Stock'
 import Favorites from '../Favorites'
 
 class Home extends Component {
-  searchRoute = () => (
+  stockTab = () => (
     <View style={styles.container}>
       <Search />
       <AutoSuggest />
@@ -21,28 +21,25 @@ class Home extends Component {
     </View>
   )
 
-  favoritesRoute = () => (
+  favoritesTab = () => (
     <View style={styles.container}>
       <Favorites />
     </View>
   )
 
-  componentDidMount = () => {
-    this.props.setTab(0)
-    this.props.getFavorites(this.props.favorites.symbols)
-  }
+  componentDidMount = () => this.props.getFavorites(this.props.favorites.symbols)
 
   render() {
     return (
       <View style={[styles.container]}>
         <TabView
           navigationState={this.props.tab}
-          renderScene={SceneMap({
-            search: this.searchRoute,
-            favorites: this.favoritesRoute
-          })}
           onIndexChange={index => this.props.setTab(index)}
           initialLayout={{ height: 0, width: Dimensions.get('window').width }}
+          renderScene={SceneMap({
+            search: this.stockTab,
+            favorites: this.favoritesTab
+          })}
           renderTabBar={props => (
             <TabBar
               {...props}
