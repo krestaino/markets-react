@@ -28,8 +28,8 @@ class Home extends Component {
   )
 
   sceneMap = SceneMap({
-    search: this.stockTab,
-    favorites: this.favoritesTab
+    favorites: this.favoritesTab,
+    search: this.stockTab
   })
 
   tabBar = props => (
@@ -46,11 +46,11 @@ class Home extends Component {
   componentDidMount = () => this.props.getFavorites(this.props.favorites.symbols)
 
   render = () => (
-    <View style={[styles.container]}>
+    <View style={styles.container}>
       <TabView
+        initialLayout={styles.initialLayout}
         navigationState={this.props.tab}
         onIndexChange={index => this.props.setTab(index)}
-        initialLayout={styles.initialLayout}
         renderScene={this.sceneMap}
         renderTabBar={props => this.tabBar(props)}
       />
