@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Stock Check",
+    "name": "Markets React",
     "description": "Ever want to check the stock market, but you just couldn't figure out how? Well look no further, this app has got you covered!",
-    "slug": "stock-check",
+    "slug": "markets-react",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
@@ -17,7 +17,7 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.kmr.stockoff",
+      "bundleIdentifier": "com.kmr.marketsreact",
       "supportsTablet": true,
       "splash": {
         "backgroundColor": "#182129",
@@ -27,14 +27,14 @@
       }
     },
     "android": {
-      "package": "com.kmr.stockcheck",
+      "package": "com.kmr.marketsreact",
       "permissions": [],
       "versionCode": 15,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-transparent.png",
         "backgroundColor": "#182129"
       },
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.kmr.stockcheck",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.kmr.marketsreact",
       "splash": {
         "backgroundColor": "#182129",
         "resizeMode": "contain",
