@@ -15,10 +15,10 @@ class AutoSuggest extends Component {
       filteredSearch: []
     }
 
-    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress)
   }
 
-  handleBackPress = () => (this.props.autoSuggest ? this.props.showAutoSuggest(false) : false)
+  onBackPress = () => (this.props.autoSuggest ? this.props.showAutoSuggest(false) : false)
 
   onPress = symbol => {
     this.props.getStock(symbol)
@@ -50,14 +50,14 @@ class AutoSuggest extends Component {
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress)
   }
 
   render() {
     const { filteredSearch } = this.state
 
     if (!this.props.autoSuggest) {
-      return <View />
+      return false
     }
 
     return (

@@ -5,13 +5,7 @@ import { connect } from 'react-redux'
 import { TEXT_DARK } from '../../../constants'
 
 class Details extends Component {
-  formatMarketCap = x => {
-    if (x < 1000000000) {
-      return (x / 1000000).toFixed(2) + 'M'
-    } else {
-      return (x / 1000000000).toFixed(2) + 'B'
-    }
-  }
+  formatMarketCap = x => (x < 1000000000) ? (x / 1000000).toFixed(2) + 'M' : (x / 1000000000).toFixed(2) + 'B'
 
   render() {
     const { quote } = this.props.stock.data

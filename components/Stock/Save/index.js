@@ -11,11 +11,14 @@ class Save extends Component {
 
   onPress = quote => {
     this.props.toggleFavorite(quote.symbol)
+    this.toast(quote.symbol)
+  }
 
-    const text = this.isFavorite(quote.symbol) ? 'removed from' : 'added to'
+  toast = symbol => {
+    const text = this.isFavorite(symbol) ? 'removed from' : 'added to'
 
     Toast.show({
-      text: `${quote.symbol} ${text} favorites.`,
+      text: `${symbol} ${text} favorites.`,
       textStyle: styles.toast.text,
       position: 'top',
       style: styles.toast.self

@@ -8,15 +8,6 @@ import { getStock, setSymbol, showAutoSuggest } from '../../store/actions/'
 class Search extends Component {
   state = { hideAutoSuggest: false }
 
-  componentDidUpdate = () => { 
-    if (this.props.stock.error) {
-      this.input._root.focus()
-    }
-    if (!this.props.symbol) {
-      this.props.showAutoSuggest(false)
-    }
-  }
-
   onChangeText = symbol => {
     this.props.setSymbol(symbol)
     this.props.showAutoSuggest(true)
@@ -25,6 +16,15 @@ class Search extends Component {
   onSubmitEditing = () => {
     if (this.props.symbol) {
       this.props.getStock(this.props.symbol)
+      this.props.showAutoSuggest(false)
+    }
+  }
+
+  componentDidUpdate = () => { 
+    if (this.props.stock.error) {
+      this.input._root.focus()
+    }
+    if (!this.props.symbol) {
       this.props.showAutoSuggest(false)
     }
   }
