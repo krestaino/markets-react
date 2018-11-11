@@ -1,12 +1,12 @@
 # Stock Check
 
-Ever want to check the stock market, but you just couldn't figure out how? Well look no further, this app has got you covered! Built with React Native, Expo and NativeBase using data from EX API.
+Ever want to check the stock market, but you just couldn't figure out how? Well look no further, this app has got you covered! Built with React Native, Expo, and NativeBase using data from EX API.
 
 ![alt tag](assets/screenshots/android_group.png)
 
 ## Getting Started
 
-First, head over to the [Expo installation guide](https://docs.expo.io/versions/latest/introduction/installation.html) to get your development enviorment set up.
+First, head over to the [Expo installation guide](https://docs.expo.io/versions/latest/introduction/installation.html) to get your development environment set up.
 
 ``` bash
 # clone repo
