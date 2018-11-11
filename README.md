@@ -25,7 +25,7 @@ expo build:ios
 ```
 
 ## Store Links
-* [Google Play](https://play.google.com/store/apps/details?id=com.kmr.stockcheck)
+* [Google Play](https://play.google.com/store/apps/details?id=com.kmr.marketsreact)
 * App Store (coming soon!)
 
 ## Built With
