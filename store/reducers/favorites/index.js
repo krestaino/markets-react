@@ -23,7 +23,7 @@ export const favorites = (state = initialState, action) => {
     case GET_FAVORITES:
       return { ...state, loading: true, error: false }
     case GET_FAVORITES_SUCCESS:
-      let data = Object.keys(action.payload.data).map(k => action.payload.data[k])
+      const data = Object.keys(action.payload.data).map(k => action.payload.data[k])
       data.sort((a, b) => a.quote.symbol.localeCompare(b.quote.symbol))
       return { ...state, loading: false, data: data }
     case GET_FAVORITES_FAIL:
