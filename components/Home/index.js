@@ -13,6 +13,12 @@ import Stock from '../Stock'
 import Favorites from '../Favorites'
 
 class Home extends Component {
+  favoritesTab = () => (
+    <View style={styles.container}>
+      <Favorites />
+    </View>
+  )
+
   stockTab = () => (
     <View style={styles.container}>
       <Search />
@@ -21,11 +27,10 @@ class Home extends Component {
     </View>
   )
 
-  favoritesTab = () => (
-    <View style={styles.container}>
-      <Favorites />
-    </View>
-  )
+  sceneMap = SceneMap({
+    search: this.stockTab,
+    favorites: this.favoritesTab
+  })
 
   tabBar = props => (
     <TabBar
@@ -46,10 +51,7 @@ class Home extends Component {
         navigationState={this.props.tab}
         onIndexChange={index => this.props.setTab(index)}
         initialLayout={styles.initialLayout}
-        renderScene={SceneMap({
-          search: this.stockTab,
-          favorites: this.favoritesTab
-        })}
+        renderScene={this.sceneMap}
         renderTabBar={props => this.tabBar(props)}
       />
     </View>
