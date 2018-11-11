@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Dimensions, Platform, StatusBar } from 'react-native'
+import { Dimensions } from 'react-native'
 import { View } from 'native-base'
 import { connect } from 'react-redux'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
-import { getStatusBarHeight } from 'react-native-status-bar-height'
 
 import { BLUE1, BLUE2, TEXT_DARK, TEXT_NORMAL } from '../../constants'
 import { getFavorites, setTab } from '../../store/actions/'
@@ -47,7 +46,7 @@ class Home extends Component {
   componentDidMount = () => this.props.getFavorites(this.props.favorites.symbols)
 
   render = () => (
-    <View style={[styles.container, styles.statusBar]}>
+    <View style={styles.container}>
       <TabView
         initialLayout={styles.initialLayout}
         navigationState={this.props.tab}
@@ -67,9 +66,6 @@ const styles = {
   initialLayout: {
     height: 0,
     width: Dimensions.get('window').width
-  },
-  statusBar: {
-    paddingTop: Platform.OS === 'ios' ? getStatusBarHeight() : StatusBar.currentHeight
   },
   tabBar: {
     indicatorStyle: {

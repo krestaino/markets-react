@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { StatusBar } from 'react-native'
+import { Platform, StatusBar } from 'react-native'
 import { Container, Root, StyleProvider, View } from 'native-base'
 import { Font } from 'expo'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
+import { getStatusBarHeight } from 'react-native-status-bar-height'
 
 import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform'
@@ -48,6 +49,7 @@ export default class App extends Component {
 const styles = {
   container: {
     backgroundColor: BLUE1,
-    flex: 1
+    flex: 1,
+    paddingTop: Platform.OS === 'ios' ? getStatusBarHeight() : StatusBar.currentHeight
   }
 }
