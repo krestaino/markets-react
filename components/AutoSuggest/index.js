@@ -28,6 +28,14 @@ class AutoSuggest extends Component {
     Keyboard.dismiss()
   }
 
+  renderItem = ({ item }) => (
+    <Touchable background={Touchable.Ripple(BLUE3)} onPress={() => this.onPress(item.symbol)} style={styles.item}>
+      <Text ellipsizeMode="tail" numberOfLines={1}>
+        {item.symbol} <Text style={styles.name}>{item.name}</Text>
+      </Text>
+    </Touchable>
+  )
+
   search = symbol => {
     const matches = this.props.symbols.data.filter(stock => stock.symbol.startsWith(symbol)).slice(0, 20)
     this.setState({ filteredSearch: matches })
@@ -56,33 +64,22 @@ class AutoSuggest extends Component {
   render() {
     const { filteredSearch } = this.state
 
-    if (!this.props.autoSuggest) {
+    if (!this.props.autoSuggest || filteredSearch.length === 0) {
       return false
     }
 
     return (
-      <View style={styles.container}>
+      <View>
         {this.props.symbols.loading ? (
           <Spinner color={TEXT_DARK} />
-        ) : filteredSearch.length ? (
+        ) : (
           <FlatList
             data={filteredSearch}
             keyboardShouldPersistTaps="always"
             keyExtractor={item => item.symbol}
-            renderItem={({ item }) => (
-              <Touchable
-                background={Touchable.Ripple(BLUE3)}
-                onPress={() => this.onPress(item.symbol)}
-                style={styles.item}
-              >
-                <Text ellipsizeMode="tail" numberOfLines={1}>
-                  {item.symbol} <Text style={styles.name}>{item.name}</Text>
-                </Text>
-              </Touchable>
-            )}
+            renderItem={item => this.renderItem(item)}
+            style={styles.container}
           />
-        ) : (
-          <Text style={styles.item}>No results found. Try searching anyways.</Text>
         )}
       </View>
     )
