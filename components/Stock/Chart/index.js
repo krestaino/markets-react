@@ -49,12 +49,14 @@ class Chart extends Component {
     const { chart, quote } = this.props.stock.data
     const { width } = Dimensions.get('window')
 
-    const _chart = chart.map(interval => {
-      return {
-        close: interval.close || interval.marketClose || 0,
-        label: interval.label
-      }
-    })
+    const _chart = chart
+      .filter(interval => interval.close || interval.marketClose)
+      .map(interval => {
+        return {
+          close: interval.close || interval.marketClose,
+          label: interval.label
+        }
+      })
 
     const highestClosePrice = Math.max.apply(Math, _chart.map(o => o.close))
     const label = <VictoryLabel style={styles.chart.label} />
@@ -85,7 +87,7 @@ class Chart extends Component {
           >
             <VictoryLine
               data={_chart}
-              style={this.positiveOrNegativeOverTime(_chart[0].close, _chart[chart.length - 1].close)}
+              style={this.positiveOrNegativeOverTime(_chart[0].close, _chart[_chart.length - 1].close)}
               y="close"
               x="label"
             />
