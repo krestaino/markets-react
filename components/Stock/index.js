@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView, Platform, RefreshControl, StyleSheet } from 'react-native'
+import { Platform, RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
 
@@ -28,7 +28,7 @@ class Stock extends Component {
         {isSucess && (
           <View style={styles.container}>
             <Content
-              refreshControl={<RefreshControl refreshing={this.props.stock.loading} onRefresh={this.onRefresh} />}
+              refreshControl={<RefreshControl onRefresh={this.onRefresh} refreshing={this.props.stock.loading} />}
             >
               <Info />
               <Chart />
@@ -39,12 +39,12 @@ class Stock extends Component {
           </View>
         )}
         {isError && (
-          <KeyboardAvoidingView
+          <View
             behavior={Platform.OS === 'ios' ? 'position' : null}
             style={[styles.container, styles.center]}
           >
             <Text>{error}</Text>
-          </KeyboardAvoidingView>
+          </View>
         )}
         {isLoading && (
           <View style={[styles.container, styles.center]}>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   center: {
     alignItems: 'center',
-    justifyContent: 'center'
+    paddingTop: 32
   }
 })
 
