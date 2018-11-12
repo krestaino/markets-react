@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { BackHandler, Dimensions, FlatList, Keyboard, StyleSheet } from 'react-native'
+import { BackHandler, Dimensions, FlatList, Keyboard, Platform, StatusBar, StyleSheet } from 'react-native'
 import { Spinner, Text, View } from 'native-base'
 import { connect } from 'react-redux'
+import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Touchable from 'react-native-platform-touchable'
 
 import { BLUE1, BLUE2, BLUE3, TEXT_DARK } from '../../constants'
@@ -16,6 +17,13 @@ class AutoSuggest extends Component {
     }
 
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress)
+  }
+
+  listHeight = () => {
+    const statusBar = Platform.OS === 'ios' ? getStatusBarHeight() : StatusBar.currentHeight
+    const windowHeight = Dimensions.get('window').height
+    const tabAndSearchHeight = 102
+    return windowHeight - statusBar - tabAndSearchHeight
   }
 
   onBackPress = () => (this.props.autoSuggest ? this.props.showAutoSuggest(false) : false)
@@ -74,11 +82,12 @@ class AutoSuggest extends Component {
           <Spinner color={TEXT_DARK} />
         ) : (
           <FlatList
+            contentInset={{ bottom: 16 }}
             data={filteredSearch}
             keyboardShouldPersistTaps="always"
             keyExtractor={item => item.symbol}
             renderItem={item => this.renderItem(item)}
-            style={styles.container}
+            style={[styles.container, { height: this.listHeight() }]}
           />
         )}
       </View>
@@ -90,8 +99,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: BLUE2,
     borderTopColor: BLUE1,
-    borderTopWidth: 1,
-    height: Dimensions.get('window').height - 120
+    borderTopWidth: 1
   },
   item: {
     paddingHorizontal: 16,
