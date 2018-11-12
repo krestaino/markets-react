@@ -27,6 +27,24 @@ class Chart extends Component {
   positiveOrNegativeOverTime = (x, y) =>
     x > y ? { ...styles.chart.line, ...styles.negative } : { ...styles.chart.line, ...styles.positive }
 
+  chartWidth = (highestClosePrice, width) => {
+    const length = Math.round(highestClosePrice).toString().length
+
+    if (length > 5) {
+      return { width: width + 18, marginLeft: 14 }
+    } else if (length > 4) {
+      return { width: width + 24, marginLeft: 8 }
+    } else if (length > 3) {
+      return { width: width + 30, marginLeft: 2 }
+    } else if (length > 2) {
+      return { width: width + 36, marginLeft: -4 }
+    } else if (length > 1) {
+      return { width: width + 40, marginLeft: -8 }
+    } else {
+      return { width: width + 48, marginLeft: -14 }
+    }
+  }
+
   render() {
     const { chart, quote } = this.props.stock.data
     const { width } = Dimensions.get('window')
@@ -38,6 +56,7 @@ class Chart extends Component {
       }
     })
 
+    const highestClosePrice = Math.max.apply(Math, _chart.map(o => o.close))
     const label = <VictoryLabel style={styles.chart.label} />
     const lineSegment = <LineSegment style={styles.chart.grid} type={'grid'} />
 
@@ -55,8 +74,15 @@ class Chart extends Component {
             </Touchable>
           ))}
         </View>
-        <View pointerEvents="none">
-          <VictoryChart height={250} width={width} style={styles.chart} theme={VictoryTheme.material}>
+        <View
+          pointerEvents="none"
+          style={[styles.chart.parent, { marginLeft: this.chartWidth(highestClosePrice, width).marginLeft }]}
+        >
+          <VictoryChart
+            height={250}
+            width={this.chartWidth(highestClosePrice, width).width}
+            theme={VictoryTheme.material}
+          >
             <VictoryLine
               data={_chart}
               style={this.positiveOrNegativeOverTime(_chart[0].close, _chart[chart.length - 1].close)}
@@ -69,7 +95,12 @@ class Chart extends Component {
               tickCount={4}
               tickLabelComponent={<VictoryLabel style={styles.chart.label} />}
             />
-            <VictoryAxis dependentAxis gridComponent={lineSegment} tickLabelComponent={label} />
+            <VictoryAxis
+              dependentAxis
+              gridComponent={lineSegment}
+              tickLabelComponent={label}
+              tickFormat={t => t.toLocaleString('en-US')}
+            />
           </VictoryChart>
         </View>
       </View>
@@ -123,7 +154,6 @@ const styles = {
       }
     },
     parent: {
-      paddingLeft: 10,
       marginBottom: -10,
       marginTop: -36
     }
