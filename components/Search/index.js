@@ -20,6 +20,8 @@ class Search extends Component {
     }
   }
 
+  componentDidMount = () => setTimeout(() => this.input._root.focus(), 150)
+
   componentDidUpdate = () => {
     if (this.props.stock.error) {
       this.input._root.focus()
@@ -36,7 +38,7 @@ class Search extends Component {
         <Input
           autoCapitalize="characters"
           autoCorrect={false}
-          autoFocus={true}
+          // autoFocus={true}
           clearButtonMode="always"
           keyboardAppearance="dark"
           onChangeText={symbol => this.onChangeText(symbol)}
