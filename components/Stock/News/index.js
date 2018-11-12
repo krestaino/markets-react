@@ -34,7 +34,7 @@ class News extends Component {
 const styles = {
   container: {
     flexDirection: 'column',
-    marginBottom: 64
+    marginBottom: 78
   },
   title: {
     fontWeight: 'bold',
