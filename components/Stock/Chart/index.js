@@ -83,12 +83,6 @@ class Chart extends Component {
             width={this.chartWidth(highestClosePrice, width).width}
             theme={VictoryTheme.material}
           >
-            <VictoryLine
-              data={_chart}
-              style={this.positiveOrNegativeOverTime(_chart[0].close, _chart[_chart.length - 1].close)}
-              y="close"
-              x="label"
-            />
             <VictoryAxis
               crossAxis
               gridComponent={lineSegment}
@@ -100,6 +94,12 @@ class Chart extends Component {
               gridComponent={lineSegment}
               tickLabelComponent={label}
               tickFormat={t => t.toLocaleString('en-US')}
+            />
+            <VictoryLine
+              data={_chart}
+              style={this.positiveOrNegativeOverTime(_chart[0].close, _chart[_chart.length - 1].close)}
+              y="close"
+              x="label"
             />
           </VictoryChart>
         </View>
