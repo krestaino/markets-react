@@ -39,7 +39,6 @@ class Search extends Component {
         <Input
           autoCapitalize="characters"
           autoCorrect={false}
-          // autoFocus={true}
           clearButtonMode="always"
           keyboardAppearance="dark"
           onChangeText={symbol => this.onChangeText(symbol)}
