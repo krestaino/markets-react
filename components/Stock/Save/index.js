@@ -73,14 +73,12 @@ const styles = {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    autoSuggest: state.autoSuggest,
-    favorites: state.favorites,
-    stock: state.stock,
-    symbol: state.symbol
-  }
-}
+const mapStateToProps = state => ({
+  autoSuggest: state.autoSuggest,
+  favorites: state.favorites,
+  stock: state.stock,
+  symbol: state.symbol
+})
 
 const mapDispatchToProps = {
   toggleFavorite

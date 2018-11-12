@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, Platform, RefreshControl } from 'react-native'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { TEXT_DARK } from  '../../constants'
+import { TEXT_DARK } from '../../constants'
 import { getStock } from '../../store/actions/'
 
 import Info from './Info'
@@ -67,12 +67,10 @@ const styles = {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    stock: state.stock,
-    symbol: state.symbol
-  }
-}
+const mapStateToProps = state => ({
+  stock: state.stock,
+  symbol: state.symbol
+})
 
 const mapDispatchToProps = {
   getStock

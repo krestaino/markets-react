@@ -68,12 +68,10 @@ const styles = {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    stock: state.stock,
-    symbol: state.symbol
-  }
-}
+const mapStateToProps = state => ({
+  stock: state.stock,
+  symbol: state.symbol
+})
 
 const mapDispatchToProps = {
   getStock,

@@ -81,12 +81,10 @@ const styles = {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    favorites: state.favorites,
-    tab: state.tab
-  }
-}
+const mapStateToProps = state => ({
+  favorites: state.favorites,
+  tab: state.tab
+})
 
 const mapDispatchToProps = {
   getFavorites,

@@ -103,13 +103,11 @@ const styles = {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    autoSuggest: state.autoSuggest,
-    symbol: state.symbol,
-    symbols: state.symbols
-  }
-}
+const mapStateToProps = state => ({
+  autoSuggest: state.autoSuggest,
+  symbol: state.symbol,
+  symbols: state.symbols
+})
 
 const mapDispatchToProps = {
   getStock,

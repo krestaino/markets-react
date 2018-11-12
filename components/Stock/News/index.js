@@ -61,10 +61,8 @@ const styles = {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    stock: state.stock
-  }
-}
+const mapStateToProps = state => ({
+  stock: state.stock
+})
 
 export default connect(mapStateToProps)(News)

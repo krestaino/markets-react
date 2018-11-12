@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { TEXT_DARK } from '../../../constants'
 
 class Details extends Component {
-  formatMarketCap = x => (x < 1000000000) ? (x / 1000000).toFixed(2) + 'M' : (x / 1000000000).toFixed(2) + 'B'
+  formatMarketCap = x => (x < 1000000000 ? (x / 1000000).toFixed(2) + 'M' : (x / 1000000000).toFixed(2) + 'B')
 
   render() {
     const { quote } = this.props.stock.data
@@ -82,10 +82,8 @@ const styles = {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    stock: state.stock
-  }
-}
+const mapStateToProps = state => ({
+  stock: state.stock
+})
 
 export default connect(mapStateToProps)(Details)

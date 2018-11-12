@@ -51,12 +51,11 @@ class Chart extends Component {
 
     const _chart = chart
       .filter(interval => interval.close || interval.marketClose)
-      .map(interval => {
-        return {
+      .map(interval => ({
           close: interval.close || interval.marketClose,
           label: interval.label
-        }
-      })
+        })
+      )
 
     const highestClosePrice = Math.max.apply(Math, _chart.map(o => o.close))
     const label = <VictoryLabel style={styles.chart.label} />
