@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Dimensions, View } from 'react-native'
-import { Text } from 'native-base'
+import { Dimensions, StyleSheet } from 'react-native'
+import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { LineSegment, VictoryChart, VictoryAxis, VictoryLabel, VictoryLine, VictoryTheme } from 'victory-native'
 import Touchable from 'react-native-platform-touchable'
@@ -22,10 +22,10 @@ class Chart extends Component {
     ]
   }
 
-  activeRangeStyles = range => (this.props.stock.range === range ? styles.ranges.activeRange : null)
+  activeRangeStyles = range => (this.props.stock.range === range ? styles.rangesActive : null)
 
   positiveOrNegativeOverTime = (x, y) =>
-    x > y ? { ...styles.chart.line, ...styles.negative } : { ...styles.chart.line, ...styles.positive }
+    x > y ? { ...svgStyles.chartLine, ...svgStyles.negative } : { ...svgStyles.chartLine, ...svgStyles.positive }
 
   chartWidth = (highestClosePrice, width) => {
     const length = Math.round(highestClosePrice).toString().length
@@ -52,32 +52,31 @@ class Chart extends Component {
     const _chart = chart
       .filter(interval => interval.close || interval.marketClose)
       .map(interval => ({
-          close: interval.close || interval.marketClose,
-          label: interval.label
-        })
-      )
+        close: interval.close || interval.marketClose,
+        label: interval.label
+      }))
 
     const highestClosePrice = Math.max.apply(Math, _chart.map(o => o.close))
-    const label = <VictoryLabel style={styles.chart.label} />
-    const lineSegment = <LineSegment style={styles.chart.grid} type={'grid'} />
+    const label = <VictoryLabel style={svgStyles.chartLabel} />
+    const lineSegment = <LineSegment style={svgStyles.chartGrid} type={'grid'} />
 
     return (
       <View>
-        <View style={styles.ranges.container}>
+        <View style={styles.rangesContainer}>
           {this.state.ranges.map((range, index) => (
             <Touchable
               background={Touchable.Ripple(BLUE2)}
               key={index}
               onPress={() => this.props.getStock(quote.symbol, range.query)}
-              style={styles.ranges.button}
+              style={styles.rangesButton}
             >
-              <Text style={[styles.ranges.label, this.activeRangeStyles(range.query)]}>{range.label}</Text>
+              <Text style={[styles.rangesLabel, this.activeRangeStyles(range.query)]}>{range.label}</Text>
             </Touchable>
           ))}
         </View>
         <View
           pointerEvents="none"
-          style={[styles.chart.parent, { marginLeft: this.chartWidth(highestClosePrice, width).marginLeft }]}
+          style={[styles.chart, { marginLeft: this.chartWidth(highestClosePrice, width).marginLeft }]}
         >
           <VictoryChart
             height={250}
@@ -94,7 +93,7 @@ class Chart extends Component {
               crossAxis
               gridComponent={lineSegment}
               tickCount={4}
-              tickLabelComponent={<VictoryLabel style={styles.chart.label} />}
+              tickLabelComponent={<VictoryLabel style={svgStyles.chartLabel} />}
             />
             <VictoryAxis
               dependentAxis
@@ -109,7 +108,32 @@ class Chart extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
+  chart: {
+    marginBottom: -10,
+    marginTop: -36
+  },
+  rangesActive: {
+    color: TEXT_NORMAL
+  },
+  rangesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+    paddingHorizontal: 16
+  },
+  rangesButton: {
+    alignItems: 'center',
+    flex: 1,
+    paddingVertical: 12
+  },
+  rangesLabel: {
+    color: TEXT_DARK,
+    fontSize: 12
+  }
+})
+
+const svgStyles = {
   positive: {
     data: {
       stroke: GREEN
@@ -120,43 +144,17 @@ const styles = {
       stroke: RED
     }
   },
-  ranges: {
-    container: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginBottom: 8,
-      paddingHorizontal: 16
-    },
-    activeRange: {
-      color: TEXT_NORMAL
-    },
-    button: {
-      alignItems: 'center',
-      flex: 1,
-      paddingVertical: 12
-    },
-    label: {
-      color: TEXT_DARK,
-      fontSize: 12
-    }
+  chartGrid: {
+    stroke: BLUE2
   },
-  chart: {
-    grid: {
-      stroke: BLUE2
-    },
-    label: {
-      fill: TEXT_DARK,
-      fontSize: '11',
-      stroke: 'transparent'
-    },
-    line: {
-      labels: {
-        fill: 'transparent'
-      }
-    },
-    parent: {
-      marginBottom: -10,
-      marginTop: -36
+  chartLabel: {
+    fill: TEXT_DARK,
+    fontSize: '11',
+    stroke: 'transparent'
+  },
+  chartLine: {
+    labels: {
+      fill: 'transparent'
     }
   }
 }
