@@ -2,7 +2,7 @@
 
 Ever want to check the stock market, but you just couldn't figure out how? Well look no further, this app has got you covered! Built with React Native, Expo, and NativeBase using data from EX API.
 
-![alt tag](assets/screenshots/android_group.png)
+![alt tag](assets/github/screenshot.png)
 
 ## Getting Started
 
