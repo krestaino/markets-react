@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 import { Icon, Fab, Toast, View } from 'native-base'
 import { connect } from 'react-redux'
 
@@ -19,9 +19,9 @@ class Save extends Component {
 
     Toast.show({
       text: `${symbol} ${text} favorites.`,
-      textStyle: styles.toast.text,
+      textStyle: styles.text,
       position: 'top',
-      style: styles.toast.self
+      style: styles.toast
     })
   }
 
@@ -44,7 +44,7 @@ class Save extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   favorite: {
     backgroundColor: BLUE4
   },
@@ -55,23 +55,21 @@ const styles = {
     color: '#fff'
   },
   toast: {
-    self: {
-      backgroundColor: BLUE0,
-      borderRadius: 6,
-      fontSize: 13,
-      marginLeft: 16,
-      marginRight: 16,
-      marginTop: Platform.OS === 'ios' ? -26 : 5,
-      minHeight: 0,
-      paddingHorizontal: 6
-    },
-    text: {
-      color: TEXT_NORMAL,
-      fontSize: 13,
-      textAlign: 'center'
-    }
+    backgroundColor: BLUE0,
+    borderRadius: 6,
+    fontSize: 13,
+    marginLeft: 16,
+    marginRight: 16,
+    marginTop: Platform.OS === 'ios' ? -26 : 5,
+    minHeight: 0,
+    paddingHorizontal: 6
+  },
+  text: {
+    color: TEXT_NORMAL,
+    fontSize: 13,
+    textAlign: 'center'
   }
-}
+})
 
 const mapStateToProps = state => ({
   autoSuggest: state.autoSuggest,

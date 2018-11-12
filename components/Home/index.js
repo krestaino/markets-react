@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
 import { View } from 'native-base'
 import { connect } from 'react-redux'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
@@ -35,10 +35,10 @@ class Home extends Component {
   tabBar = props => (
     <TabBar
       {...props}
-      indicatorStyle={styles.tabBar.indicatorStyle}
-      labelStyle={styles.tabBar.labelStyle}
+      indicatorStyle={styles.indicatorStyle}
+      labelStyle={styles.labelStyle}
       pressColor={BLUE2}
-      style={styles.tabBar.self}
+      style={styles.tabBar}
       useNativeDriver={true}
     />
   )
@@ -58,7 +58,7 @@ class Home extends Component {
   )
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column'
@@ -67,19 +67,17 @@ const styles = {
     height: 0,
     width: Dimensions.get('window').width
   },
+  indicatorStyle: {
+    backgroundColor: TEXT_DARK
+  },
+  labelStyle: {
+    color: TEXT_NORMAL
+  },
   tabBar: {
-    indicatorStyle: {
-      backgroundColor: TEXT_DARK
-    },
-    labelStyle: {
-      color: TEXT_NORMAL
-    },
-    self: {
-      backgroundColor: BLUE1,
-      elevation: 0
-    }
+    backgroundColor: BLUE1,
+    elevation: 0
   }
-}
+})
 
 const mapStateToProps = state => ({
   favorites: state.favorites,

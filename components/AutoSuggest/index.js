@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BackHandler, Dimensions, FlatList, Keyboard } from 'react-native'
+import { BackHandler, Dimensions, FlatList, Keyboard, StyleSheet } from 'react-native'
 import { Spinner, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import Touchable from 'react-native-platform-touchable'
@@ -86,7 +86,7 @@ class AutoSuggest extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     backgroundColor: BLUE2,
     borderTopColor: BLUE1,
@@ -101,7 +101,7 @@ const styles = {
     color: TEXT_DARK,
     fontSize: 13
   }
-}
+})
 
 const mapStateToProps = state => ({
   autoSuggest: state.autoSuggest,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView, Platform, RefreshControl } from 'react-native'
+import { KeyboardAvoidingView, Platform, RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
 
@@ -56,7 +56,7 @@ class Stock extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column'
@@ -65,7 +65,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center'
   }
-}
+})
 
 const mapStateToProps = state => ({
   stock: state.stock,

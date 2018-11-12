@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { RefreshControl } from 'react-native'
+import { RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import Touchable from 'react-native-platform-touchable'
@@ -68,7 +68,7 @@ class Favorites extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   button: {
     backgroundColor: 'transparent',
     elevation: 0,
@@ -92,7 +92,7 @@ const styles = {
   stockChange: {
     fontSize: 13
   }
-}
+})
 
 const mapStateToProps = state => ({
   favorites: state.favorites,

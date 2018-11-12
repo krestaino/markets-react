@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Linking } from 'react-native'
+import { Linking, StyleSheet } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { format } from 'date-fns'
@@ -31,7 +31,7 @@ class News extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     marginBottom: 78
@@ -59,7 +59,7 @@ const styles = {
   summary: {
     marginTop: 8
   }
-}
+})
 
 const mapStateToProps = state => ({
   stock: state.stock

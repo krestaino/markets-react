@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { StyleSheet } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
@@ -53,7 +54,7 @@ class Details extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -80,7 +81,7 @@ const styles = {
     color: TEXT_DARK,
     fontSize: 14
   }
-}
+})
 
 const mapStateToProps = state => ({
   stock: state.stock

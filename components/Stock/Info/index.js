@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { StyleSheet } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { format } from 'date-fns'
@@ -33,7 +34,7 @@ class Info extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     padding: 16
   },
@@ -53,7 +54,7 @@ const styles = {
     color: TEXT_DARK,
     fontSize: 12
   }
-}
+})
 
 const mapStateToProps = state => ({
   stock: state.stock

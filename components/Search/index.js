@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { StyleSheet } from 'react-native'
 import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
@@ -54,7 +55,7 @@ class Search extends Component {
   )
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     zIndex: 1
   },
@@ -66,7 +67,7 @@ const styles = {
   icon: {
     color: TEXT_NORMAL
   }
-}
+})
 
 const mapStateToProps = state => ({
   stock: state.stock,
