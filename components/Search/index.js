@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { Colors } from '../../constants'
+import { Colors, Ranges } from '../../constants'
 import { getStock, setSymbol, showAutoSuggest } from '../../store/actions/'
 
 class Search extends Component {
