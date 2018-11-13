@@ -3,7 +3,7 @@ import { Platform, RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, Spinner, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { TEXT_DARK } from '../../constants'
+import { Colors } from '../../constants'
 import { getStock } from '../../store/actions/'
 
 import Info from './Info'
@@ -48,7 +48,7 @@ class Stock extends Component {
         )}
         {isLoading && (
           <View style={[styles.container, styles.center]}>
-            <Spinner color={TEXT_DARK} />
+            <Spinner color={Colors.TEXT_DARK} />
           </View>
         )}
       </View>

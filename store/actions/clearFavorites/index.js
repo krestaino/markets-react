@@ -1,7 +1,7 @@
-import { CLEAR_FAVORITES } from '../../../constants'
+import { Actions } from '../../../constants'
 
 export const clearFavorites = () => {
   return {
-    type: CLEAR_FAVORITES
+    type: Actions.CLEAR_FAVORITES
   }
 }

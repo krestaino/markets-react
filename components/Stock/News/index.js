@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { format } from 'date-fns'
 import Touchable from 'react-native-platform-touchable'
 
-import { BLUE2, TEXT_DARK } from '../../../constants'
+import { Colors } from '../../../constants'
 
 class News extends Component {
   render() {
@@ -15,7 +15,7 @@ class News extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>News</Text>
         {news.map((article, index) => (
-          <Touchable background={Touchable.Ripple(BLUE2)} key={index} onPress={() => Linking.openURL(article.url)}>
+          <Touchable background={Touchable.Ripple(Colors.BLUE2)} key={index} onPress={() => Linking.openURL(article.url)}>
             <View style={styles.item}>
               <Text style={styles.preHeadline}>
                 {article.source} – {format(article.datetime, 'MMM D, h:mm a')}
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12
   },
   preHeadline: {
-    color: TEXT_DARK,
+    color: Colors.TEXT_DARK,
     fontSize: 13
   },
   headline: {

@@ -4,7 +4,7 @@ import { View } from 'native-base'
 import { connect } from 'react-redux'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 
-import { BLUE1, BLUE2, TEXT_DARK, TEXT_NORMAL } from '../../constants'
+import { Colors } from '../../constants'
 import { getFavorites, setTab } from '../../store/actions/'
 
 import Search from '../Search'
@@ -37,7 +37,7 @@ class Home extends Component {
       {...props}
       indicatorStyle={styles.indicatorStyle}
       labelStyle={styles.labelStyle}
-      pressColor={BLUE2}
+      pressColor={Colors.BLUE2}
       style={styles.tabBar}
       useNativeDriver={true}
     />
@@ -68,13 +68,13 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   indicatorStyle: {
-    backgroundColor: TEXT_DARK
+    backgroundColor: Colors.TEXT_DARK
   },
   labelStyle: {
-    color: TEXT_NORMAL
+    color: Colors.TEXT_NORMAL
   },
   tabBar: {
-    backgroundColor: BLUE1,
+    backgroundColor: Colors.BLUE1,
     elevation: 0
   }
 })

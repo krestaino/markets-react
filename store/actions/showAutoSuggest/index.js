@@ -1,8 +1,8 @@
-import { SHOW_AUTOSUGGEST } from '../../../constants'
+import { Actions } from '../../../constants'
 
 export const showAutoSuggest = symbol => {
   return {
-    type: SHOW_AUTOSUGGEST,
+    type: Actions.SHOW_AUTOSUGGEST,
     payload: symbol
   }
 }

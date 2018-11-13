@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { TEXT_DARK } from '../../../constants'
+import { Colors } from '../../../constants'
 
 class Details extends Component {
   formatMarketCap = x => (x < 1000000000 ? (x / 1000000).toFixed(2) + 'M' : (x / 1000000000).toFixed(2) + 'B')
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   value: {
-    color: TEXT_DARK,
+    color: Colors.TEXT_DARK,
     fontSize: 14
   }
 })

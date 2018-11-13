@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Touchable from 'react-native-platform-touchable'
 
-import { BLUE1, BLUE2, BLUE3, ONE_MONTH, TEXT_DARK } from '../../constants'
+import { Colors, Ranges } from '../../constants'
 import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../store/actions'
 
 class AutoSuggest extends Component {
@@ -29,7 +29,7 @@ class AutoSuggest extends Component {
   onBackPress = () => (this.props.autoSuggest ? this.props.showAutoSuggest(false) : false)
 
   onPress = symbol => {
-    this.props.getStock(symbol, ONE_MONTH)
+    this.props.getStock(symbol, Ranges.ONE_MONTH)
     this.props.setSymbol(symbol)
     this.props.showAutoSuggest(false)
     this.setState({ filteredSearch: [] })
@@ -37,7 +37,7 @@ class AutoSuggest extends Component {
   }
 
   renderItem = ({ item }) => (
-    <Touchable background={Touchable.Ripple(BLUE3)} onPress={() => this.onPress(item.symbol)} style={styles.item}>
+    <Touchable background={Touchable.Ripple(Colors.BLUE3)} onPress={() => this.onPress(item.symbol)} style={styles.item}>
       <Text ellipsizeMode="tail" numberOfLines={1}>
         {item.symbol} <Text style={styles.name}>{item.name}</Text>
       </Text>
@@ -79,7 +79,7 @@ class AutoSuggest extends Component {
     return (
       <View>
         {this.props.symbols.loading ? (
-          <Spinner color={TEXT_DARK} />
+          <Spinner color={Colors.TEXT_DARK} />
         ) : (
           <FlatList
             contentInset={{ bottom: 16 }}
@@ -97,8 +97,8 @@ class AutoSuggest extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: BLUE2,
-    borderTopColor: BLUE1,
+    backgroundColor: Colors.BLUE2,
+    borderTopColor: Colors.BLUE1,
     borderTopWidth: 1
   },
   item: {
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12
   },
   name: {
-    color: TEXT_DARK,
+    color: Colors.TEXT_DARK,
     fontSize: 13
   }
 })

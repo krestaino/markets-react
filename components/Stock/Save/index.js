@@ -3,7 +3,7 @@ import { Platform, StyleSheet } from 'react-native'
 import { Icon, Fab, Toast, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { BLUE0, BLUE3, BLUE4, TEXT_NORMAL } from '../../../constants'
+import { Colors } from '../../../constants'
 import { toggleFavorite } from '../../../store/actions/'
 
 class Save extends Component {
@@ -46,16 +46,16 @@ class Save extends Component {
 
 const styles = StyleSheet.create({
   favorite: {
-    backgroundColor: BLUE4
+    backgroundColor: Colors.BLUE4
   },
   notFavorite: {
-    backgroundColor: BLUE3
+    backgroundColor: Colors.BLUE3
   },
   icon: {
     color: '#fff'
   },
   toast: {
-    backgroundColor: BLUE0,
+    backgroundColor: Colors.BLUE0,
     borderRadius: 6,
     fontSize: 13,
     marginLeft: 16,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6
   },
   text: {
-    color: TEXT_NORMAL,
+    color: Colors.TEXT_NORMAL,
     fontSize: 13,
     textAlign: 'center'
   }

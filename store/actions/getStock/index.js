@@ -1,8 +1,8 @@
-import { GET_STOCK } from '../../../constants'
+import { Actions } from '../../../constants'
 
 export const getStock = (symbol, range) => {
   return {
-    type: GET_STOCK,
+    type: Actions.GET_STOCK,
     payload: {
       range: range,
       request: {

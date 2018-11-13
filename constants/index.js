@@ -1,34 +1,3 @@
-export const GET_STOCK = 'GET_STOCK'
-export const GET_STOCK_SUCCESS = 'GET_STOCK_SUCCESS'
-export const GET_STOCK_FAIL = 'GET_STOCK_FAIL'
-export const GET_SYMBOLS = 'GET_SYMBOLS'
-export const GET_SYMBOLS_SUCCESS = 'GET_SYMBOLS_SUCCESS'
-export const GET_SYMBOLS_FAIL = 'GET_SYMBOLS_FAIL'
-export const SET_SYMBOL = 'SET_SYMBOL'
-export const SET_TAB = 'SET_TAB'
-export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
-export const GET_FAVORITES = 'GET_FAVORITES'
-export const GET_FAVORITES_SUCCESS = 'GET_FAVORITES_SUCCESS'
-export const GET_FAVORITES_FAIL = 'GET_FAVORITES_FAIL'
-export const CLEAR_FAVORITES = 'CLEAR_FAVORITES'
-export const SHOW_AUTOSUGGEST = 'SHOW_AUTOSUGGEST'
-
-export const BLUE0 = '#15191d'
-export const BLUE1 = '#182129'
-export const BLUE2 = '#232f3a'
-export const BLUE3 = '#2f4356'
-export const BLUE4 = '#2582e0'
-export const TEXT_NORMAL = '#bcc6d9'
-export const TEXT_DARK = '#6d788c'
-export const RED = '#d23f31'
-export const GREEN = '#0f9d58'
-export const PINK = '#b257c5'
-
-export const ONE_DAY = { query: '1d', interval: 6 }
-export const ONE_MONTH = { query: '1m', interval: 1 }
-export const THREE_MONTHS = { query: '3m', interval: 1 }
-export const SIX_MONTHS = { query: '6m', interval: 1 }
-export const YEAR_TO_DATE = { query: 'ytd', interval: 2 }
-export const ONE_YEAR = { query: '1y', interval: 2 }
-export const TWO_YEARS = { query: '2y', interval: 4 }
-export const FIVE_YEARS = { query: '5y', interval: 8 }
+export * from './Actions'
+export * from './Colors'
+export * from './Ranges'

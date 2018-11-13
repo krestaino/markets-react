@@ -5,34 +5,20 @@ import { connect } from 'react-redux'
 import { LineSegment, VictoryChart, VictoryAxis, VictoryLabel, VictoryLine, VictoryTheme } from 'victory-native'
 import Touchable from 'react-native-platform-touchable'
 
-import {
-  BLUE2,
-  GREEN,
-  RED,
-  TEXT_DARK,
-  TEXT_NORMAL,
-  ONE_DAY,
-  ONE_MONTH,
-  THREE_MONTHS,
-  SIX_MONTHS,
-  YEAR_TO_DATE,
-  ONE_YEAR,
-  TWO_YEARS,
-  FIVE_YEARS
-} from '../../../constants'
+import { Colors, Ranges } from '../../../constants'
 import { getStock } from '../../../store/actions/getStock'
 
 class Chart extends Component {
   state = {
     ranges: [
-      { label: '1d', range: ONE_DAY },
-      { label: '1m', range: ONE_MONTH },
-      { label: '3m', range: THREE_MONTHS },
-      { label: '6m', range: SIX_MONTHS },
-      { label: 'YTD', range: YEAR_TO_DATE },
-      { label: '1y', range: ONE_YEAR },
-      { label: '2y', range: TWO_YEARS },
-      { label: '5y', range: FIVE_YEARS }
+      { label: '1d', range: Ranges.ONE_DAY },
+      { label: '1m', range: Ranges.ONE_MONTH },
+      { label: '3m', range: Ranges.THREE_MONTHS },
+      { label: '6m', range: Ranges.SIX_MONTHS },
+      { label: 'YTD', range: Ranges.YEAR_TO_DATE },
+      { label: '1y', range: Ranges.ONE_YEAR },
+      { label: '2y', range: Ranges.TWO_YEARS },
+      { label: '5y', range: Ranges.FIVE_YEARS }
     ]
   }
 
@@ -79,7 +65,7 @@ class Chart extends Component {
         <View style={styles.rangesContainer}>
           {this.state.ranges.map((range, index) => (
             <Touchable
-              background={Touchable.Ripple(BLUE2)}
+              background={Touchable.Ripple(Colors.BLUE2)}
               key={index}
               onPress={() => this.props.getStock(quote.symbol, range.range)}
               style={styles.rangesButton}
@@ -128,7 +114,7 @@ const styles = StyleSheet.create({
     marginTop: -36
   },
   rangesActive: {
-    color: TEXT_NORMAL
+    color: Colors.TEXT_NORMAL
   },
   rangesContainer: {
     flexDirection: 'row',
@@ -142,7 +128,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12
   },
   rangesLabel: {
-    color: TEXT_DARK,
+    color: Colors.TEXT_DARK,
     fontSize: 12
   }
 })
@@ -150,19 +136,19 @@ const styles = StyleSheet.create({
 const svgStyles = {
   positive: {
     data: {
-      stroke: GREEN
+      stroke: Colors.GREEN
     }
   },
   negative: {
     data: {
-      stroke: RED
+      stroke: Colors.RED
     }
   },
   chartGrid: {
-    stroke: BLUE2
+    stroke: Colors.BLUE2
   },
   chartLabel: {
-    fill: TEXT_DARK,
+    fill: Colors.TEXT_DARK,
     fontSize: '11',
     stroke: 'transparent'
   },

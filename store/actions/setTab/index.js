@@ -1,8 +1,8 @@
-import { SET_TAB } from '../../../constants'
+import { Actions } from '../../../constants'
 
 export const setTab = index => {
   return {
-    type: SET_TAB,
+    type: Actions.SET_TAB,
     payload: index
   }
 }

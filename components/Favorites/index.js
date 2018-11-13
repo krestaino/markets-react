@@ -4,13 +4,13 @@ import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import Touchable from 'react-native-platform-touchable'
 
-import { BLUE2, ONE_MONTH, TEXT_DARK } from '../../constants'
+import { Colors, Ranges } from '../../constants'
 import { clearFavorites, getFavorites, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 
 class Favorites extends Component {
   onPress = symbol => {
-    this.props.getStock(symbol, ONE_MONTH)
+    this.props.getStock(symbol, Ranges.ONE_MONTH)
     this.props.setSymbol(symbol)
     this.props.showAutoSuggest(false)
     this.props.setTab(0)
@@ -34,7 +34,7 @@ class Favorites extends Component {
         {data.map((stock, index) => {
           return (
             <Touchable
-              background={Touchable.Ripple(BLUE2)}
+              background={Touchable.Ripple(Colors.BLUE2)}
               key={index}
               style={styles.button}
               onPress={() => this.onPress(stock.quote.symbol)}
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   companyName: {
-    color: TEXT_DARK,
+    color: Colors.TEXT_DARK,
     flex: 1,
     fontSize: 13
   },

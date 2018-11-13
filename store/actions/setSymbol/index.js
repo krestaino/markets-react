@@ -1,8 +1,8 @@
-import { SET_SYMBOL } from '../../../constants'
+import { Actions } from '../../../constants'
 
 export const setSymbol = symbol => {
   return {
-    type: SET_SYMBOL,
+    type: Actions.SET_SYMBOL,
     payload: symbol
   }
 }

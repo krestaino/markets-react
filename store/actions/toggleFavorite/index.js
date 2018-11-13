@@ -1,8 +1,8 @@
-import { TOGGLE_FAVORITE } from '../../../constants'
+import { Actions } from '../../../constants'
 
 export const toggleFavorite = stock => {
   return {
-    type: TOGGLE_FAVORITE,
+    type: Actions.TOGGLE_FAVORITE,
     payload: stock
   }
 }

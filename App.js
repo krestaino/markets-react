@@ -9,7 +9,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height'
 import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform'
 
-import { BLUE1 } from './constants'
+import { Colors } from './constants'
 import store from './store'
 
 import Home from './components/Home'
@@ -48,7 +48,7 @@ export default class App extends Component {
 
 const styles = {
   container: {
-    backgroundColor: BLUE1,
+    backgroundColor: Colors.BLUE1,
     flex: 1,
     paddingTop: Platform.OS === 'ios' ? getStatusBarHeight() : StatusBar.currentHeight
   }
