@@ -30,18 +30,21 @@ class Chart extends Component {
   chartWidth = (highestClosePrice, width) => {
     const length = Math.round(highestClosePrice).toString().length
 
-    if (length > 5) {
-      return { width: width + 18, marginLeft: 14 }
-    } else if (length > 4) {
-      return { width: width + 24, marginLeft: 8 }
-    } else if (length > 3) {
-      return { width: width + 30, marginLeft: 2 }
-    } else if (length > 2) {
-      return { width: width + 36, marginLeft: -4 }
-    } else if (length > 1) {
-      return { width: width + 40, marginLeft: -8 }
-    } else {
-      return { width: width + 48, marginLeft: -14 }
+    switch (length) {
+      case 6:
+        return { marginLeft: 18, width: width + 2 }
+      case 5:
+        return { marginLeft: 12, width: width + 8 }
+      case 4:
+        return { marginLeft: 6, width: width + 14 }
+      case 3:
+        return { marginLeft: 2, width: width + 20 }
+      case 2:
+        return { marginLeft: -2, width: width + 24 }
+      case 1:
+        return { marginLeft: -10, width: width + 32 }
+      default:
+        return { marginLeft: 0, width: width }
     }
   }
 
@@ -56,7 +59,7 @@ class Chart extends Component {
         label: interval.label
       }))
 
-    const highestClosePrice = Math.max.apply(Math, _chart.map(o => o.close))
+    const highestClosePrice = Math.max.apply(Math, _chart.map(interval => interval.close))
     const label = <VictoryLabel style={svgStyles.chartLabel} />
     const lineSegment = <LineSegment style={svgStyles.chartGrid} type={'grid'} />
 
