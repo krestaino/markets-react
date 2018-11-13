@@ -37,7 +37,11 @@ class AutoSuggest extends Component {
   }
 
   renderItem = ({ item }) => (
-    <Touchable background={Touchable.Ripple(Colors.BLUE3)} onPress={() => this.onPress(item.symbol)} style={styles.item}>
+    <Touchable
+      background={Touchable.Ripple(Colors.BLUE3)}
+      onPress={() => this.onPress(item.symbol)}
+      style={styles.item}
+    >
       <Text ellipsizeMode="tail" numberOfLines={1}>
         {item.symbol} <Text style={styles.name}>{item.name}</Text>
       </Text>
@@ -72,7 +76,7 @@ class AutoSuggest extends Component {
   render() {
     const { filteredSearch } = this.state
 
-    if (!this.props.autoSuggest || filteredSearch.length === 0) {
+    if (!this.props.autoSuggest) {
       return false
     }
 
@@ -81,14 +85,16 @@ class AutoSuggest extends Component {
         {this.props.symbols.loading ? (
           <Spinner color={Colors.TEXT_DARK} />
         ) : (
-          <FlatList
-            contentInset={{ bottom: 16 }}
-            data={filteredSearch}
-            keyboardShouldPersistTaps="always"
-            keyExtractor={item => item.symbol}
-            renderItem={item => this.renderItem(item)}
-            style={[styles.container, { height: this.listHeight() }]}
-          />
+          filteredSearch.length !== 0 && (
+            <FlatList
+              contentInset={{ bottom: 16 }}
+              data={filteredSearch}
+              keyboardShouldPersistTaps="always"
+              keyExtractor={item => item.symbol}
+              renderItem={item => this.renderItem(item)}
+              style={[styles.container, { height: this.listHeight() }]}
+            />
+          )
         )}
       </View>
     )
