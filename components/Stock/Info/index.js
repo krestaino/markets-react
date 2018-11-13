@@ -28,7 +28,7 @@ class Info extends Component {
             </Text>
           </Text>
         </Text>
-        <Text style={styles.latestUpdate}>{format(new Date(quote.latestUpdate), 'MMM D, h:mm A [EST]')}</Text>
+        <Text style={styles.latestUpdate}>{format(quote.latestUpdate, 'MMM D, h:mm A')}</Text>
       </View>
     )
   }
