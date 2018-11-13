@@ -4,13 +4,13 @@ import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import Touchable from 'react-native-platform-touchable'
 
-import { BLUE2, TEXT_DARK } from '../../constants'
+import { BLUE2, ONE_MONTH, TEXT_DARK } from '../../constants'
 import { clearFavorites, getFavorites, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 
 class Favorites extends Component {
   onPress = symbol => {
-    this.props.getStock(symbol)
+    this.props.getStock(symbol, ONE_MONTH)
     this.props.setSymbol(symbol)
     this.props.showAutoSuggest(false)
     this.props.setTab(0)

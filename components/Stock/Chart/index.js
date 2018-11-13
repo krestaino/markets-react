@@ -5,24 +5,38 @@ import { connect } from 'react-redux'
 import { LineSegment, VictoryChart, VictoryAxis, VictoryLabel, VictoryLine, VictoryTheme } from 'victory-native'
 import Touchable from 'react-native-platform-touchable'
 
-import { BLUE2, GREEN, RED, TEXT_DARK, TEXT_NORMAL } from '../../../constants'
+import {
+  BLUE2,
+  GREEN,
+  RED,
+  TEXT_DARK,
+  TEXT_NORMAL,
+  ONE_DAY,
+  ONE_MONTH,
+  THREE_MONTHS,
+  SIX_MONTHS,
+  YEAR_TO_DATE,
+  ONE_YEAR,
+  TWO_YEARS,
+  FIVE_YEARS
+} from '../../../constants'
 import { getStock } from '../../../store/actions/getStock'
 
 class Chart extends Component {
   state = {
     ranges: [
-      { label: '1d', query: '1d' },
-      { label: '1m', query: '1m' },
-      { label: '3m', query: '3m' },
-      { label: '6m', query: '6m' },
-      { label: 'YTD', query: 'ytd' },
-      { label: '1y', query: '1y' },
-      { label: '2y', query: '2y' },
-      { label: '5y', query: '5y' }
+      { label: '1d', range: ONE_DAY },
+      { label: '1m', range: ONE_MONTH },
+      { label: '3m', range: THREE_MONTHS },
+      { label: '6m', range: SIX_MONTHS },
+      { label: 'YTD', range: YEAR_TO_DATE },
+      { label: '1y', range: ONE_YEAR },
+      { label: '2y', range: TWO_YEARS },
+      { label: '5y', range: FIVE_YEARS }
     ]
   }
 
-  activeRangeStyles = range => (this.props.stock.range === range ? styles.rangesActive : null)
+  activeRangeStyles = range => (this.props.stock.range.query === range ? styles.rangesActive : null)
 
   positiveOrNegativeOverTime = (x, y) =>
     x > y ? { ...svgStyles.chartLine, ...svgStyles.negative } : { ...svgStyles.chartLine, ...svgStyles.positive }
@@ -67,10 +81,10 @@ class Chart extends Component {
             <Touchable
               background={Touchable.Ripple(BLUE2)}
               key={index}
-              onPress={() => this.props.getStock(quote.symbol, range.query)}
+              onPress={() => this.props.getStock(quote.symbol, range.range)}
               style={styles.rangesButton}
             >
-              <Text style={[styles.rangesLabel, this.activeRangeStyles(range.query)]}>{range.label}</Text>
+              <Text style={[styles.rangesLabel, this.activeRangeStyles(range.range.query)]}>{range.label}</Text>
             </Touchable>
           ))}
         </View>

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Touchable from 'react-native-platform-touchable'
 
-import { BLUE1, BLUE2, BLUE3, TEXT_DARK } from '../../constants'
+import { BLUE1, BLUE2, BLUE3, ONE_MONTH, TEXT_DARK } from '../../constants'
 import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../store/actions'
 
 class AutoSuggest extends Component {
@@ -29,7 +29,7 @@ class AutoSuggest extends Component {
   onBackPress = () => (this.props.autoSuggest ? this.props.showAutoSuggest(false) : false)
 
   onPress = symbol => {
-    this.props.getStock(symbol)
+    this.props.getStock(symbol, ONE_MONTH)
     this.props.setSymbol(symbol)
     this.props.showAutoSuggest(false)
     this.setState({ filteredSearch: [] })

@@ -23,3 +23,12 @@ export const TEXT_DARK = '#6d788c'
 export const RED = '#d23f31'
 export const GREEN = '#0f9d58'
 export const PINK = '#b257c5'
+
+export const ONE_DAY = { query: '1d', interval: 6 }
+export const ONE_MONTH = { query: '1m', interval: 1 }
+export const THREE_MONTHS = { query: '3m', interval: 1 }
+export const SIX_MONTHS = { query: '6m', interval: 1 }
+export const YEAR_TO_DATE = { query: 'ytd', interval: 2 }
+export const ONE_YEAR = { query: '1y', interval: 2 }
+export const TWO_YEARS = { query: '2y', interval: 4 }
+export const FIVE_YEARS = { query: '5y', interval: 8 }

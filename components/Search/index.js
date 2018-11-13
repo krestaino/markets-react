@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { BLUE2, TEXT_NORMAL } from '../../constants'
+import { BLUE2, ONE_MONTH, TEXT_NORMAL } from '../../constants'
 import { getStock, setSymbol, showAutoSuggest } from '../../store/actions/'
 
 class Search extends Component {
@@ -16,7 +16,7 @@ class Search extends Component {
 
   onSubmitEditing = () => {
     if (this.props.symbol) {
-      this.props.getStock(this.props.symbol)
+      this.props.getStock(this.props.symbol, ONE_MONTH)
       this.props.showAutoSuggest(false)
     }
   }
