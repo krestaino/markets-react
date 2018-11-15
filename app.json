@@ -6,7 +6,7 @@
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
-    "version": "0.16.0",
+    "version": "0.16.1",
     "orientation": "portrait",
     "primaryColor": "#182129",
     "icon": "./assets/icon.png",
@@ -18,7 +18,7 @@
     ],
     "ios": {
       "bundleIdentifier": "com.kmr.marketsreact",
-      "buildNumber": "0.16.0",
+      "buildNumber": "0.16.1",
       "supportsTablet": true,
       "splash": {
         "backgroundColor": "#182129",
@@ -30,7 +30,7 @@
     "android": {
       "package": "com.kmr.marketsreact",
       "permissions": [],
-      "versionCode": 19,
+      "versionCode": 20,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-transparent.png",
         "backgroundColor": "#182129"
