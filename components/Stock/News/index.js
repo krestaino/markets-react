@@ -11,11 +11,17 @@ class News extends Component {
   render() {
     const { news } = this.props.stock.data
 
+    if (news.length === 0) return null
+
     return (
       <View style={styles.container}>
         <Text style={styles.title}>News</Text>
         {news.map((article, index) => (
-          <Touchable background={Touchable.Ripple(Colors.BLUE2)} key={index} onPress={() => Linking.openURL(article.url)}>
+          <Touchable
+            background={Touchable.Ripple(Colors.BLUE2)}
+            key={index}
+            onPress={() => Linking.openURL(article.url)}
+          >
             <View style={styles.item}>
               <Text style={styles.preHeadline}>
                 {article.source} – {format(article.datetime, 'MMM D, h:mm a')}

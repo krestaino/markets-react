@@ -52,6 +52,8 @@ class Chart extends Component {
     const { chart, quote } = this.props.stock.data
     const { width } = Dimensions.get('window')
 
+    if (chart.length === 0) return null
+
     const _chart = chart
       .filter(interval => interval.close || interval.marketClose)
       .map(interval => ({
