@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: Colors.BLUE2,
     elevation: 0,
-    height: 65
+    height: 65,
+    paddingTop: 2
   }
 })
 
