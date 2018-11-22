@@ -7,6 +7,7 @@ import { Colors } from '../../constants'
 import { getSectors } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 import { sectorIcons } from '../../helpers/sectorIcons'
+import { globalStyles } from '../../styles'
 
 class Sectors extends Component {
   onRefresh = () => this.props.getSectors()
@@ -18,6 +19,7 @@ class Sectors extends Component {
 
     return (
       <Content refreshControl={<RefreshControl refreshing={loading} onRefresh={this.onRefresh} />}>
+        <Text style={globalStyles.header}>SECTORS PERFORMANCE</Text>
         <View style={styles.container}>
           {data.map((sector, index) => {
             const icon = sectorIcons(sector.name)
@@ -40,11 +42,10 @@ class Sectors extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    // justifyContent: 'center',
     width: '100%',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingTop: 8
+    padding: 16
   },
   sector: {
     alignItems: 'center',

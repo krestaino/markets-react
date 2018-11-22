@@ -13,7 +13,7 @@ class Crypto extends Component {
     const { data, loading } = this.props.crypto
 
     return (
-      <List loading={loading} list={data} />
+      <List header="CRYPTOCURRENCIES" loading={loading} list={data} />
     )
   }
 }

@@ -13,7 +13,7 @@ class Losers extends Component {
     const { data, loading } = this.props.losers
 
     return (
-      <List loading={loading} list={data} />
+      <List header="LOSERS" loading={loading} list={data} />
     )
   }
 }

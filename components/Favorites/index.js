@@ -19,7 +19,7 @@ class Favorites extends Component {
     const { data, loading } = this.props.favorites
 
     return (
-      <List loading={loading} list={data} />
+      <List header="FAVORITES" loading={loading} list={data} />
     )
   }
 }

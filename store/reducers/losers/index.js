@@ -8,7 +8,6 @@ export const losers = (state = initialState, action) => {
       return { ...state, loading: true, error: false }
     case Actions.GET_LOSERS_SUCCESS:
       const data = Object.keys(action.payload.data).map(k => action.payload.data[k])
-      data.sort((a, b) => a.symbol.localeCompare(b.symbol))
       return { ...state, loading: false, data: data }
     case Actions.GET_LOSERS_FAIL:
       return { ...state, loading: false, error: 'No results found.' }

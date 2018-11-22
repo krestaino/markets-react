@@ -13,7 +13,7 @@ class MostActive extends Component {
     const { data, loading } = this.props.mostActive
 
     return (
-      <List loading={loading} list={data} />
+      <List header="MOST ACTIVE" loading={loading} list={data} />
     )
   }
 }

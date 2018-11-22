@@ -8,6 +8,7 @@ import { Colors, Ranges } from '../../constants'
 import { getCrypto, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 import { cryptoLogos } from '../../helpers/cryptoLogos'
+import { globalStyles } from '../../styles'
 
 class List extends Component {
   onPress = symbol => {
@@ -23,6 +24,7 @@ class List extends Component {
         refreshControl={<RefreshControl refreshing={this.props.loading} onRefresh={this.onRefresh} />}
         style={styles.list}
       >
+        <Text style={globalStyles.header}>{this.props.header}</Text>
         {this.props.list.map((stock, index) => {
           const logo = cryptoLogos(stock.symbol)
 
@@ -90,9 +92,6 @@ const styles = StyleSheet.create({
     height: 28,
     marginRight: 16,
     width: 28
-  },
-  list: {
-    marginTop: 8
   },
   companyName: {
     color: Colors.TEXT_DARK,
