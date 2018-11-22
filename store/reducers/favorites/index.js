@@ -12,8 +12,8 @@ export const favorites = (state = initialState, action) => {
     case Actions.GET_FAVORITES:
       return { ...state, loading: true, error: false }
     case Actions.GET_FAVORITES_SUCCESS:
-      const data = Object.keys(action.payload.data).map(k => action.payload.data[k])
-      data.sort((a, b) => a.quote.symbol.localeCompare(b.quote.symbol))
+      const data = Object.keys(action.payload.data).map(k => action.payload.data[k].quote)
+      data.sort((a, b) => a.symbol.localeCompare(b.symbol))
       return { ...state, loading: false, data: data }
     case Actions.GET_FAVORITES_FAIL:
       return { ...state, loading: false, error: 'No results found.' }

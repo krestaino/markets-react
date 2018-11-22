@@ -19,4 +19,4 @@ const logos = {
   XRPUSDT: require('../assets/logos/xrp.png')
 }
 
-export const cryptoLogos = symbol => logos[symbol]
+export const cryptoLogos = symbol => logos[symbol] || false

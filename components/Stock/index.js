@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { Colors } from '../../constants'
 import { getStock } from '../../store/actions/'
 
+import Search from '../Search'
+import AutoSuggest from '../AutoSuggest'
 import Info from './Info'
 import Chart from './Chart'
 import Details from './Details'
@@ -25,6 +27,8 @@ class Stock extends Component {
 
     return (
       <View style={styles.container}>
+        <Search />
+        <AutoSuggest />
         {isSucess && (
           <View style={styles.container}>
             <Content

@@ -7,19 +7,13 @@ import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 import { Colors } from '../../constants'
 import { getFavorites, setTab } from '../../store/actions/'
 
-import Search from '../Search'
-import AutoSuggest from '../AutoSuggest'
 import Stock from '../Stock'
 import Favorites from '../Favorites'
+import Gainers from '../Gainers'
+import Losers from '../Losers'
 import Crypto from '../Crypto'
 
 class Home extends Component {
-  cryptoTab = () => (
-    <View style={styles.container}>
-      <Crypto />
-    </View>
-  )
-
   favoritesTab = () => (
     <View style={styles.container}>
       <Favorites />
@@ -28,9 +22,25 @@ class Home extends Component {
 
   stockTab = () => (
     <View style={styles.container}>
-      <Search />
-      <AutoSuggest />
       <Stock />
+    </View>
+  )
+
+  gainersTab = () => (
+    <View style={styles.container}>
+      <Gainers />
+    </View>
+  )
+
+  losersTab = () => (
+    <View style={styles.container}>
+      <Losers />
+    </View>
+  )
+
+  cryptoTab = () => (
+    <View style={styles.container}>
+      <Crypto />
     </View>
   )
 
@@ -52,18 +62,6 @@ class Home extends Component {
     </View>
   )
 
-  newTab4 = () => (
-    <View style={styles.container}>
-      <Text>4</Text>
-    </View>
-  )
-
-  newTab5 = () => (
-    <View style={styles.container}>
-      <Text>5</Text>
-    </View>
-  )
-
   newTab6 = () => (
     <View style={styles.container}>
       <Text>6</Text>
@@ -75,14 +73,14 @@ class Home extends Component {
   )
 
   sceneMap = SceneMap({
-    crypto: this.cryptoTab,
-    favorites: this.favoritesTab,
     search: this.stockTab,
+    favorites: this.favoritesTab,
+    gainers: this.gainersTab,
+    losers: this.losersTab,
+    crypto: this.cryptoTab,
     newTab1: this.newTab1,
     newTab2: this.newTab2,
     newTab3: this.newTab3,
-    newTab4: this.newTab4,
-    newTab5: this.newTab5,
     newTab6: this.newTab6
   })
 
@@ -95,7 +93,7 @@ class Home extends Component {
       style={styles.tabBar}
       useNativeDriver={true}
       scrollEnabled={true}
-      tabStyle={{ paddingHorizontal: 0, paddingVertical: 8, width: 80 }}
+      tabStyle={{ paddingHorizontal: 0, paddingVertical: 8, width: 84 }}
       renderIcon={this.renderIcon}
     />
   )
@@ -127,7 +125,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   indicatorStyle: {
-    backgroundColor: Colors.TEXT_DARK
+    backgroundColor: Colors.TEXT_DARK,
+    top: 0
   },
   labelStyle: {
     color: Colors.TEXT_NORMAL,
@@ -140,8 +139,7 @@ const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: Colors.BLUE2,
     elevation: 0,
-    height: 65,
-    opacity: 0.5
+    height: 65
   }
 })
 
