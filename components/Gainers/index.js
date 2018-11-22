@@ -8,7 +8,7 @@ import { Colors, Ranges } from '../../constants'
 import { clearFavorites, getFavorites, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 
-class Favorites extends Component {
+class Gainers extends Component {
   onPress = symbol => {
     this.props.getStock(symbol, Ranges.ONE_MONTH)
     this.props.setSymbol(symbol)
@@ -111,4 +111,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Favorites)
+)(Gainers)

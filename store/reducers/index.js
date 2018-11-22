@@ -6,6 +6,7 @@ import { symbols } from './symbols'
 import { tab } from './tab'
 import { favorites } from './favorites'
 import { autoSuggest } from './autoSuggest'
+import { crypto } from './crypto'
 
 export default combineReducers({
   stock,
@@ -13,5 +14,6 @@ export default combineReducers({
   symbols,
   tab,
   favorites,
-  autoSuggest
+  autoSuggest,
+  crypto
 })

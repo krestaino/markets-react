@@ -36,7 +36,7 @@ class Save extends Component {
             position="bottomRight"
             onPress={() => this.onPress(quote)}
           >
-            <Icon ios="ios-heart" android="md-heart" style={styles.icon} />
+            <Icon name="md-heart" style={styles.icon} />
           </Fab>
         )}
       </View>
