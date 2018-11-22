@@ -8,6 +8,7 @@ import { favorites } from './favorites'
 import { autoSuggest } from './autoSuggest'
 import { gainers } from './gainers'
 import { losers } from './losers'
+import { mostActive } from './mostActive'
 import { crypto } from './crypto'
 
 export default combineReducers({
@@ -19,5 +20,6 @@ export default combineReducers({
   autoSuggest,
   gainers,
   losers,
+  mostActive,
   crypto
 })

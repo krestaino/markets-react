@@ -11,6 +11,7 @@ import Stock from '../Stock'
 import Favorites from '../Favorites'
 import Gainers from '../Gainers'
 import Losers from '../Losers'
+import MostActive from '../MostActive'
 import Crypto from '../Crypto'
 
 class Home extends Component {
@@ -38,6 +39,12 @@ class Home extends Component {
     </View>
   )
 
+  mostActiveTab = () => (
+    <View style={styles.container}>
+      <MostActive />
+    </View>
+  )
+
   cryptoTab = () => (
     <View style={styles.container}>
       <Crypto />
@@ -62,12 +69,6 @@ class Home extends Component {
     </View>
   )
 
-  newTab6 = () => (
-    <View style={styles.container}>
-      <Text>6</Text>
-    </View>
-  )
-
   renderIcon = ({ route }) => (
     <Icon name={route.icon} style={{ fontSize: 20, color: Colors.TEXT_DARK }} />
   )
@@ -77,11 +78,11 @@ class Home extends Component {
     favorites: this.favoritesTab,
     gainers: this.gainersTab,
     losers: this.losersTab,
+    mostActive: this.mostActiveTab,
     crypto: this.cryptoTab,
     newTab1: this.newTab1,
     newTab2: this.newTab2,
-    newTab3: this.newTab3,
-    newTab6: this.newTab6
+    newTab3: this.newTab3
   })
 
   tabBar = props => (
