@@ -6,6 +6,7 @@ import { symbols } from './symbols'
 import { tab } from './tab'
 import { favorites } from './favorites'
 import { autoSuggest } from './autoSuggest'
+import { sectors } from './sectors'
 import { gainers } from './gainers'
 import { losers } from './losers'
 import { mostActive } from './mostActive'
@@ -18,6 +19,7 @@ export default combineReducers({
   tab,
   favorites,
   autoSuggest,
+  sectors,
   gainers,
   losers,
   mostActive,

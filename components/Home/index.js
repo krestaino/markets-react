@@ -9,6 +9,7 @@ import { getFavorites, setTab } from '../../store/actions/'
 
 import Stock from '../Stock'
 import Favorites from '../Favorites'
+import Sectors from '../Sectors'
 import Gainers from '../Gainers'
 import Losers from '../Losers'
 import MostActive from '../MostActive'
@@ -24,6 +25,12 @@ class Home extends Component {
   stockTab = () => (
     <View style={styles.container}>
       <Stock />
+    </View>
+  )
+
+  sectorsTab = () => (
+    <View style={styles.container}>
+      <Sectors />
     </View>
   )
 
@@ -53,19 +60,13 @@ class Home extends Component {
 
   newTab1 = () => (
     <View style={styles.container}>
-      <Text>1</Text>
-    </View>
-  )
-
-  newTab2 = () => (
-    <View style={styles.container}>
-      <Text>2</Text>
+      <Text style={{ padding: 16 }}>IPO</Text>
     </View>
   )
 
   newTab3 = () => (
     <View style={styles.container}>
-      <Text>3</Text>
+      <Text style={{ padding: 16 }}>Earnings</Text>
     </View>
   )
 
@@ -76,12 +77,12 @@ class Home extends Component {
   sceneMap = SceneMap({
     search: this.stockTab,
     favorites: this.favoritesTab,
+    sectors: this.sectorsTab,
     gainers: this.gainersTab,
     losers: this.losersTab,
     mostActive: this.mostActiveTab,
     crypto: this.cryptoTab,
     newTab1: this.newTab1,
-    newTab2: this.newTab2,
     newTab3: this.newTab3
   })
 
