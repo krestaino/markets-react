@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getMostActive } from '../../store/actions/'
+import { preLoad } from '../../helpers/preLoad'
 
 import List from '../List'
 
@@ -11,7 +12,7 @@ class MostActive extends Component {
     const { mostActive, tabs } = this.props
 
     if (tabs.index !== prevProps.tabs.index) {
-      if (mostActive.loading === null && tabs.index === 5) {
+      if (mostActive.loading === null && preLoad(5)) {
         this.props.getMostActive()
       }
     }

@@ -98,10 +98,6 @@ class Home extends Component {
     />
   )
 
-  componentDidUpdate() {
-    console.log(this.props.tab.index)
-  }
-
   render = () => (
     <View style={styles.container}>
       <TabView

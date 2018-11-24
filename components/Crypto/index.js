@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getCrypto } from '../../store/actions/'
+import { preLoad } from '../../helpers/preLoad'
 
 import List from '../List'
 
@@ -11,7 +12,7 @@ class Crypto extends Component {
     const { crypto, tabs } = this.props
 
     if (tabs.index !== prevProps.tabs.index) {
-      if (crypto.loading === null && tabs.index === 6) {
+      if (crypto.loading === null && preLoad(6)) {
         this.props.getCrypto()
       }
     }

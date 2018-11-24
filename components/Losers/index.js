@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getLosers } from '../../store/actions/'
+import { preLoad } from '../../helpers/preLoad'
 
 import List from '../List'
 
@@ -11,7 +12,7 @@ class Losers extends Component {
     const { losers, tabs } = this.props
 
     if (tabs.index !== prevProps.tabs.index) {
-      if (losers.loading === null && tabs.index === 4) {
+      if (losers.loading === null && preLoad(4)) {
         this.props.getLosers()
       }
     }

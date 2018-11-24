@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Platform, RefreshControl, StyleSheet } from 'react-native'
-import { Content, Text, Spinner, View } from 'native-base'
+import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { Colors } from '../../constants'
 import { getStock } from '../../store/actions/'
 
 import Search from '../Search'
@@ -21,8 +20,7 @@ class Stock extends Component {
     const { chart, quote } = this.props.stock.data
     const { error, loading } = this.props.stock
 
-    const isLoading = !error && loading
-    const isSucess = !error && !loading && chart && quote
+    const isSucess = !error && chart && quote
     const isError = error && !loading
 
     return (
@@ -48,11 +46,6 @@ class Stock extends Component {
             style={[styles.container, styles.center]}
           >
             <Text>{error}</Text>
-          </View>
-        )}
-        {isLoading && (
-          <View style={[styles.container, styles.center]}>
-            <Spinner color={Colors.TEXT_DARK} />
           </View>
         )}
       </View>

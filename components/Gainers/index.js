@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getGainers } from '../../store/actions/'
+import { preLoad } from '../../helpers/preLoad'
 
 import List from '../List'
 
@@ -11,7 +12,7 @@ class Gainers extends Component {
     const { gainers, tabs } = this.props
 
     if (tabs.index !== prevProps.tabs.index) {
-      if (gainers.loading === null && tabs.index === 3) {
+      if (gainers.loading === null && preLoad(3)) {
         this.props.getGainers()
       }
     }
