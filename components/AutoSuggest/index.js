@@ -55,7 +55,6 @@ class AutoSuggest extends Component {
 
   componentDidMount() {
     this.props.getSymbols()
-    console.log(Platform.OS === 'ios' ? getStatusBarHeight() : StatusBar.currentHeight)
   }
 
   componentDidUpdate(prevProps) {
