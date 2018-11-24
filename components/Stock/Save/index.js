@@ -27,6 +27,8 @@ class Save extends Component {
 
   render() {
     const { quote } = this.props.stock.data
+    
+    if (!quote) return null
 
     return (
       <View>

@@ -17,34 +17,24 @@ class Stock extends Component {
   onRefresh = () => this.props.getStock(this.props.stock.data.quote.symbol, this.props.stock.range)
 
   render() {
-    const { chart, quote } = this.props.stock.data
     const { error, loading } = this.props.stock
-
-    const isSucess = !error && chart && quote
     const isError = error && !loading
 
     return (
       <View style={styles.container}>
         <Search />
         <AutoSuggest />
-        {isSucess && (
-          <View style={styles.container}>
-            <Content
-              refreshControl={<RefreshControl onRefresh={this.onRefresh} refreshing={this.props.stock.loading} />}
-            >
-              <Info />
-              <Chart />
-              <Details />
-              <News />
-            </Content>
-            <Save />
-          </View>
-        )}
+        <View style={styles.container}>
+          <Content refreshControl={<RefreshControl onRefresh={this.onRefresh} refreshing={loading} />}>
+            <Info />
+            <Chart />
+            <Details />
+            <News />
+          </Content>
+          <Save />
+        </View>
         {isError && (
-          <View
-            behavior={Platform.OS === 'ios' ? 'position' : null}
-            style={[styles.container, styles.center]}
-          >
+          <View behavior={Platform.OS === 'ios' ? 'position' : null} style={[styles.container, styles.center]}>
             <Text>{error}</Text>
           </View>
         )}

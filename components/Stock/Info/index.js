@@ -11,6 +11,8 @@ class Info extends Component {
   render() {
     const { quote } = this.props.stock.data
 
+    if (!quote) return null
+
     return (
       <View style={styles.container}>
         <Text style={styles.companyName}>{quote.companyName}</Text>

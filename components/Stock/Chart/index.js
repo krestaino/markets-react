@@ -52,6 +52,8 @@ class Chart extends Component {
     const { chart, quote } = this.props.stock.data
     const { width } = Dimensions.get('window')
 
+    if (!chart) return null
+
     if (chart.length === 0 || this.props.stock.loading)
       return (
         <View style={styles.spinner}>
