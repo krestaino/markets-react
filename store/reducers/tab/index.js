@@ -10,8 +10,8 @@ const initialState = {
     { key: 'losers', title: 'Losers', icon: "md-trending-down" },
     { key: 'mostActive', title: 'Most Active', icon: "md-flame" },
     { key: 'crypto', title: 'Crypto', icon: "logo-bitcoin" },
-    { key: 'newTab1', title: 'IPO', icon: "md-calendar" },
-    { key: 'newTab3', title: 'Earnings', icon: "logo-usd" }
+    { key: 'ipo', title: 'IPO', icon: "md-calendar" },
+    { key: 'earnings', title: 'Earnings', icon: "logo-usd" }
 
   ]
 }

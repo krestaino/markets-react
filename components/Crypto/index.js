@@ -7,7 +7,15 @@ import List from '../List'
 class Crypto extends Component {
   onRefresh = () => this.props.getCrypto()
 
-  componentDidMount = () => this.props.getCrypto()
+  componentDidUpdate = prevProps => {
+    const { crypto, tabs } = this.props
+
+    if (tabs.index !== prevProps.tabs.index) {
+      if (crypto.loading === null && tabs.index === 6) {
+        this.props.getCrypto()
+      }
+    }
+  }
 
   render() {
     const { data, loading } = this.props.crypto
@@ -19,7 +27,8 @@ class Crypto extends Component {
 }
 
 const mapStateToProps = state => ({
-  crypto: state.crypto
+  crypto: state.crypto,
+  tabs: state.tab
 })
 
 const mapDispatchToProps = {

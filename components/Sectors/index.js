@@ -12,32 +12,42 @@ import { globalStyles } from '../../styles'
 class Sectors extends Component {
   onRefresh = () => this.props.getSectors()
 
-  componentDidMount = () => this.props.getSectors()
+  componentDidUpdate = prevProps => {
+    const { sectors, tabs } = this.props
+
+    if (tabs.index !== prevProps.tabs.index) {
+      if (sectors.loading === null && tabs.index === 2) {
+        this.props.getSectors()
+      }
+    }
+  }
 
   render() {
     const { data, loading } = this.props.sectors
 
     return (
-      <Content refreshControl={<RefreshControl refreshing={loading} onRefresh={this.onRefresh} />}>
+      <View style={{ flex: 1 }}>
         <View style={globalStyles.headerContainer}>
           <Text style={globalStyles.headerContainer}>SECTORS PERFORMANCE</Text>
         </View>
-        <View style={styles.container}>
-          {data.map((sector, index) => {
-            const icon = sectorIcons(sector.name)
+        <Content refreshControl={<RefreshControl refreshing={loading} onRefresh={this.onRefresh} />}>
+          <View style={styles.container}>
+            {data.map((sector, index) => {
+              const icon = sectorIcons(sector.name)
 
-            return (
-              <View key={index} style={styles.sector}>
-                <Icon name={icon.name} style={{ fontSize: 48, height: 48, color: Colors.BLUE3 }} type={icon.type} />
-                <Text style={[styles.performance, positiveOrNegative(sector.performance)]}>
-                  {formatPercentage(sector.performance)}%{upOrDownSymbol(sector.performance)}
-                </Text>
-                <Text style={styles.name}>{sector.name}</Text>
-              </View>
-            )
-          })}
-        </View>
-      </Content>
+              return (
+                <View key={index} style={styles.sector}>
+                  <Icon name={icon.name} style={{ fontSize: 48, height: 48, color: Colors.BLUE3 }} type={icon.type} />
+                  <Text style={[styles.performance, positiveOrNegative(sector.performance)]}>
+                    {formatPercentage(sector.performance)}%{upOrDownSymbol(sector.performance)}
+                  </Text>
+                  <Text style={styles.name}>{sector.name}</Text>
+                </View>
+              )
+            })}
+          </View>
+        </Content>
+      </View>
     )
   }
 }
@@ -64,12 +74,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginTop: 4,
     maxWidth: 110,
-    textAlign: 'center',
+    textAlign: 'center'
   }
 })
 
 const mapStateToProps = state => ({
-  sectors: state.sectors
+  sectors: state.sectors,
+  tabs: state.tab
 })
 
 const mapDispatchToProps = {

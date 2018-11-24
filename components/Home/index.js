@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 
 import { Colors } from '../../constants'
-import { getFavorites, setTab } from '../../store/actions/'
+import { setTab } from '../../store/actions/'
 
 import Stock from '../Stock'
 import Favorites from '../Favorites'
@@ -58,21 +58,19 @@ class Home extends Component {
     </View>
   )
 
-  newTab1 = () => (
+  ipoTab = () => (
     <View style={styles.container}>
       <Text style={{ padding: 16 }}>IPO</Text>
     </View>
   )
 
-  newTab3 = () => (
+  earningsTab = () => (
     <View style={styles.container}>
       <Text style={{ padding: 16 }}>Earnings</Text>
     </View>
   )
 
-  renderIcon = ({ route }) => (
-    <Icon name={route.icon} style={{ fontSize: 20, color: Colors.TEXT_DARK }} />
-  )
+  renderIcon = ({ route }) => <Icon name={route.icon} style={{ fontSize: 20, color: Colors.TEXT_DARK }} />
 
   sceneMap = SceneMap({
     search: this.stockTab,
@@ -82,8 +80,8 @@ class Home extends Component {
     losers: this.losersTab,
     mostActive: this.mostActiveTab,
     crypto: this.cryptoTab,
-    newTab1: this.newTab1,
-    newTab3: this.newTab3
+    ipo: this.ipoTab,
+    earnings: this.earningsTab
   })
 
   tabBar = props => (
@@ -100,8 +98,9 @@ class Home extends Component {
     />
   )
 
-  componentDidMount = () => this.props.getFavorites(this.props.favorites.symbols)
-
+  componentDidUpdate() {
+    console.log(this.props.tab.index)
+  }
 
   render = () => (
     <View style={styles.container}>
@@ -120,7 +119,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   initialLayout: {
     height: 0,
@@ -154,7 +153,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  getFavorites,
   setTab
 }
 

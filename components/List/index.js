@@ -21,49 +21,51 @@ class List extends Component {
 
   render() {
     return (
-      <Content
-        refreshControl={<RefreshControl refreshing={this.props.loading} onRefresh={this.onRefresh} />}
-        style={styles.list}
-      >
+      <View style={{ flex: 1 }}>
         <View style={globalStyles.headerContainer}>
           <Text style={globalStyles.headerContainer}>{this.props.header}</Text>
         </View>
-        {this.props.list.map((stock, index) => {
-          const logo = cryptoLogos(stock.symbol)
+        <Content
+          refreshControl={<RefreshControl refreshing={this.props.loading} onRefresh={this.onRefresh} />}
+          style={styles.list}
+        >
+          {this.props.list.map((stock, index) => {
+            const logo = cryptoLogos(stock.symbol)
 
-          return (
-            <Touchable
-              background={Touchable.Ripple(Colors.BLUE2)}
-              key={index}
-              style={styles.button}
-              onPress={() => this.onPress(stock.symbol)}
-            >
-              <View style={styles.rowContainer}>
-                {logo && <Image source={logo} style={styles.image} />}
-                <View style={styles.textContainer}>
-                  <View style={styles.textInnerContainer}>
-                    <Text>{stock.symbol}</Text>
-                    <Text>{stock.latestPrice} USD</Text>
-                  </View>
-                  <View style={styles.textInnerContainer}>
-                    <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>
-                      {stock.companyName}
-                    </Text>
-                    <Text>
-                      <Text style={[styles.stockChange, positiveOrNegative(stock.change)]}>{stock.change}</Text>
-                      <Text style={[styles.stockChange, positiveOrNegative(stock.change)]}>
-                        {' '}
-                        ({formatPercentage(stock.changePercent)}
-                        %) {upOrDownSymbol(stock.changePercent)}
+            return (
+              <Touchable
+                background={Touchable.Ripple(Colors.BLUE2)}
+                key={index}
+                style={styles.button}
+                onPress={() => this.onPress(stock.symbol)}
+              >
+                <View style={styles.rowContainer}>
+                  {logo && <Image source={logo} style={styles.image} />}
+                  <View style={styles.textContainer}>
+                    <View style={styles.textInnerContainer}>
+                      <Text>{stock.symbol}</Text>
+                      <Text>{stock.latestPrice} USD</Text>
+                    </View>
+                    <View style={styles.textInnerContainer}>
+                      <Text ellipsizeMode="tail" numberOfLines={1} style={styles.companyName}>
+                        {stock.companyName}
                       </Text>
-                    </Text>
+                      <Text>
+                        <Text style={[styles.stockChange, positiveOrNegative(stock.change)]}>{stock.change}</Text>
+                        <Text style={[styles.stockChange, positiveOrNegative(stock.change)]}>
+                          {' '}
+                          ({formatPercentage(stock.changePercent)}
+                          %) {upOrDownSymbol(stock.changePercent)}
+                        </Text>
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-            </Touchable>
-          )
-        })}
-      </Content>
+              </Touchable>
+            )
+          })}
+        </Content>
+      </View>
     )
   }
 }
