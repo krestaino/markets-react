@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Image, RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
+import { format } from 'date-fns'
 import Touchable from 'react-native-platform-touchable'
 
 import { Colors, Ranges } from '../../constants'
@@ -24,7 +25,9 @@ class List extends Component {
         refreshControl={<RefreshControl refreshing={this.props.loading} onRefresh={this.onRefresh} />}
         style={styles.list}
       >
-        <Text style={globalStyles.header}>{this.props.header}</Text>
+        <View style={globalStyles.headerContainer}>
+          <Text style={globalStyles.headerContainer}>{this.props.header}</Text>
+        </View>
         {this.props.list.map((stock, index) => {
           const logo = cryptoLogos(stock.symbol)
 
@@ -96,7 +99,8 @@ const styles = StyleSheet.create({
   companyName: {
     color: Colors.TEXT_DARK,
     flex: 1,
-    fontSize: 13
+    fontSize: 13,
+    paddingRight: 8
   },
   stockChange: {
     fontSize: 13

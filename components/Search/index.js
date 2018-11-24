@@ -32,7 +32,7 @@ class Search extends Component {
 
   render = () => (
     <View style={styles.container}>
-      <Item searchBar style={styles.input}>
+      <Item searchBar style={styles.item}>
         <Icon name="md-search" style={styles.icon} />
         <Input
           autoCapitalize="characters"
@@ -41,10 +41,11 @@ class Search extends Component {
           keyboardAppearance="dark"
           onChangeText={symbol => this.onChangeText(symbol)}
           onSubmitEditing={this.onSubmitEditing}
-          placeholder="Search by stock symbol"
+          placeholder="SEARCH BY STOCK SYMBOL"
           ref={ref => (this.input = ref)}
           returnKeyType="search"
           spellCheck={false}
+          style={[styles.input, { color: '#ffffff' }]}
           value={this.props.symbol}
         />
       </Item>
@@ -56,14 +57,18 @@ const styles = StyleSheet.create({
   container: {
     zIndex: 1
   },
-  input: {
-    backgroundColor: Colors.BLUE2,
+  item: {
     height: 50,
     paddingLeft: 20,
     marginLeft: 0
   },
   icon: {
     color: Colors.TEXT_NORMAL
+  },
+  input: {
+    color: Colors.TEXT_DARK,
+    fontSize: 12,
+    fontWeight: '400'
   }
 })
 

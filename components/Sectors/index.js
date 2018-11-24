@@ -19,7 +19,9 @@ class Sectors extends Component {
 
     return (
       <Content refreshControl={<RefreshControl refreshing={loading} onRefresh={this.onRefresh} />}>
-        <Text style={globalStyles.header}>SECTORS PERFORMANCE</Text>
+        <View style={globalStyles.headerContainer}>
+          <Text style={globalStyles.headerContainer}>SECTORS PERFORMANCE</Text>
+        </View>
         <View style={styles.container}>
           {data.map((sector, index) => {
             const icon = sectorIcons(sector.name)
