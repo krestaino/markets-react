@@ -103,11 +103,7 @@ class AutoSuggest extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.BLUE2,
-    borderBottomColor: Colors.BLUE1,
-    borderBottomWidth: 1,
-    borderTopColor: Colors.BLUE1,
-    borderTopWidth: 1
+    backgroundColor: Colors.BLUE2
   },
   item: {
     paddingHorizontal: 16,

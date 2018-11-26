@@ -54,10 +54,8 @@ class Search extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    zIndex: 1
-  },
   item: {
+    borderBottomWidth: 1,
     height: 50,
     paddingLeft: 20,
     marginLeft: 0
