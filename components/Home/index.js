@@ -102,7 +102,7 @@ class Home extends Component {
     <View style={styles.container}>
       <TabView
         initialLayout={styles.initialLayout}
-        navigationState={this.props.tab}
+        navigationState={this.props.tabs}
         onIndexChange={index => this.props.setTab(index)}
         renderScene={this.sceneMap}
         renderTabBar={props => this.tabBar(props)}
@@ -144,8 +144,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = state => ({
-  favorites: state.favorites,
-  tab: state.tab
+  tabs: state.tabs
 })
 
 const mapDispatchToProps = {

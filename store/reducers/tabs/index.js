@@ -16,7 +16,7 @@ const initialState = {
   ]
 }
 
-export const tab = (state = initialState, action) => {
+export const tabs = (state = initialState, action) => {
   switch (action.type) {
     case Actions.SET_TAB:
       return { ...state, index: action.payload }

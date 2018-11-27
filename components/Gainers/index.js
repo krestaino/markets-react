@@ -27,7 +27,7 @@ class Gainers extends Component {
 
 const mapStateToProps = state => ({
   gainers: state.gainers,
-  tabs: state.tab
+  tabs: state.tabs
 })
 
 const mapDispatchToProps = {
