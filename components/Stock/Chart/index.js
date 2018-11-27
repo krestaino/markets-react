@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Dimensions, StyleSheet } from 'react-native'
-import { Spinner, Text, View } from 'native-base'
+import { ActivityIndicator, Dimensions, StyleSheet } from 'react-native'
+import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { LineSegment, VictoryChart, VictoryAxis, VictoryLabel, VictoryLine, VictoryTheme } from 'victory-native'
 import Touchable from 'react-native-platform-touchable'
@@ -57,7 +57,7 @@ class Chart extends Component {
     if (this.props.stock.loading)
       return (
         <View style={styles.spinner}>
-          <Spinner color={Colors.TEXT_DARK} />
+          <ActivityIndicator color={Colors.TEXT_NORMAL} size={'small'} />
         </View>
       )
 
