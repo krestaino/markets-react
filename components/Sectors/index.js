@@ -4,7 +4,7 @@ import { Content, Icon, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
 import { Colors } from '../../constants'
-import { getSectors } from '../../store/actions/'
+import { getSectors } from '../../store/actions'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 import { preLoad } from '../../helpers/preLoad'
 import { sectorIcons } from '../../helpers/sectorIcons'

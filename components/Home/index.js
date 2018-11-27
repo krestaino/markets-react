@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
 
 import { Colors } from '../../constants'
-import { setTab } from '../../store/actions/'
+import { setTab } from '../../store/actions'
 
 import Stock from '../Stock'
 import Favorites from '../Favorites'

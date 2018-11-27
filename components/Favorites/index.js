@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { clearFavorites, getFavorites } from '../../store/actions/'
+import { clearFavorites, getFavorites } from '../../store/actions'
 
 import List from '../List'
 

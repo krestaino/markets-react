@@ -6,7 +6,7 @@ import { format } from 'date-fns'
 import Touchable from 'react-native-platform-touchable'
 
 import { Colors, Ranges } from '../../constants'
-import { getCrypto, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions/'
+import { getCrypto, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 import { cryptoLogos } from '../../helpers/cryptoLogos'
 import { globalStyles } from '../../styles'

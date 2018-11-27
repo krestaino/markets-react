@@ -4,7 +4,7 @@ import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
 import { Colors, Ranges } from '../../constants'
-import { getStock, setSymbol, showAutoSuggest } from '../../store/actions/'
+import { getStock, setSymbol, showAutoSuggest } from '../../store/actions'
 
 class Search extends Component {
   state = { hideAutoSuggest: false }

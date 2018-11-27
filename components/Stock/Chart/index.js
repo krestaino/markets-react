@@ -6,7 +6,7 @@ import { LineSegment, VictoryChart, VictoryAxis, VictoryLabel, VictoryLine, Vict
 import Touchable from 'react-native-platform-touchable'
 
 import { Colors, Ranges } from '../../../constants'
-import { getStock } from '../../../store/actions/getStock'
+import { getStock } from '../../../store/actions'
 
 class Chart extends Component {
   state = {

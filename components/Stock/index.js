@@ -3,7 +3,7 @@ import { Platform, RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
-import { getStock } from '../../store/actions/'
+import { getStock } from '../../store/actions'
 
 import Search from '../Search'
 import AutoSuggest from '../AutoSuggest'

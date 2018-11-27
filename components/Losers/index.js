@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getLosers } from '../../store/actions/'
+import { getLosers } from '../../store/actions'
 import { preLoad } from '../../helpers/preLoad'
 
 import List from '../List'

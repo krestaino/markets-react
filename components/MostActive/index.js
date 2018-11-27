@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getMostActive } from '../../store/actions/'
+import { getMostActive } from '../../store/actions'
 import { preLoad } from '../../helpers/preLoad'
 
 import List from '../List'
