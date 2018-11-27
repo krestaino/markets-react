@@ -31,7 +31,17 @@ class Sectors extends Component {
         <View style={globalStyles.headerContainer}>
           <Text style={globalStyles.headerContainer}>SECTORS PERFORMANCE</Text>
         </View>
-        <Content refreshControl={<RefreshControl refreshing={loading} onRefresh={this.onRefresh} />}>
+        <Content
+          refreshControl={
+            <RefreshControl
+              colors={[Colors.TEXT_NORMAL]}
+              onRefresh={this.onRefresh}
+              progressBackgroundColor={Colors.BLUE3}
+              refreshing={loading}
+              tintColor={Colors.TEXT_NORMAL}
+            />
+          }
+        >
           <View style={styles.container}>
             {data.map((sector, index) => {
               const icon = sectorIcons(sector.name)
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   sectors: state.sectors,
-  tabs: state.tab
+  tabs: state.tabs
 })
 
 const mapDispatchToProps = {

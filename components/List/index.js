@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Image, RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
-import { format } from 'date-fns'
 import Touchable from 'react-native-platform-touchable'
 
 import { Colors, Ranges } from '../../constants'
@@ -26,7 +25,15 @@ class List extends Component {
           <Text style={globalStyles.headerContainer}>{this.props.header}</Text>
         </View>
         <Content
-          refreshControl={<RefreshControl refreshing={this.props.loading} onRefresh={this.onRefresh} />}
+          refreshControl={
+            <RefreshControl
+              colors={[Colors.TEXT_NORMAL]}
+              onRefresh={this.onRefresh}
+              progressBackgroundColor={Colors.BLUE3}
+              refreshing={this.props.loading}
+              tintColor={Colors.TEXT_NORMAL}
+            />
+          }
           style={styles.list}
         >
           {this.props.list.map((stock, index) => {

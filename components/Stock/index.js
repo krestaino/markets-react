@@ -3,6 +3,7 @@ import { Platform, RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
+import { Colors } from '../../constants'
 import { getStock } from '../../store/actions'
 
 import Search from '../Search'
@@ -14,7 +15,11 @@ import News from './News'
 import Save from './Save'
 
 class Stock extends Component {
-  onRefresh = () => this.props.getStock(this.props.stock.data.quote.symbol, this.props.stock.range)
+  onRefresh = () => {
+    if (this.props.stock.data.quote) {
+      this.props.getStock(this.props.stock.data.quote.symbol, this.props.stock.range)
+    }
+  }
 
   render() {
     const { error, loading } = this.props.stock
@@ -25,7 +30,17 @@ class Stock extends Component {
         <Search />
         <AutoSuggest />
         <View style={styles.container}>
-          <Content refreshControl={<RefreshControl onRefresh={this.onRefresh} refreshing={loading} />}>
+          <Content
+            refreshControl={
+              <RefreshControl
+                colors={[Colors.TEXT_NORMAL]}
+                onRefresh={this.onRefresh}
+                progressBackgroundColor={Colors.BLUE3}
+                refreshing={loading}
+                tintColor={Colors.TEXT_NORMAL}
+              />
+            }
+          >
             <Info />
             <Chart />
             <Details />
