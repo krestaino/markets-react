@@ -12,7 +12,7 @@ import platform from './native-base-theme/variables/platform'
 import { Colors } from './constants'
 import store from './store'
 
-import Home from './components/Home'
+import Tabs from './components/Tabs'
 
 export default class App extends Component {
   state = { loading: true }
@@ -36,7 +36,7 @@ export default class App extends Component {
             <View style={styles.container}>
               <Root>
                 <StatusBar barStyle="light-content" />
-                <Home />
+                <Tabs />
               </Root>
             </View>
           </StyleProvider>

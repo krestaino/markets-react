@@ -15,7 +15,7 @@ import Losers from '../Losers'
 import MostActive from '../MostActive'
 import Crypto from '../Crypto'
 
-class Home extends Component {
+class Tabs extends Component {
   favoritesTab = () => (
     <View style={styles.container}>
       <Favorites />
@@ -154,4 +154,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(Tabs)
