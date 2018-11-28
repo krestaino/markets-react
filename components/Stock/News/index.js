@@ -11,7 +11,7 @@ class News extends Component {
   render() {
     const { news } = this.props.stock.data
 
-    if (!news) return null
+    if (!news || news.length === 0) return null
 
     return (
       <View style={styles.container}>
