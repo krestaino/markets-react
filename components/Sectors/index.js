@@ -38,7 +38,6 @@ class Sectors extends Component {
               onRefresh={this.onRefresh}
               progressBackgroundColor={Colors.BLUE3}
               refreshing={loading}
-              tintColor={Colors.TEXT_NORMAL}
             />
           }
         >

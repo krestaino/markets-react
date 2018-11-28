@@ -31,7 +31,6 @@ class List extends Component {
               onRefresh={this.onRefresh}
               progressBackgroundColor={Colors.BLUE3}
               refreshing={this.props.loading}
-              tintColor={Colors.TEXT_NORMAL}
             />
           }
           style={styles.list}

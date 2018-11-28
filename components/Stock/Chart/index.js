@@ -57,7 +57,7 @@ class Chart extends Component {
     if (this.props.stock.chartLoading)
       return (
         <View style={styles.spinner}>
-          <ActivityIndicator color={Colors.TEXT_NORMAL} size={'small'} />
+          <ActivityIndicator color={Colors.TEXT_DARK} size={'small'} />
         </View>
       )
 
