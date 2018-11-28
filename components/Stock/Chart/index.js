@@ -6,7 +6,7 @@ import { LineSegment, VictoryChart, VictoryAxis, VictoryLabel, VictoryLine, Vict
 import Touchable from 'react-native-platform-touchable'
 
 import { Colors, Ranges } from '../../../constants'
-import { getStock } from '../../../store/actions'
+import { getStockChart } from '../../../store/actions'
 
 class Chart extends Component {
   state = {
@@ -54,7 +54,7 @@ class Chart extends Component {
 
     if (!chart || chart.length === 0) return null
 
-    if (this.props.stock.loading)
+    if (this.props.stock.chartLoading)
       return (
         <View style={styles.spinner}>
           <ActivityIndicator color={Colors.TEXT_NORMAL} size={'small'} />
@@ -79,7 +79,7 @@ class Chart extends Component {
             <Touchable
               background={Touchable.Ripple(Colors.BLUE2)}
               key={index}
-              onPress={() => this.props.getStock(quote.symbol, range.range)}
+              onPress={() => this.props.getStockChart(quote.symbol, range.range)}
               style={styles.rangesButton}
             >
               <Text style={[styles.rangesLabel, this.activeRangeStyles(range.range.query)]}>{range.label}</Text>
@@ -182,7 +182,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  getStock
+  getStockChart
 }
 
 export default connect(
