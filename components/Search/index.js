@@ -44,6 +44,7 @@ class Search extends Component {
           placeholder="SEARCH BY STOCK SYMBOL"
           ref={ref => (this.input = ref)}
           returnKeyType="search"
+          selectionColor={Colors.TEXT_NORMAL}
           spellCheck={false}
           style={[styles.input, { color: '#ffffff' }]}
           value={this.props.symbol}
