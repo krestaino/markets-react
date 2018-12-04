@@ -12,7 +12,7 @@ import { globalStyles } from '../../styles'
 class Sectors extends Component {
   onRefresh = () => this.props.getSectors()
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.props.getSectors()
   }
 

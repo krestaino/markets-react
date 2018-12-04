@@ -7,7 +7,7 @@ import List from '../List'
 class Losers extends Component {
   onRefresh = () => this.props.getLosers()
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.props.getLosers()
   }
 

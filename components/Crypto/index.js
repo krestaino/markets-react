@@ -7,7 +7,7 @@ import List from '../List'
 class Crypto extends Component {
   onRefresh = () => this.props.getCrypto()
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.props.getCrypto()
   }
 

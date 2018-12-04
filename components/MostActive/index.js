@@ -7,7 +7,7 @@ import List from '../List'
 class MostActive extends Component {
   onRefresh = () => this.props.getMostActive()
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.props.getMostActive()
   }
 
