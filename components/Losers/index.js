@@ -19,8 +19,7 @@ class Losers extends Component {
 }
 
 const mapStateToProps = state => ({
-  losers: state.losers,
-  tabs: state.tabs
+  losers: state.losers
 })
 
 const mapDispatchToProps = {

@@ -19,8 +19,7 @@ class MostActive extends Component {
 }
 
 const mapStateToProps = state => ({
-  mostActive: state.mostActive,
-  tabs: state.tabs
+  mostActive: state.mostActive
 })
 
 const mapDispatchToProps = {

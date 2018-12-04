@@ -19,8 +19,7 @@ class Crypto extends Component {
 }
 
 const mapStateToProps = state => ({
-  crypto: state.crypto,
-  tabs: state.tabs
+  crypto: state.crypto
 })
 
 const mapDispatchToProps = {

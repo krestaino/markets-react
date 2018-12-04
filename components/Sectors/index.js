@@ -82,8 +82,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = state => ({
-  sectors: state.sectors,
-  tabs: state.tabs
+  sectors: state.sectors
 })
 
 const mapDispatchToProps = {
