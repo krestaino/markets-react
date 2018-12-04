@@ -7,6 +7,10 @@ import List from '../List'
 class Favorites extends Component {
   onRefresh = () => this.props.getFavorites(this.props.favorites.symbols)
 
+  componentDidMount() {
+    this.props.getFavorites(this.props.favorites.symbols)
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.favorites.symbols !== this.props.favorites.symbols) {
       this.props.favorites.symbols.length
