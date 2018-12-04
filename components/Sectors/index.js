@@ -6,21 +6,14 @@ import { connect } from 'react-redux'
 import { Colors } from '../../constants'
 import { getSectors } from '../../store/actions'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
-import { preLoad } from '../../helpers/preLoad'
 import { sectorIcons } from '../../helpers/sectorIcons'
 import { globalStyles } from '../../styles'
 
 class Sectors extends Component {
   onRefresh = () => this.props.getSectors()
 
-  componentDidUpdate = prevProps => {
-    const { sectors, tabs } = this.props
-
-    if (tabs.index !== prevProps.tabs.index) {
-      if (sectors.loading === null && preLoad(2)) {
-        this.props.getSectors()
-      }
-    }
+  componentDidMount = () => {
+    this.props.getSectors()
   }
 
   render() {

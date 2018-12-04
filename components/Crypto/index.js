@@ -1,29 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getCrypto } from '../../store/actions'
-import { preLoad } from '../../helpers/preLoad'
 
 import List from '../List'
 
 class Crypto extends Component {
   onRefresh = () => this.props.getCrypto()
 
-  componentDidUpdate = prevProps => {
-    const { crypto, tabs } = this.props
-
-    if (tabs.index !== prevProps.tabs.index) {
-      if (crypto.loading === null && preLoad(6)) {
-        this.props.getCrypto()
-      }
-    }
+  componentDidMount = () => {
+    this.props.getCrypto()
   }
 
   render() {
     const { data, loading } = this.props.crypto
 
-    return (
-      <List header="CRYPTOCURRENCIES" loading={loading} list={data} />
-    )
+    return <List header="CRYPTOCURRENCIES" loading={loading} list={data} onRefresh={this.onRefresh} />
   }
 }
 
