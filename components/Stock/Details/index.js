@@ -10,6 +10,8 @@ class Details extends Component {
 
   render() {
     const { quote } = this.props.stock.data
+    
+    if (!quote) return null
 
     return (
       <View style={styles.container}>

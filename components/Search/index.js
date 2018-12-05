@@ -4,7 +4,7 @@ import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
 import { Colors, Ranges } from '../../constants'
-import { getStock, setSymbol, showAutoSuggest } from '../../store/actions/'
+import { getStock, setSymbol, showAutoSuggest } from '../../store/actions'
 
 class Search extends Component {
   state = { hideAutoSuggest: false }
@@ -21,8 +21,6 @@ class Search extends Component {
     }
   }
 
-  componentDidMount = () => setTimeout(() => this.input._root.focus(), 150)
-
   componentDidUpdate = () => {
     if (this.props.stock.error) {
       this.input._root.focus()
@@ -34,8 +32,8 @@ class Search extends Component {
 
   render = () => (
     <View style={styles.container}>
-      <Item searchBar style={styles.input}>
-        <Icon name="ios-search" style={styles.icon} />
+      <Item searchBar style={styles.item}>
+        <Icon name="md-search" style={styles.icon} />
         <Input
           autoCapitalize="characters"
           autoCorrect={false}
@@ -43,10 +41,12 @@ class Search extends Component {
           keyboardAppearance="dark"
           onChangeText={symbol => this.onChangeText(symbol)}
           onSubmitEditing={this.onSubmitEditing}
-          placeholder="Search by stock symbol"
+          placeholder="SEARCH BY STOCK SYMBOL"
           ref={ref => (this.input = ref)}
           returnKeyType="search"
+          selectionColor={Colors.TEXT_NORMAL}
           spellCheck={false}
+          style={[styles.input, { color: '#ffffff' }]}
           value={this.props.symbol}
         />
       </Item>
@@ -55,16 +55,19 @@ class Search extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    zIndex: 1
-  },
-  input: {
-    backgroundColor: Colors.BLUE2,
+  item: {
+    borderBottomWidth: 1,
+    height: 50,
     paddingLeft: 20,
     marginLeft: 0
   },
   icon: {
     color: Colors.TEXT_NORMAL
+  },
+  input: {
+    color: Colors.TEXT_DARK,
+    fontSize: 12,
+    fontWeight: '400'
   }
 })
 

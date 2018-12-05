@@ -4,7 +4,7 @@ import { Icon, Fab, Toast, View } from 'native-base'
 import { connect } from 'react-redux'
 
 import { Colors } from '../../../constants'
-import { toggleFavorite } from '../../../store/actions/'
+import { toggleFavorite } from '../../../store/actions'
 
 class Save extends Component {
   isFavorite = symbol => this.props.favorites.symbols.filter(favorite => favorite === symbol).length
@@ -27,6 +27,8 @@ class Save extends Component {
 
   render() {
     const { quote } = this.props.stock.data
+    
+    if (!quote) return null
 
     return (
       <View>
@@ -36,7 +38,7 @@ class Save extends Component {
             position="bottomRight"
             onPress={() => this.onPress(quote)}
           >
-            <Icon ios="ios-heart" android="md-heart" style={styles.icon} />
+            <Icon name="md-heart" style={styles.icon} />
           </Fab>
         )}
       </View>

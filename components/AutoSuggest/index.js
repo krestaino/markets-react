@@ -22,7 +22,7 @@ class AutoSuggest extends Component {
   listHeight = () => {
     const statusBar = Platform.OS === 'ios' ? getStatusBarHeight() : StatusBar.currentHeight
     const windowHeight = Dimensions.get('window').height
-    const tabAndSearchHeight = 102
+    const tabAndSearchHeight = 105 + 10
     return windowHeight - statusBar - tabAndSearchHeight
   }
 
@@ -103,9 +103,7 @@ class AutoSuggest extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.BLUE2,
-    borderTopColor: Colors.BLUE1,
-    borderTopWidth: 1
+    backgroundColor: Colors.BLUE2
   },
   item: {
     paddingHorizontal: 16,

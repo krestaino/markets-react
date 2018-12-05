@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Dimensions, StyleSheet } from 'react-native'
+import { ActivityIndicator, Dimensions, StyleSheet } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { LineSegment, VictoryChart, VictoryAxis, VictoryLabel, VictoryLine, VictoryTheme } from 'victory-native'
 import Touchable from 'react-native-platform-touchable'
 
 import { Colors, Ranges } from '../../../constants'
-import { getStock } from '../../../store/actions/getStock'
+import { getStockChart } from '../../../store/actions'
 
 class Chart extends Component {
   state = {
@@ -52,7 +52,14 @@ class Chart extends Component {
     const { chart, quote } = this.props.stock.data
     const { width } = Dimensions.get('window')
 
-    if (chart.length === 0) return null
+    if (!chart || chart.length === 0) return null
+
+    if (this.props.stock.chartLoading)
+      return (
+        <View style={styles.spinner}>
+          <ActivityIndicator color={Colors.TEXT_DARK} size={'small'} />
+        </View>
+      )
 
     const _chart = chart
       .filter(interval => interval.close || interval.marketClose)
@@ -66,13 +73,13 @@ class Chart extends Component {
     const lineSegment = <LineSegment style={svgStyles.chartGrid} type={'grid'} />
 
     return (
-      <View>
+      <View style={{ height: 250 }}>
         <View style={styles.rangesContainer}>
           {this.state.ranges.map((range, index) => (
             <Touchable
               background={Touchable.Ripple(Colors.BLUE2)}
               key={index}
-              onPress={() => this.props.getStock(quote.symbol, range.range)}
+              onPress={() => this.props.getStockChart(quote.symbol, range.range)}
               style={styles.rangesButton}
             >
               <Text style={[styles.rangesLabel, this.activeRangeStyles(range.range.query)]}>{range.label}</Text>
@@ -114,6 +121,10 @@ class Chart extends Component {
 }
 
 const styles = StyleSheet.create({
+  spinner: {
+    height: 250,
+    justifyContent: 'center'
+  },
   chart: {
     marginBottom: -10,
     marginTop: -36
@@ -171,7 +182,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  getStock
+  getStockChart
 }
 
 export default connect(
