@@ -8,7 +8,7 @@ import { Colors, Ranges } from '../../constants'
 import { getCrypto, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 import { cryptoLogos } from '../../helpers/cryptoLogos'
-import { globalStyles } from '../../styles'
+import ListHeader from '../ListHeader'
 
 class List extends Component {
   onPress = symbol => {
@@ -21,9 +21,7 @@ class List extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View style={globalStyles.headerContainer}>
-          <Text style={globalStyles.headerContainer}>{this.props.header}</Text>
-        </View>
+        <ListHeader title={this.props.headerTitle} />
         <Content
           refreshControl={
             <RefreshControl

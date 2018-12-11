@@ -22,7 +22,7 @@ class Favorites extends Component {
   render() {
     const { data, loading } = this.props.favorites
 
-    return <List header="FAVORITES" loading={loading} list={data} onRefresh={this.onRefresh} />
+    return <List headerTitle="FAVORITES" loading={loading} list={data} onRefresh={this.onRefresh} />
   }
 }
 
