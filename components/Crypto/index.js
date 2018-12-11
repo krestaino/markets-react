@@ -14,7 +14,7 @@ class Crypto extends Component {
   render() {
     const { data, loading } = this.props.crypto
 
-    return <List header="CRYPTOCURRENCIES" loading={loading} list={data} onRefresh={this.onRefresh} />
+    return <List headerTitle="CRYPTOCURRENCIES" loading={loading} list={data} onRefresh={this.onRefresh} />
   }
 }
 

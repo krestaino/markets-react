@@ -7,7 +7,7 @@ import { Colors } from '../../constants'
 import { getSectors } from '../../store/actions'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 import { sectorIcons } from '../../helpers/sectorIcons'
-import { globalStyles } from '../../styles'
+import ListHeader from '../ListHeader'
 
 class Sectors extends Component {
   onRefresh = () => this.props.getSectors()
@@ -21,9 +21,7 @@ class Sectors extends Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <View style={globalStyles.headerContainer}>
-          <Text style={globalStyles.headerContainer}>SECTORS PERFORMANCE</Text>
-        </View>
+        <ListHeader title="SECTORS PERFORMANCE" />
         <Content
           refreshControl={
             <RefreshControl
