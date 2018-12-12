@@ -41,7 +41,7 @@ class Search extends Component {
           keyboardAppearance="dark"
           onChangeText={symbol => this.onChangeText(symbol)}
           onSubmitEditing={this.onSubmitEditing}
-          placeholder="SEARCH BY STOCK SYMBOL"
+          placeholder="Search by stock symbol"
           ref={ref => (this.input = ref)}
           returnKeyType="search"
           selectionColor={Colors.TEXT_NORMAL}
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   input: {
     color: Colors.TEXT_DARK,
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: '400'
   }
 })
