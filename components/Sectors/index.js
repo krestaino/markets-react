@@ -17,11 +17,11 @@ class Sectors extends Component {
   }
 
   render() {
-    const { data, loading } = this.props.sectors
+    const { data, latestUpdate, loading } = this.props.sectors
 
     return (
       <View style={{ flex: 1 }}>
-        <ListHeader title="SECTORS PERFORMANCE" />
+        <ListHeader latestUpdate={latestUpdate} title="Sectors Performance" />
         <Content
           refreshControl={
             <RefreshControl

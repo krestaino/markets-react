@@ -1,6 +1,6 @@
 import { Actions } from '../../../constants'
 
-const initialState = { data: [], loading: null, error: false, symbols: [] }
+const initialState = { data: [], latestUpdate: null, loading: null, error: false, symbols: [] }
 
 export const favorites = (state = initialState, action) => {
   switch (action.type) {
@@ -14,7 +14,7 @@ export const favorites = (state = initialState, action) => {
     case Actions.GET_FAVORITES_SUCCESS:
       const data = Object.keys(action.payload.data).map(k => action.payload.data[k].quote)
       data.sort((a, b) => a.symbol.localeCompare(b.symbol))
-      return { ...state, loading: false, data: data }
+      return { ...state, latestUpdate: new Date(), loading: false, data: data }
     case Actions.GET_FAVORITES_FAIL:
       return { ...state, loading: false, error: 'No results found.' }
     case Actions.CLEAR_FAVORITES:

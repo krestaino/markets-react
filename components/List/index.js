@@ -21,7 +21,7 @@ class List extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <ListHeader title={this.props.headerTitle} />
+        <ListHeader latestUpdate={this.props.latestUpdate} title={this.props.headerTitle} />
         <Content
           refreshControl={
             <RefreshControl

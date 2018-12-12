@@ -1,32 +1,55 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { Text, View } from 'native-base'
+import { distanceInWords } from 'date-fns'
 
 import { Colors } from '../../constants'
 
 class ListHeader extends Component {
+  state = {
+    latestUpdate: null
+  }
+
+  capitalize = string => string.charAt(0).toUpperCase() + string.slice(1)
+
+  formatTime = () => (this.state.latestUpdate ? this.capitalize(this.state.latestUpdate) + ' ago' : 'Just now')
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ latestUpdate: distanceInWords(new Date(), this.props.latestUpdate) })
+    }, 5000)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.latestUpdate !== this.props.latestUpdate) {
+      this.setState({ latestUpdate: null })
+    }
+  }
+
   render() {
     return (
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerContainer}>{this.props.title}</Text>
+      <View style={styles.container}>
+        <Text style={styles.text}>{this.props.title}</Text>
+        <Text style={styles.text}>{this.formatTime()}</Text>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  headerContainer: {
+  container: {
     borderBottomColor: Colors.BLUE2,
     borderBottomWidth: 1,
-    paddingHorizontal: 8,
+    paddingHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    height: 50
+  },
+  text: {
     color: Colors.TEXT_DARK,
     fontSize: 13,
     fontWeight: '400',
-    height: 50,
-    lineHeight: 50,
-    textAlign: 'center'
+    lineHeight: 50
   }
 })
 
