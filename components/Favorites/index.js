@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { clearFavorites, getFavorites } from '../../store/actions'
+import { TextStrings } from '../../constants'
 
 import List from '../List'
 
@@ -22,7 +23,7 @@ class Favorites extends Component {
   render() {
     const { data, loading } = this.props.favorites
 
-    return <List headerTitle="FAVORITES" loading={loading} list={data} onRefresh={this.onRefresh} />
+    return <List headerTitle="FAVORITES" loading={loading} list={data} noListData={TextStrings.NO_FAVORITES} onRefresh={this.onRefresh} />
   }
 }
 

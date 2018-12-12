@@ -4,7 +4,7 @@ import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import Touchable from 'react-native-platform-touchable'
 
-import { Colors, Ranges } from '../../constants'
+import { Colors, Ranges, TextStrings } from '../../constants'
 import { getCrypto, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions'
 import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
 import { cryptoLogos } from '../../helpers/cryptoLogos'
@@ -33,6 +33,7 @@ class List extends Component {
           }
           style={styles.list}
         >
+          {this.props.list.length === 0 && <Text style={styles.noData}>{this.props.noListData || TextStrings.NO_LIST_DATA}</Text>}
           {this.props.list.map((stock, index) => {
             const logo = cryptoLogos(stock.symbol)
 
@@ -110,6 +111,12 @@ const styles = StyleSheet.create({
   },
   stockChange: {
     fontSize: 13
+  },
+  noData: {
+    color: Colors.TEXT_DARK,
+    fontSize: 13,
+    padding: 20,
+    textAlign: 'center'
   }
 })
 
