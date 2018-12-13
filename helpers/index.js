@@ -1,3 +1,3 @@
-export * from './CryptoLogos'
-export * from './PriceFormat'
-export * from './SectorIcons'
+export * from './cryptoLogos'
+export * from './priceFormat'
+export * from './sectorIcons'
