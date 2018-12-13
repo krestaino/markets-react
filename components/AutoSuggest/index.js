@@ -9,14 +9,8 @@ import { Colors, Ranges } from '../../constants'
 import { getStock, getSymbols, setSymbol, showAutoSuggest } from '../../store/actions'
 
 class AutoSuggest extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      filteredSearch: []
-    }
-
-    BackHandler.addEventListener('hardwareBackPress', this.onBackPress)
+  state = {
+    filteredSearch: []
   }
 
   listHeight = () => {
@@ -55,6 +49,7 @@ class AutoSuggest extends Component {
 
   componentDidMount() {
     this.props.getSymbols()
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress)
   }
 
   componentDidUpdate(prevProps) {
