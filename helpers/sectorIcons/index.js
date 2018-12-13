@@ -12,4 +12,4 @@ const icons = {
   Utilities: { name: 'water-pump', type: 'MaterialCommunityIcons' }
 }
 
-export const sectorIcons = sector => icons[sector] || false
+export const sectorIcons = sector => icons[sector.replace(/ /g, '')] || false

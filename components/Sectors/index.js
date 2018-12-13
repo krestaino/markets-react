@@ -34,7 +34,7 @@ class Sectors extends Component {
         >
           <View style={styles.container}>
             {data.map((sector, index) => {
-              const icon = sectorIcons(sector.name.replace(' ', ''))
+              const icon = sectorIcons(sector.name)
 
               return (
                 <View key={index} style={styles.sector}>
