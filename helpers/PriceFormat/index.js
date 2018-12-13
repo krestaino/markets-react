@@ -1,4 +1,4 @@
-import { Colors } from '../constants'
+import { Colors } from '../../constants'
 
 export const upOrDownSymbol = x => (x > 0 ? '▲' : '▼')
 export const formatPercentage = x => (x * 100).toFixed(2)

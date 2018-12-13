@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { format } from 'date-fns'
 
 import { Colors } from '../../../constants'
-import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../../helpers/priceFormat'
+import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../../helpers'
 
 class Info extends Component {
   render() {

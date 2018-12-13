@@ -5,8 +5,7 @@ import { connect } from 'react-redux'
 
 import { Colors } from '../../constants'
 import { getSectors } from '../../store/actions'
-import { upOrDownSymbol, formatPercentage, positiveOrNegative } from '../../helpers/priceFormat'
-import { sectorIcons } from '../../helpers/sectorIcons'
+import { formatPercentage, positiveOrNegative, sectorIcons, upOrDownSymbol } from '../../helpers'
 import ListHeader from '../ListHeader'
 
 class Sectors extends Component {
