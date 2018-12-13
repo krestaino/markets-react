@@ -14,7 +14,15 @@ class MostActive extends Component {
   render() {
     const { data, latestUpdate, loading } = this.props.mostActive
 
-    return <List headerTitle="Most Active" latestUpdate={latestUpdate} loading={loading} list={data} onRefresh={this.onRefresh} />
+    return (
+      <List
+        headerTitle="Most Active"
+        latestUpdate={latestUpdate}
+        loading={loading}
+        list={data}
+        onRefresh={this.onRefresh}
+      />
+    )
   }
 }
 

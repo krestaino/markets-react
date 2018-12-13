@@ -14,7 +14,9 @@ class Losers extends Component {
   render() {
     const { data, latestUpdate, loading } = this.props.losers
 
-    return <List headerTitle="Losers" latestUpdate={latestUpdate} loading={loading} list={data} onRefresh={this.onRefresh} />
+    return (
+      <List headerTitle="Losers" latestUpdate={latestUpdate} loading={loading} list={data} onRefresh={this.onRefresh} />
+    )
   }
 }
 

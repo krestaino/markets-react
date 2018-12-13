@@ -23,7 +23,16 @@ class Favorites extends Component {
   render() {
     const { data, latestUpdate, loading } = this.props.favorites
 
-    return <List headerTitle="Favorites" latestUpdate={latestUpdate} loading={loading} list={data} noListData={TextStrings.NO_FAVORITES} onRefresh={this.onRefresh} />
+    return (
+      <List
+        headerTitle="Favorites"
+        latestUpdate={latestUpdate}
+        loading={loading}
+        list={data}
+        noListData={TextStrings.NO_FAVORITES}
+        onRefresh={this.onRefresh}
+      />
+    )
   }
 }
 

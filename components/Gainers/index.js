@@ -14,7 +14,15 @@ class Gainers extends Component {
   render() {
     const { data, latestUpdate, loading } = this.props.gainers
 
-    return <List headerTitle="Gainers" latestUpdate={latestUpdate} loading={loading} list={data} onRefresh={this.onRefresh} />
+    return (
+      <List
+        headerTitle="Gainers"
+        latestUpdate={latestUpdate}
+        loading={loading}
+        list={data}
+        onRefresh={this.onRefresh}
+      />
+    )
   }
 }
 

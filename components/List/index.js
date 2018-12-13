@@ -33,7 +33,9 @@ class List extends Component {
           }
           style={styles.list}
         >
-          {this.props.list.length === 0 && <Text style={styles.noData}>{this.props.noListData || TextStrings.NO_LIST_DATA}</Text>}
+          {this.props.list.length === 0 && (
+            <Text style={styles.noData}>{this.props.noListData || TextStrings.NO_LIST_DATA}</Text>
+          )}
           {this.props.list.map((stock, index) => {
             const logo = cryptoLogos(stock.symbol)
 
