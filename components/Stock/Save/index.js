@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginLeft: 16,
     marginRight: 16,
-    marginTop: Platform.OS === 'ios' ? -26 : 5,
+    marginTop: Platform.OS === 'ios' ? -25 : 6,
     minHeight: 0,
     paddingHorizontal: 6
   },
