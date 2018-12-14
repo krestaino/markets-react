@@ -29,27 +29,26 @@ class Stock extends Component {
       <View style={styles.container}>
         <Search />
         <AutoSuggest />
-        <View style={styles.container}>
-          <Content
-            refreshControl={
-              <RefreshControl
-                colors={[Colors.TEXT_NORMAL]}
-                onRefresh={this.onRefresh}
-                progressBackgroundColor={Colors.BLUE3}
-                refreshing={loading}
-              />
-            }
-          >
-            <Info />
-            <Chart />
-            <Details />
-            <News />
-          </Content>
-          <Save />
-        </View>
-        {isError && (
-          <View behavior={Platform.OS === 'ios' ? 'position' : null} style={[styles.container, styles.center]}>
-            <Text>{error}</Text>
+        {isError ? (
+          <Text style={styles.noResults}>{error}</Text>
+        ) : (
+          <View style={styles.container}>
+            <Content
+              refreshControl={
+                <RefreshControl
+                  colors={[Colors.TEXT_NORMAL]}
+                  onRefresh={this.onRefresh}
+                  progressBackgroundColor={Colors.BLUE3}
+                  refreshing={loading}
+                />
+              }
+            >
+              <Info />
+              <Chart />
+              <Details />
+              <News />
+            </Content>
+            <Save />
           </View>
         )}
       </View>
@@ -62,9 +61,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column'
   },
-  center: {
-    alignItems: 'center',
-    paddingTop: 32
+  noResults: {
+    color: Colors.TEXT_DARK,
+    fontSize: 13,
+    padding: 20,
+    textAlign: 'center'
   }
 })
 
