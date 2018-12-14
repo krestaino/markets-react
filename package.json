@@ -1,6 +1,6 @@
 {
   "name": "markets-react",
-  "version": "0.18.0",
+  "version": "0.18.1",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
