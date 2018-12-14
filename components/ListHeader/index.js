@@ -14,14 +14,20 @@ class ListHeader extends Component {
 
   formatTime = () => (this.state.latestUpdate ? this.capitalize(this.state.latestUpdate) + ' ago' : 'Just now')
 
-  componentDidMount() {
-    setInterval(() => {
+  timer() {
+    return setInterval(() => {
       this.setState({ latestUpdate: distanceInWords(new Date(), this.props.latestUpdate) })
     }, 5000)
   }
 
+  componentDidMount() {
+    this.timestamp = this.timer()
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.latestUpdate !== this.props.latestUpdate) {
+      clearInterval(this.timestamp)
+      this.timestamp = this.timer()
       this.setState({ latestUpdate: null })
     }
   }
