@@ -30,7 +30,7 @@ class ListHeader extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>{this.props.title}</Text>
-        <Text style={styles.text}>{this.formatTime()}</Text>
+        {this.props.latestUpdate && <Text style={styles.text}>{this.formatTime()}</Text>}
       </View>
     )
   }
