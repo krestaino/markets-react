@@ -9,7 +9,9 @@ class Favorites extends Component {
   onRefresh = () => this.props.getFavorites(this.props.favorites.symbols)
 
   componentDidMount() {
-    this.props.getFavorites(this.props.favorites.symbols)
+    if (this.props.favorites.symbols.length) {
+      this.props.getFavorites(this.props.favorites.symbols)
+    }
   }
 
   componentDidUpdate(prevProps) {
