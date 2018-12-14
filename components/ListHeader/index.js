@@ -17,7 +17,7 @@ class ListHeader extends Component {
   timer() {
     return setInterval(() => {
       this.setState({ latestUpdate: distanceInWords(new Date(), this.props.latestUpdate) })
-    }, 5000)
+    }, 15000)
   }
 
   componentDidMount() {
