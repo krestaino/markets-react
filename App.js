@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform, StatusBar } from 'react-native'
+import { Platform, StatusBar, StyleSheet } from 'react-native'
 import { Container, Root, StyleProvider, View } from 'native-base'
 import { Font } from 'expo'
 import { Provider } from 'react-redux'
@@ -46,10 +46,10 @@ export default class App extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.BLUE1,
     flex: 1,
     paddingTop: Platform.OS === 'ios' ? getStatusBarHeight() : StatusBar.currentHeight
   }
-}
+})
