@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform, RefreshControl, StyleSheet } from 'react-native'
+import { RefreshControl, StyleSheet } from 'react-native'
 import { Content, Text, View } from 'native-base'
 import { connect } from 'react-redux'
 
