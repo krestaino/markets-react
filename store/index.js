@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 
 import reducers from './reducers'
+import { API_KEY } from 'react-native-dotenv'
 
 const persistConfig = {
   key: 'root',
@@ -13,8 +14,11 @@ const persistConfig = {
 }
 
 const client = axios.create({
-  baseURL: 'https://api.iextrading.com/1.0',
-  responseType: 'json'
+  baseURL: 'https://cloud.iexapis.com/v1',
+  responseType: 'json',
+  params: {
+    token: API_KEY
+  },
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
