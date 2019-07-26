@@ -11,7 +11,7 @@ import { getStockChart } from '../../../store/actions'
 class Chart extends Component {
   state = {
     ranges: [
-      { label: '1d', range: Ranges.ONE_DAY },
+      // { label: '1d', range: Ranges.ONE_DAY },
       { label: '1m', range: Ranges.ONE_MONTH },
       { label: '3m', range: Ranges.THREE_MONTHS },
       { label: '6m', range: Ranges.SIX_MONTHS },
