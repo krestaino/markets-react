@@ -1,6 +1,6 @@
 {
   "name": "markets-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
@@ -10,16 +10,17 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "date-fns": "^1.29.0",
-    "expo": "^31.0.2",
-    "lodash": "^4.17.11",
-    "native-base": "^2.8.0",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "expo": "^33.0.0",
+    "expo-font": "~5.0.1",
+    "lodash": "^4.17.15",
+    "native-base": "^2.13.1",
+    "react": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-platform-touchable": "^1.1.1",
     "react-native-status-bar-height": "^2.1.0",
-    "react-native-tab-view": "^1.2.0",
+    "react-native-tab-view": "^2.9.0",
     "react-native-vector-icons": "^5.0.0",
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",

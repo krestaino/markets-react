@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Platform, StatusBar, StyleSheet } from 'react-native'
 import { Container, Root, StyleProvider, View } from 'native-base'
-import { Font } from 'expo'
+import * as Font from 'expo-font';
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { getStatusBarHeight } from 'react-native-status-bar-height'

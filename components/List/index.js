@@ -6,7 +6,7 @@ import Touchable from 'react-native-platform-touchable'
 
 import { Colors, Ranges, TextStrings } from '../../constants'
 import { getCrypto, getStock, setSymbol, setTab, showAutoSuggest } from '../../store/actions'
-import { cryptoLogos, formatPercentage, positiveOrNegative, upOrDownSymbol } from '../../helpers'
+import { formatPercentage, positiveOrNegative, upOrDownSymbol } from '../../helpers'
 
 import ListHeader from '../ListHeader'
 
