@@ -32,7 +32,7 @@ expo build:ios
 * [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
 * [Expo](https://docs.expo.io/versions/latest/)
 * [NativeBase](https://docs.nativebase.io/)
-* [EX API](https://iextrading.com/developer/docs/#getting-started)
+* [IEX Cloud](https://iexcloud.io/docs/api/)
 
 ## License 
 This project is licensed under the MIT License - see the LICENSE.md file for details
