@@ -37,7 +37,7 @@ class List extends Component {
             <Text style={styles.noData}>{this.props.noListData || TextStrings.NO_LIST_DATA}</Text>
           )}
           {this.props.list.map((stock, index) => {
-            const logo = cryptoLogos(stock.symbol)
+            const logo = `https://storage.googleapis.com/iex/api/logos/${stock.symbol}.png`
 
             return (
               <Touchable
@@ -47,7 +47,7 @@ class List extends Component {
                 onPress={() => this.onPress(stock.symbol)}
               >
                 <View style={styles.rowContainer}>
-                  {logo && <Image source={logo} style={styles.image} />}
+                  <Image source={{ uri: logo }} style={styles.image} />
                   <View style={styles.textContainer}>
                     <View style={styles.textInnerContainer}>
                       <Text>{stock.symbol}</Text>
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     flexGrow: 1
   },
   image: {
+    borderRadius: 3,
     height: 28,
     marginRight: 16,
     width: 28

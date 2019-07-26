@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
 import { Text, View } from 'native-base'
 import { connect } from 'react-redux'
 import { format } from 'date-fns'
@@ -12,13 +12,19 @@ class Info extends Component {
     const { quote } = this.props.stock.data
 
     if (!quote) return null
+    const logo = `https://storage.googleapis.com/iex/api/logos/${quote.symbol}.png`
 
     return (
       <View style={styles.container}>
-        <Text style={styles.companyName}>{quote.companyName}</Text>
-        <Text style={styles.primaryExchange}>
-          {quote.primaryExchange}: {quote.symbol}
-        </Text>
+        <View style={styles.row}>
+          <View>
+            <Text style={styles.companyName}>{quote.companyName}</Text>
+            <Text style={styles.primaryExchange}>
+              {quote.primaryExchange}: {quote.symbol}
+            </Text>
+          </View>
+          <Image source={{ uri: logo }} style={styles.image} />
+        </View>
         <Text>
           <Text style={styles.latestPrice}>{quote.latestPrice}</Text>
           <Text> USD</Text>
@@ -39,6 +45,17 @@ class Info extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 16
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  image: {
+    borderRadius: 3,
+    height: 48,
+    marginRight: 10,
+    resizeMode: 'contain',
+    width: 48
   },
   companyName: {
     fontSize: 20,
