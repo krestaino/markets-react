@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { Icon, Item, Input, View } from 'native-base'
 import { connect } from 'react-redux'
 
@@ -49,6 +49,11 @@ class Search extends Component {
           style={[styles.input, { color: '#ffffff' }]}
           value={this.props.symbol}
         />
+        {this.props.symbol ? (
+          <TouchableOpacity onPress={() => this.onChangeText('')}>
+            <Icon name="md-close" style={styles.icon} />
+          </TouchableOpacity>
+        ) : null}
       </Item>
     </View>
   )
@@ -59,6 +64,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     height: 50,
     paddingLeft: 20,
+    paddingRight: 10,
     marginLeft: 0
   },
   icon: {
