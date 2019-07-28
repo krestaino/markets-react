@@ -2,6 +2,7 @@ import { Actions } from '../../../constants'
 
 const initialState = {
   index: 0,
+  previousIndex: 0,
   routes: [
     { key: 'favorites', title: 'Favorites', icon: 'md-heart' },
     { key: 'search', title: 'Search', icon: 'md-search' },
@@ -18,7 +19,7 @@ const initialState = {
 export const tabs = (state = initialState, action) => {
   switch (action.type) {
     case Actions.SET_TAB:
-      return { ...state, index: action.payload }
+      return { ...state, index: action.payload, previousIndex: state.index }
     default:
       return state
   }

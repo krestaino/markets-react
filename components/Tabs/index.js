@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions, StyleSheet } from 'react-native'
+import { BackHandler, Dimensions, StyleSheet } from 'react-native'
 import { Icon, View, Text } from 'native-base'
 import { connect } from 'react-redux'
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view'
@@ -97,6 +97,20 @@ class Tabs extends Component {
       renderIcon={this.renderIcon}
     />
   )
+
+  onBackPress = () => {
+    const { setTab, tabs } = this.props
+    setTab(tabs.previousIndex)
+    return true
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress)
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress)
+  }
 
   render = () => (
     <View style={styles.container}>
