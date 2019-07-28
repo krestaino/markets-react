@@ -17,7 +17,7 @@ class Info extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.row}>
-          <View>
+          <View style={{ maxWidth: '90%' }}>
             <Text style={styles.companyName}>{quote.companyName}</Text>
             <Text style={styles.primaryExchange}>
               {quote.primaryExchange}: {quote.symbol}
@@ -53,13 +53,14 @@ const styles = StyleSheet.create({
   image: {
     borderRadius: 3,
     height: 48,
-    marginRight: 10,
     resizeMode: 'contain',
     width: 48
   },
   companyName: {
+    flexWrap: 'wrap',
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    maxWidth: '90%'
   },
   primaryExchange: {
     color: Colors.TEXT_DARK,
