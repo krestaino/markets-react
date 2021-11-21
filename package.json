@@ -20,7 +20,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-platform-touchable": "^1.1.1",
     "react-native-status-bar-height": "^2.1.0",
-    "react-native-tab-view": "^2.9.0",
+    "react-native-tab-view": "2.11.0",
     "react-native-vector-icons": "^5.0.0",
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",
