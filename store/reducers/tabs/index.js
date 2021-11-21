@@ -6,7 +6,7 @@ const initialState = {
   routes: [
     { key: 'favorites', title: 'Favorites', icon: 'md-heart' },
     { key: 'search', title: 'Search', icon: 'md-search' },
-    { key: 'sectors', title: 'Sectors', icon: 'md-business' },
+    // { key: 'sectors', title: 'Sectors', icon: 'md-business' },
     { key: 'gainers', title: 'Gainers', icon: 'md-trending-up' },
     { key: 'losers', title: 'Losers', icon: 'md-trending-down' },
     { key: 'mostActive', title: 'Most Active', icon: 'md-flame' },

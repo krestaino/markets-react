@@ -9,7 +9,7 @@ import { setTab } from '../../store/actions'
 
 import Stock from '../Stock'
 import Favorites from '../Favorites'
-import Sectors from '../Sectors'
+// import Sectors from '../Sectors'
 import Gainers from '../Gainers'
 import Losers from '../Losers'
 import MostActive from '../MostActive'
@@ -28,11 +28,11 @@ class Tabs extends Component {
     </View>
   )
 
-  sectorsTab = () => (
-    <View style={styles.container}>
-      <Sectors />
-    </View>
-  )
+  // sectorsTab = () => (
+  //   <View style={styles.container}>
+  //     <Sectors />
+  //   </View>
+  // )
 
   gainersTab = () => (
     <View style={styles.container}>
@@ -75,7 +75,7 @@ class Tabs extends Component {
   sceneMap = SceneMap({
     search: this.stockTab,
     favorites: this.favoritesTab,
-    sectors: this.sectorsTab,
+    // sectors: this.sectorsTab,
     gainers: this.gainersTab,
     losers: this.losersTab,
     mostActive: this.mostActiveTab,
