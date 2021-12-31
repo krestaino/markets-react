@@ -10,7 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.2",
     "date-fns": "^1.29.0",
     "expo": "^33.0.0",
     "expo-font": "~5.0.1",
